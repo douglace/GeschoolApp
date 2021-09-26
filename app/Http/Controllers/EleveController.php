@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Bulletin;
+use App\BulletinSequence;
+use App\BulletinTrimestre;
 use App\Classe;
 use App\Eleve;
 use App\Inscription;
 use App\Paiement;
 use App\ParentEleve;
+use App\Sequence;
 use App\Session;
 use App\Tranche;
+use App\Trimestre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -90,7 +95,19 @@ class EleveController extends Controller
             $paiement = Paiement::create($inscription);
             $classe = Classe::find($inscript->classe_id);
             $paiement->montant = $classe->montant;
+            $paiement->reste = $classe->montant;
             $paiement->update();
+
+            Bulletin::create($inscription);
+            foreach(Sequence::all() as $sequence){
+                $inscription["sequence_id"] = $sequence->sequence_id;
+                BulletinSequence::create($inscription);
+            }
+            foreach(Trimestre::all() as $trimestre){
+                $inscription["trimestre_id"] = $trimestre->trimestre_id;
+                BulletinTrimestre::create($inscription);
+            }
+
             DB::commit();
             return ges_ajax_response(true);
         } catch(\Exception $e) {

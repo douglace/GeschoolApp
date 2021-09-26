@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
     protected $primaryKey = "note_id";
-    protected $fillable = ["eleve_id", "cours_id", "sequence_id", "note" , "rang", "mention"];
+    protected $fillable = ["eleve_id", "cours_id", "sequence_id", "bulletin_sequence_id", "note" , "rang", "mention"];
 
     public function eleve(){
         return $this->belongsTo(Eleve::class,"eleve_id");
@@ -19,5 +19,9 @@ class Note extends Model
 
     public function sequence(){
         return $this->belongsTo(Sequence::class,"sequence_id");
+    }
+
+    public function bulletin(){
+        return $this->belongsTo(BulletinSequence::class,"bulletin_sequence_id");
     }
 }

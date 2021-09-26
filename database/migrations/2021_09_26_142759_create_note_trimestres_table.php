@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotesTable extends Migration
+class CreateNoteTrimestresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('notes', function (Blueprint $table) {
-            $table->increments("note_id");
+        Schema::create('note_trimestres', function (Blueprint $table) {
+            $table->increments("note_trimestre_id");
             $table->integer("cours_id")->unsigned();
             $table->foreign("cours_id")->references("cours_id")->on("cours")->onDelete("cascade");
             $table->integer("eleve_id")->unsigned();
             $table->foreign("eleve_id")->references("eleve_id")->on("eleves")->onDelete("cascade");
-            $table->integer("sequence_id")->unsigned();
-            $table->foreign("sequence_id")->references("sequence_id")->on("sequences")->onDelete("cascade");
-            $table->integer("bulletin_sequence_id")->unsigned();
-            $table->foreign("bulletin_sequence_id")->references("bulletin_sequence_id")->on("bulletin_sequences")->onDelete("cascade");
+            $table->integer("trimestre_id")->unsigned();
+            $table->foreign("trimestre_id")->references("trimestre_id")->on("trimestres")->onDelete("cascade");
+            $table->integer("bulletin_trimestre_id")->unsigned();
+            $table->foreign("bulletin_trimestre_id")->references("bulletin_trimestre_id")->on("bulletin_trimestres")->onDelete("cascade");
             $table->float("note");
             $table->integer("rang")->default(0);
             $table->string("mention")->default("Nul");
@@ -37,6 +37,6 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notes');
+        Schema::dropIfExists('note_trimestres');
     }
 }

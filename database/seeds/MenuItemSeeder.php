@@ -70,7 +70,7 @@ class MenuItemSeeder extends Seeder
                 "menu_id" => 6
             ],
             [
-                "name" => "Liste Des Emploies",
+                "name" => "Liste Des Emplois Du Temps",
                 "slug" => "emploies_view",
                 "menu_id" => 7
             ],

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\BulletinSequence;
 use App\Classe;
 use App\Cours;
 use App\Inscription;
+use App\Note;
 use App\Sequence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -38,51 +40,41 @@ class NoteController extends Controller
         try {
             $classe_id = (int)$request->input("classe_id");
             $sequence_id = (int)$request->input("sequence_id");
+            $cours_id = (int)$request->input("cours_id");
+            $cours = Cours::find($cours_id);
+            $sequence = Sequence::find($sequence_id);
+            $eleves = Inscription::getAllEleve($this->current_annee_id($request), $classe_id);
 
-            $courss = Cours::where("session_id", $this->current_session_id($request))->where("annee_id", $this->current_annee_id($request))
-            ->where("classe_id", $classe_id)->get()->all();
+            $notes = Note::where("cours_id", $cours_id)->where("sequence_id", $sequence_id)->get()->all();
 
-            $inscriptions_id = Inscription::select("eleve_id")->where();
+            if (empty($notes)) {
 
-            $classes = Classe::where("session_id", $this->current_session_id($request))->get()->all();
+                return ges_ajax_response(1, "", [
+                    "view" => view("inc.note.form_add", compact("cours", "eleves", "sequence"))->render()
+                ]);
+            }
 
             return ges_ajax_response(1, "", [
-                "view" => view("inc.note.show", compact("courss", "classes", "sequences"))->render()
+                "view" => view("inc.note.edit_form", compact("cours", "notes", "sequence"))->render()
+            ]);
+            
+
+        } catch (\Exception $e) {
+            return ges_ajax_response(false, $e);
+        }
+    }
+
+    public function show_select_cours(Request $request){
+        try {
+            $classe_id = (int)$request->input("classe_id");
+
+            $courss = Cours::where("classe_id", $classe_id)->where("annee_id", $this->current_annee_id($request))->get()->all();
+
+            return ges_ajax_response(1, "", [
+                "view" => view("inc.note.select_cours", compact("courss"))->render()
             ]);
 
         } catch (\Exception $e) {
-            return ges_ajax_response(false, $e);
-        }
-    }
-
-    public function del(int $cours_id){
-
-        DB::beginTransaction();
-        try {
-            $cours = cours::find($cours_id);
-            $isDelete = $cours->delete();
-            DB::commit();
-
-            return ges_ajax_response($isDelete);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return ges_ajax_response(false, $e);
-        }
-    }
-
-    public function status(int $cours_id, int $new_etat){
-
-        DB::beginTransaction();
-        try {
-
-            $cours = cours::find($cours_id);
-            $cours->etat = $new_etat;
-            $cours->update();
-            DB::commit();
-
-            return ges_ajax_response(true);
-        } catch (\Exception $e) {
-            DB::rollBack();
             return ges_ajax_response(false, $e);
         }
     }
@@ -91,14 +83,40 @@ class NoteController extends Controller
         DB::beginTransaction();
 
         try{
-            $cours = $request->input();
-            $cours["matiere_id"] = (int)$cours["matiere_id"];
-            $cours["classe_id"] = (int)$cours["classe_id"];
-            $cours["enseignant_id"] = (int)$cours["enseignant_id"];
-            $cours["coeficient"] = (int)$cours["coeficient"];
-            $cours["session_id"] = $this->current_session_id($request);
-            $cours["annee_id"] = $this->current_annee_id($request);
-            Cours::create($cours);
+            $sequence_id = (int)$request->input("sequence_id");
+            $cours_id = (int)$request->input("cours_id");
+            $new_notes = $request->input();
+            
+            $cours = Cours::find($cours_id);
+            $eleves = Inscription::getAllEleve($this->current_annee_id($request), $cours->classe->classe_id);
+            foreach($eleves as $eleve){
+                $bulletinSequence = BulletinSequence::where("annee_id", $this->current_annee_id($request))
+                ->where("sequence_id", $sequence_id)
+                ->where("eleve_id", $eleve->eleve_id)->first();
+
+                $old_note = Note::where("cours_id", $cours_id)->where("sequence_id", $sequence_id)->where("eleve_id", $eleve->eleve_id)->get()->first();
+                if(is_null($old_note)){
+                    $note = new Note();
+                    $note->sequence_id = $sequence_id;
+                    $note->eleve_id = $eleve->eleve_id;
+                    $note->cours_id = $cours_id;
+                    $note->bulletin_sequence_id = $bulletinSequence->bulletin_sequence_id;
+                    if(is_null($new_notes[$eleve->eleve_id])){
+                        $note->note = 0.1;
+                    }else{
+                        $note->note = (float)$new_notes[$eleve->eleve_id];
+                    }
+                    $note->save();
+                }else{
+                    if(is_null($new_notes["$eleve->eleve_id"])){
+                        $old_note->note = 0.1;
+                    }else{
+                        $old_note->note = (float)$new_notes[$eleve->eleve_id];
+                    }
+                    $old_note->update();
+                }
+            }
+
             DB::commit();
             return ges_ajax_response(true);
         } catch(\Exception $e) {
@@ -115,23 +133,6 @@ class NoteController extends Controller
                 "view" => view("inc.cours.edit_form", compact("cours"))->render()
             ]);
         } catch (\Exception $e) {
-            return ges_ajax_response(false, $e);
-        }
-    }
-
-    public function update(Request $request){
-        DB::beginTransaction();
-        try {
-            $cours = cours::find((int)$request->input("cours_id"));
-            $cours->coeficient = (int)$request->input("coeficient");
-            $cours->matiere_id = (int)$request->input("matiere_id");
-            $cours->classe_id = (int)$request->input("classe_id");
-            $cours->enseignant_id = (int)$request->input("enseignant_id");
-            $cours->update();
-            DB::commit();
-            return ges_ajax_response(true);
-        } catch (\Exception $e) {
-            DB::rollBack();
             return ges_ajax_response(false, $e);
         }
     }

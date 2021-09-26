@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnneeScolaireController;
+use App\Http\Controllers\BulletinController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\CoursController;
 use App\Http\Controllers\EleveController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\GroupeMatiereController;
 use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\SequenceController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SettingController;
@@ -43,7 +45,7 @@ Route::prefix("admin")->group(function () {
         }
 
         return view("inc.pages.page", compact("slug"));
-    })->name("front.page")->middleware("auth");
+    })->name("front.page")->middleware(["auth", "hasSetting"]);
 
     //Année scolaire
     Route::get('/annee_scolaire_view/index', [AnneeScolaireController::class, "show"])->name("front.annee.index");
@@ -139,12 +141,18 @@ Route::prefix("admin")->group(function () {
     Route::post('/cours_view/update', [CoursController::class, "update"])->name("front.cours.update");
 
     //Notes
-    Route::get('/note_view/index', [CoursController::class, "show"])->name("front.note.index");
-    Route::get('/note_view/delete/{id}', [CoursController::class, "del"])->name("front.note.show_add");
-    Route::get('/note_view/status/{id}/{etat}', [CoursController::class, "status"])->name("front.note.show_edit");
-    Route::post('/note_view/creat', [CoursController::class, 'creat'])->name("front.note.creat");
-    Route::get('/note_view/edit/{id}', [CoursController::class, "edit"])->name("front.note.edit");
-    Route::post('/note_view/update', [CoursController::class, "update"])->name("front.note.update");
+    Route::get('/note_view/index', [NoteController::class, "show"])->name("front.note.index");
+    Route::post('/note_view/show/form', [NoteController::class, "show_form_add"])->name("front.note.show_form_add");
+    Route::post('/note_view/show/cours', [NoteController::class, "show_select_cours"])->name("front.note.show_cours");
+    Route::post('/note_view/creat', [NoteController::class, 'creat'])->name("front.note.creat");
+    Route::post('/note_view/edit/', [NoteController::class, "show_form_add"])->name("front.note.edit");
+    Route::post('/note_view/update', [NoteController::class, "update"])->name("front.note.update");
+
+    //Bulletin
+    Route::get('/bulletins_sequence_view/index', [BulletinController::class, "index_sequence"])->name("front.bulletin_sequence.index");
+    Route::post('/bulletins_sequence_view/show/bulletin_sequence', [BulletinController::class, "show_sequence"])->name("front.bulletin_sequence.show");
+    Route::get('/bulletins_trimestre_view/index', [BulletinController::class, "index_trimestre"])->name("front.bulletin_trimestre.index");
+    Route::post('/bulletins_trimestre_view/show/bulletin_trimestre', [BulletinController::class, "show_trimestre"])->name("front.bulletin_trimestre.show");
 });
 
 Route::prefix("setting")->group(function (){

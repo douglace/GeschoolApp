@@ -2,10 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use App\AnneeScolaire;
-use App\Session;
+
 use Closure;
-use Illuminate\Support\Facades\View;
 
 class Initialisation
 {
@@ -18,6 +16,10 @@ class Initialisation
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if($request->session()->has('session_id') && $request->session()->has('annee_id')){
+            return $next($request);
+        }
+        return redirect()->route("front.setting.index.session");
+        
     }
 }

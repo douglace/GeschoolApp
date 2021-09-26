@@ -36,4 +36,8 @@ class Eleve extends Model
     public function paiement(int $annee_id){
         return Paiement::where("eleve_id", $this->eleve_id)->where("annee_id", $annee_id)->first();
     }
+
+    public function getNoteSequence(int $sequence_id, int $cours_id){
+        return Note::where("sequence_id", $sequence_id)->where("cours_id", $cours_id)->where("eleve_id", $this->eleve_id)->first();
+    }
 }

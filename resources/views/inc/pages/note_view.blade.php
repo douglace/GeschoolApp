@@ -2,6 +2,18 @@
 
 @section('title', "Geschool-Année Scolaire")
 
+@section('css')
+    <style>
+        .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+            width: 100% !important;
+            font-size: 24px !important;
+        }
+        #div-show{
+            overflow: initial !important;
+        }
+    </style>
+@endsection
+
 @section('content')
     <!-- Basic Examples -->
     <div class="row clearfix">
@@ -50,6 +62,8 @@
 @section('script')
     <script type="text/javascript">
 
+        var btn_next = null
+
         var initDataTable = function () {
             $('.js-basic-example').DataTable({
                 responsive: true
@@ -85,6 +99,8 @@
                         div_show.html(data.data.view)
                         $.AdminBSB.input.activate()
                         $.AdminBSB.select.activate()
+                        btn_next = $("#btn-next")
+                        btn_next.hide()
                     }
                 }
             })
@@ -93,7 +109,7 @@
         var show_form_add = function (form_data) {
             var div_add = $("#div-add")
             $.ajax({
-                url: "{{route("front.note.show_add")}}",
+                url: "{{route('front.note.show_form_add')}}",
                 type: 'POST',
                 data: form_data,
                 success: function (data) {
@@ -104,6 +120,7 @@
                         initDataTable()
                         initDataTableExport()
                     }else{
+                        console.log(data)
                         showWarningMessage()
                     }
                 }
@@ -141,20 +158,17 @@
             })
         }
 
-        var edit = function (form_data) {
-            var div_edit = $("#div-edit")
+        var select_cours = function (form_data) {
+            var div_select = $("#div-select")
             $.ajax({
-                url: "{{route("front.note.show_edit")}}",
+                url: "{{route("front.note.show_cours")}}",
                 type: 'POST',
                 data: form_data,
                 success: function (data) {
                     if (data.status == true) {
-                        div_edit.html(data.data.view)
-                        $("#edit-hidden").click()
+                        div_select.html(data.data.view)
                         $.AdminBSB.input.activate()
                         $.AdminBSB.select.activate()
-                        initDataTable()
-                        initDataTableExport()
                     }else{
                         showWarningMessage()
                     }
@@ -164,7 +178,7 @@
 
         var update = function (form_data) {
             $.ajax({
-                url: "{{route("front.note.update")}}",
+                url: "{{route("front.note.creat")}}",
                 type: 'POST',
                 data: form_data,
                 success: function (data) {
@@ -178,7 +192,7 @@
         }
 
         $(document).ready(function () {
-
+            
             show()
 
             $(document).on("submit", "#form-next", function (event) {
@@ -195,11 +209,22 @@
                 add(form_data)
             })
 
-            $(document).on("submit", "#form-edit_show", function (event) {
+            $(document).on("click", "#form-next #div-click", function (event) {
                 event.preventDefault()
-                form_data = $(this).serializeArray()
-                edit(form_data)
-                $("#btn-edit").click()
+                form_data = $("#form-next").serializeArray()
+                select_cours(form_data)
+            })
+
+            $(document).on("click", "#form-next #div-select [data-original-index]", function (event) {
+                btn_next.show()
+            })
+
+            $(document).on("click", "#form-next #div-select [data-original-index='0']", function (event) {
+                btn_next.hide()
+            })
+
+            $(document).on("click", "#form-next #div-seq [data-original-index='0']", function (event) {
+                btn_next.hide()
             })
 
             $(document).on("submit", "#form-edit", function (event) {

@@ -15,11 +15,11 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        /*$user = [
+        $user = [
             "email" => "admin@geschool.com",
             "name" => "Admin",
             "password" => Hash::make("admin"),
-        ];*/
+        ];
 
         $setting = [
             "annee_id" => 2,
@@ -28,7 +28,7 @@ class SettingSeeder extends Seeder
 
         DB::beginTransaction();
         try {
-            //User::create($user);
+            User::create($user);
             Setting::create($setting);
             DB::commit();
         } catch (\Exception $e) {

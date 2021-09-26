@@ -20,4 +20,8 @@ class Classe extends Model
     public function inscriptions(){
         return $this->hasMany(Inscription::class,"incription_id");
     }
+
+    public function getAllCoursWithAnnee(int $annee_id){
+        return Cours::where("annee_id", $annee_id)->where("classe_id", $this->classe_id)->get()->all();
+    }
 }

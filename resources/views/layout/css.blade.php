@@ -33,3 +33,9 @@
 
 <!-- Sweetalert Css -->
 <link href={{asset("assets/plugins/sweetalert/sweetalert.css")}} rel="stylesheet" />
+
+<style>
+    .bootstrap-select .dropdown-toggle:focus {
+        outline: none !important;
+    }
+</style>

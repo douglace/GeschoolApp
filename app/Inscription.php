@@ -21,7 +21,12 @@ class Inscription extends Model
         return $this->belongsTo(Eleve::class,"eleve_id");
     }
 
-    public function getAllEleve(int $annee_id, int $classe_id){
-        
+    static function getAllEleve(int $annee_id, int $classe_id){
+        $inscriptions = Inscription::where("annee_id", $annee_id)->where("classe_id", $classe_id)->get()->all();
+        $inscriptions_id = [];
+        foreach($inscriptions as $inscription){
+            $inscriptions_id [] = $inscription->eleve_id;
+        }
+        return Eleve::whereIn("eleve_id", $inscriptions_id)->get()->all();
     }
 }
