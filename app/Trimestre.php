@@ -10,7 +10,7 @@ class Trimestre extends Model
     protected $fillable = ["intitule", "numero", "session_id"];
 
     public function sequences(){
-        return $this->hasMany(Sequence::class, "sequence_id");
+        return $this->hasMany(Sequence::class, "trimestre_id");
     }
 
     public function session(){
