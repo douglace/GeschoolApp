@@ -1,10 +1,10 @@
 <?php
 
-use App\Filiere;
+use App\cycle;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class FiliereSeeder extends Seeder
+class CycleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class FiliereSeeder extends Seeder
      */
     public function run()
     {
-        $filieres = [
+        $cycles = [
             [
                 "intitule" => "Série Scientifique",
                 "session_id" => 1
@@ -28,8 +28,8 @@ class FiliereSeeder extends Seeder
         DB::beginTransaction();
         try {
 
-            foreach($filieres as $filiere){
-                Filiere::create($filiere);
+            foreach($cycles as $cycle){
+                Cycle::create($cycle);
             }
             DB::commit();
         } catch (\Exception $e) {

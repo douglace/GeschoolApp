@@ -13,7 +13,7 @@ class GroupeMatiere extends Model
         return $this->belongsTo(Session::class,"session_id");
     }
 
-    /*public function classes(){
+    public function classes(){
         return $this->hasMany(Classe::class, "groupe_matiere_id");
-    }*/
+    }
 }

@@ -17,22 +17,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="number" name="niveau" class="form-control" required min="1">
-                                    <label class="form-label">Niveau</label>
-                                </div>
-                            </div>
+                        <div class="col-md-6">
+                            <select name="enseignant_id" required>
+                                <option>Selectioner un enseignant titulaire</option>
+                                @foreach ($enseignants as $enseignant)
+                                    @if ($enseignant->etat)
+                                    <option value="{{$enseignant->enseignant_id}}">{{$enseignant->getFullName()}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <select name="filiere_id" required>
-                                <option>Selectioner une filiere</option>
-                                @foreach ($filieres as $filiere)
-                                    @if ($filiere->etat)
-                                    <option value="{{$filiere->filiere_id}}">{{$filiere->intitule}}</option>
+                            <select name="cycle_id" required>
+                                <option>Selectioner une cycle</option>
+                                @foreach ($cycles as $cycle)
+                                    @if ($cycle->etat)
+                                    <option value="{{$cycle->cycle_id}}">{{$cycle->intitule}}</option>
                                     @endif
                                 @endforeach
                             </select>

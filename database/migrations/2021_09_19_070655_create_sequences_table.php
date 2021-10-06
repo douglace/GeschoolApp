@@ -19,9 +19,9 @@ class CreateSequencesTable extends Migration
             $table->foreign("session_id")->references("session_id")->on("sessions")->onDelete("cascade");
             $table->integer("trimestre_id")->unsigned();
             $table->foreign("trimestre_id")->references("trimestre_id")->on("trimestres")->onDelete('cascade');
-            $table->string('intitule');
-            $table->integer("numero");
-            $table->boolean("etat")->default(0);
+            $table->string('intitule')->unique();
+            $table->integer("numero")->unique();
+            $table->boolean("etat")->default(1);
             $table->timestamps();
         });
     }

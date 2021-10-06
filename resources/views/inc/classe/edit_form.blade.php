@@ -13,24 +13,30 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="form-group form-float">
-                    <div class="form-line">
-                        <input type="number" name="niveau" class="form-control" value="{{$classe->niveau}}" required min="1">
-                        <label class="form-label">Niveau</label>
-                    </div>
-                </div>
+                <select name="enseignant_id" required>
+                    <option>Selectioner un enseignant titulaire</option>
+                    @foreach ($enseignants as $enseignant)
+                        @if ($enseignant->etat == 1)
+                            @if ($enseignant->enseignant_id == ($matiere->responsable->enseignant_id ?? 0))
+                                <option value="{{$enseignant->enseignant_id}}" selected>{{$enseignant->getFullName()}}</option>
+                            @else
+                                <option value="{{$enseignant->enseignant_id}}">{{$enseignant->getFullName()}}</option>
+                            @endif
+                        @endif
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <select name="filiere_id" required>
-                    <option>Selectioner un filiere</option>
-                    @foreach ($filieres as $filiere)
-                        @if ($filiere->etat == 1)
-                            @if ($filiere->filiere_id == $classe->filiere->filiere_id)
-                                <option value="{{$filiere->filiere_id}}" selected>{{$filiere->intitule}}</option>
+                <select name="cycle_id" required>
+                    <option>Selectioner un cycle</option>
+                    @foreach ($cycles as $cycle)
+                        @if ($cycle->etat == 1)
+                            @if ($cycle->cycle_id == $classe->cycle->cycle_id)
+                                <option value="{{$cycle->cycle_id}}" selected>{{$cycle->intitule}}</option>
                             @else
-                                <option value="{{$filiere->filiere_id}}">{{$filiere->intitule}}</option>
+                                <option value="{{$cycle->cycle_id}}">{{$cycle->intitule}}</option>
                             @endif
                         @endif
                     @endforeach

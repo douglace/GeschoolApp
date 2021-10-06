@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\GroupeMatiere;
 use App\Matiere;
 use App\Session;
+use App\Enseignant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,9 +20,10 @@ class MatiereController extends Controller
         try {
             $matieres = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->matieres : array(new Matiere());
             $groupe_matieres = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->groupe_matieres : array(new GroupeMatiere());
+            $enseignants = Enseignant::where('session_id', $this->current_session_id($request))->get()->all() ?? array(new Enseignant());
 
             return ges_ajax_response(1, "", [
-                "view" => view("inc.matiere.show", compact("matieres", "groupe_matieres"))->render()
+                "view" => view("inc.matiere.show", compact("matieres", "groupe_matieres", "enseignants"))->render()
             ]);
 
         } catch (\Exception $e) {
@@ -68,6 +70,7 @@ class MatiereController extends Controller
             $matiere = $request->input();
             $matiere["groupe_matiere_id"] = (int)$matiere["groupe_matiere_id"];
             $matiere["session_id"] = $this->current_session_id($request);
+            $matiere["enseignant_id"] = (int)$matiere["enseignant_id"] ?? 0;
             matiere::create($matiere);
             DB::commit();
             return ges_ajax_response(true);
@@ -81,9 +84,10 @@ class MatiereController extends Controller
         try {
             $matiere = matiere::find((int)$matiere_id);
             $groupe_matieres = Session::find($this->current_session_id($request))->groupe_matieres;
+            $enseignants = Enseignant::where('session_id', $this->current_session_id($request))->get()->all() ?? array(new Enseignant());
 
             return ges_ajax_response(true, "", [
-                "view" => view("inc.matiere.edit_form", compact("matiere", "groupe_matieres"))->render()
+                "view" => view("inc.matiere.edit_form", compact("matiere", "groupe_matieres", "enseignants"))->render()
             ]);
         } catch (\Exception $e) {
             return ges_ajax_response(false, $e);
@@ -95,6 +99,7 @@ class MatiereController extends Controller
         try {
             $matiere = matiere::find((int)$request->input("matiere_id"));
             $matiere->intitule = $request->input("intitule");
+            $matiere->enseignant_id = (int)$request->input("enseignant_id") ?? 0;
             $matiere->groupe_matiere_id = (int)$request->input("groupe_matiere_id");
             $matiere->update();
             DB::commit();

@@ -15,14 +15,15 @@ class CreateClassesTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->increments("classe_id");
-            $table->integer("filiere_id")->unsigned();
-            $table->foreign("filiere_id")->references("filiere_id")->on("filieres")->onDelete("cascade");
+            $table->integer("cycle_id")->unsigned();
+            $table->foreign("cycle_id")->references("cycle_id")->on("cycles")->onDelete("cascade");
             $table->integer("session_id")->unsigned();
             $table->foreign("session_id")->references("session_id")->on("sessions")->onDelete("cascade");
-            $table->string("intitule");
-            $table->integer("niveau");
+            $table->integer("enseignant_id")->unsigned()->default(0);
+            $table->foreign("enseignant_id")->references("enseignant_id")->on("enseignants")->onDelete("cascade");
+            $table->string("intitule")->unique();
             $table->integer("montant");
-            $table->boolean("etat")->default(0);
+            $table->boolean("etat")->default(1);
             $table->timestamps();
         });
     }

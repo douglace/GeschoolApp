@@ -26,8 +26,10 @@
                 <td>{{$cours->coeficient}}</td>
                 <td><span class="btn label {{$cours->etat ? "label-success" : "label-danger"}} font-11 padding-4">{{$cours->etat ? "Activé" : "Desactivé"}}</span></td>
                 <td>
+                    @can('cours-delete')
                     <a title="Supprimé" id="delete" style="cursor: pointer;" onclick="showConfirmMessage('{{route('front.cours.delete', [$cours->cours_id])}}')" class="link"><i
-                            class="material-icons col-red">delete_forever</i></a>
+                        class="material-icons col-red">delete_forever</i></a>
+                    @endcan
                     <a title="Activé ou Désactivé" id="etat" style="cursor: pointer;" class="link" onclick="ChangeStatus('{{route('front.cours.status', ['id' =>$cours->cours_id, 'etat' => $cours->etat ? 0 : 1])}}')"><i
                             class="material-icons col-teal">repeat</i></a>
                 </td>

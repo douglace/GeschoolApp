@@ -27,6 +27,22 @@
                 </select>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <select name="enseignant_id" required>
+                    <option>Selectioner un enseignant responsable</option>
+                    @foreach ($enseignants as $enseignant)
+                        @if ($enseignant->etat == 1)
+                            @if ($enseignant->enseignant_id == ($matiere->responsable->enseignant_id ?? 0))
+                                <option value="{{$enseignant->enseignant_id}}" selected>{{$enseignant->getFullName()}}</option>
+                            @else
+                                <option value="{{$enseignant->enseignant_id}}">{{$enseignant->getFullName()}}</option>
+                            @endif
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+        </div>
     <div class="modal-footer">
         <button type="submit" class="btn btn-primary waves-effect">MODIFIER</button>
         <button type="button" class="btn btn-danger waves-effect"

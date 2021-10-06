@@ -17,7 +17,7 @@ class CreateEnseignantsTable extends Migration
             $table->increments("enseignant_id");
             $table->integer("session_id")->unsigned();
             $table->foreign("session_id")->references("session_id")->on("sessions")->onDelete("cascade");
-            $table->string("matricul");
+            $table->string("matricul")->unique();
             $table->string("nom");
             $table->string("prenom");
             $table->string("date");
@@ -25,8 +25,8 @@ class CreateEnseignantsTable extends Migration
             $table->string("sexe");
             $table->string("nationalite");
             $table->string("adresse");
-            $table->string("tel");
-            $table->string("email");
+            $table->string("tel")->unique();
+            $table->string("email")->unique();
             $table->string("diplome");
             $table->boolean("etat")->default(1);
             $table->timestamps();

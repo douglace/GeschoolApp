@@ -52,11 +52,13 @@
                     @endif
                     <ul class="ml-menu">
                         @foreach ($menu->menuItems as $item)
-                            <li class="{{$item->slug == $slug ? "active" : ""}}">
-                                <a href="/admin/{{$item->slug}}" class="{{$item->slug == $slug ? "toggled" : ""}} waves-effect waves-block">
-                                    <span>{{$item->name}}</span>
-                                </a>
-                            </li>
+                            @can($item->slug)
+                                <li class="{{$item->slug == $slug ? "active" : ""}}">
+                                    <a href="/admin/{{$item->slug}}" class="{{$item->slug == $slug ? "toggled" : ""}} waves-effect waves-block">
+                                        <span>{{$item->name}}</span>
+                                    </a>
+                                </li>
+                            @endcan
                         @endforeach
                     </ul>
                 </li>

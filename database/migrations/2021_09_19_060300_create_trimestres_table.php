@@ -17,9 +17,9 @@ class CreateTrimestresTable extends Migration
             $table->increments("trimestre_id");
             $table->integer("session_id")->unsigned();
             $table->foreign("session_id")->references("session_id")->on("sessions")->onDelete("cascade");
-            $table->string("intitule");
-            $table->integer("numero");
-            $table->boolean("etat")->default(0);
+            $table->string("intitule")->unique();
+            $table->integer("numero")->unique();
+            $table->boolean("etat")->default(1);
             $table->timestamps();
         });
     }

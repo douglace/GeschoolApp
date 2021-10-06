@@ -22,10 +22,14 @@
                 <td>
                     <a title="Edité" id="edit-hidden" data-toggle="modal" data-target="#modal-edit" style="display: none;"><i
                         class="material-icons">edit</i></a>
+                    @can('groupe-matiere-edit')
                     <a title="Edité" href="{{route('front.groupe_matiere.edit', [$groupe_matiere->groupe_matiere_id])}}" id="edit" style="cursor: pointer;" class="link"><i
-                            class="material-icons">edit</i></a>
+                        class="material-icons">edit</i></a>
+                    @endcan
+                    @can('groupe-matiere-delete')
                     <a title="Supprimé" id="delete" style="cursor: pointer;" onclick="showConfirmMessage('{{route('front.groupe_matiere.delete', [$groupe_matiere->groupe_matiere_id])}}')" class="link"><i
-                            class="material-icons col-red">delete_forever</i></a>
+                        class="material-icons col-red">delete_forever</i></a>
+                    @endcan
                     <a title="Activé ou Désactivé" id="etat" style="cursor: pointer;" class="link" onclick="ChangeStatus('{{route('front.groupe_matiere.status', ['id' =>$groupe_matiere->groupe_matiere_id, 'etat' => $groupe_matiere->etat ? 0 : 1])}}')"><i
                             class="material-icons col-teal">repeat</i></a>
                 </td>

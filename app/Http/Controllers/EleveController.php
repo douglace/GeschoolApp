@@ -85,7 +85,6 @@ class EleveController extends Controller
 
             $inscription["annee_id"] = $this->current_annee_id($request);
             $inscription["parent_id"] = (int)$parent->parent_id;
-            $inscription["classe_id"] = (int)$inscription["classe_id"];
             $inscription["session_id"] = $this->current_session_id($request);  
 
             $eleve = eleve::create($inscription);
@@ -155,9 +154,32 @@ class EleveController extends Controller
             $eleve->parent->email_parent = $request->input("email_parent");
             $eleve->parent->update();
             $eleve->update();
+
             $inscription = Inscription::where("eleve_id", $eleve->eleve_id)->where("annee_id", $this->current_annee_id($request))->first();
-            $inscription->classe_id = (int)$request->input("classe_id");
-            $inscription->update();
+
+            if(is_null($inscription)){
+
+                $new_inscription = array();
+                $new_inscription["eleve_id"] = (int)$eleve->eleve_id;
+                $new_inscription["classe_id"] = (int)$request->input("classe_id");
+                $new_inscription["annee_id"] = $this->current_annee_id($request);
+                $inscript = Inscription::create($new_inscription);
+                $paiement = Paiement::create($inscription);
+                $classe = Classe::find($inscript->classe_id);
+                $paiement->montant = $classe->montant;
+                $paiement->reste = $classe->montant;
+                $paiement->update();
+
+            }else{
+
+                $inscription->classe_id = (int)$request->input("classe_id");
+                $inscription->update();
+                $paiement = Paiement::where('eleve_id', $eleve->eleve_id)->where('annee_id', $this->current_annee_id($request))->first();
+                $classe = Classe::find($inscription->classe_id);
+                $paiement->montant = $classe->montant;
+                $paiement->reste = $classe->montant - $classe->montant_paye;
+                $paiement->update();
+            }
 
             DB::commit();
             return ges_ajax_response(true);

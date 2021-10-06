@@ -40,7 +40,10 @@
                             <div class="form-group form-float" style="margin: 0;">
                                 <div class="form-line">
                                     <input type="number" name="{{$note->eleve->eleve_id}}" value="{{$note->note == 0.1 ? "" : $note->note}}" class="form-control" min="0" max="20" step="0.25" placeholder="0 - 20"
-                                    style="padding: 0; text-align:center;">
+                                    style="padding: 0; text-align:center;"
+                                    @cannot('note-edit')
+                                    disabled
+                                    @endcannot>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +56,9 @@
         </tbody>
     </table>
     <div class="modal-footer">
+        @can('note-edit')
         <button type="submit" class="btn btn-primary waves-effect">ENREGISTRER</button>
+        @endcan
         <button type="button" class="btn btn-danger waves-effect"
             data-dismiss="modal">FERMER</button>
     </div>

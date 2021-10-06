@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">AJOUTER UNE FILIERE</h4>
+                <h4 class="modal-title" id="defaultModalLabel">AJOUTER UN CYCLE</h4>
             </div>
             <div class="modal-body">
                 <form id="form-add">

@@ -18,6 +18,7 @@
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" style="text-transform: uppercase;">
                         Année Scolaire en cours : {{App\AnneeScolaire::find(session()->get("annee_id")??1)->getFullName()}}</a>
+                    @can('change-annee-scolaire')
                     <ul class="dropdown-menu">
                         <li class="header">ANNEES SCOLAIRE</li>
                         <li class="body">
@@ -34,6 +35,7 @@
                             </ul>
                         </li>
                     </ul>
+                    @endcan
                 </li>
                 <!-- #END# Années scolaire -->
                 <!-- Session -->
@@ -41,6 +43,7 @@
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" style="text-transform: uppercase;">
                         Session en cours: {{App\Session::find(session()->get("session_id")??1)->intitule}}
                     </a>
+                    @can('change-session')
                     <ul class="dropdown-menu">
                         <li class="header">Sessions</li>
                         <li class="body">
@@ -57,10 +60,13 @@
                             </ul>
                         </li>
                     </ul>
+                    @endcan
                 </li>
                 <!-- #END# Session -->
+                @can('Parametres')
                 <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i
-                            class="material-icons">more_vert</i></a></li>
+                    class="material-icons">more_vert</i></a></li>
+                @endcan
             </ul>
         </div>
     </div>

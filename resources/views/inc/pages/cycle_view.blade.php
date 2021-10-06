@@ -11,7 +11,7 @@
                     <div class="row" style="display: flex; align-items: center;">
                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-6">
                             <h2>
-                                FILIERES
+                                CYCLES
                             </h2>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6"
@@ -36,7 +36,7 @@
     </div>
     <!-- #END# Basic Examples -->
     
-    @include("inc.filiere.edit")
+    @include("inc.cycle.edit")
     <!-- Modal edit -->
     
 @endsection
@@ -73,7 +73,7 @@
         var show = function () {
             var div_show = $("#div-show")
             $.ajax({
-                url: "{{route('front.filiere.index')}}",
+                url: "{{route('front.cycle.index')}}",
                 success: function (data) {
                     if (data.status == true) {
                         div_show.html(data.data.view)
@@ -115,7 +115,7 @@
 
         var add = function (form_data) {
             $.ajax({
-                url: "{{route("front.filiere.creat")}}",
+                url: "{{route("front.cycle.creat")}}",
                 type: 'POST',
                 data: form_data,
                 success: function (data) {
@@ -162,7 +162,7 @@
 
         var update = function (form_data) {
             $.ajax({
-                url: "{{route("front.filiere.update")}}",
+                url: "{{route("front.cycle.update")}}",
                 type: 'POST',
                 data: form_data,
                 success: function (data) {

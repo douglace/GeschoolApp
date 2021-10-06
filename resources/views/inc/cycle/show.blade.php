@@ -14,19 +14,19 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($filieres as $filiere)
+        @foreach ($cycles as $cycle)
             <tr>
                 <td>{{$i++}}</td>
-                <td>{{$filiere->intitule}}</td>
-                <td><span class="btn label {{$filiere->etat ? "label-success" : "label-danger"}} font-11 padding-4">{{$filiere->etat ? "Activé" : "Desactivé"}}</span></td>
+                <td>{{$cycle->intitule}}</td>
+                <td><span class="btn label {{$cycle->etat ? "label-success" : "label-danger"}} font-11 padding-4">{{$cycle->etat ? "Activé" : "Desactivé"}}</span></td>
                 <td>
                     <a title="Edité" id="edit-hidden" data-toggle="modal" data-target="#modal-edit" style="display: none;"><i
                         class="material-icons">edit</i></a>
-                    <a title="Edité" href="{{route('front.filiere.edit', [$filiere->filiere_id])}}" id="edit" style="cursor: pointer;" class="link"><i
+                    <a title="Edité" href="{{route('front.cycle.edit', [$cycle->cycle_id])}}" id="edit" style="cursor: pointer;" class="link"><i
                             class="material-icons">edit</i></a>
-                    <a title="Supprimé" id="delete" style="cursor: pointer;" onclick="showConfirmMessage('{{route('front.filiere.delete', [$filiere->filiere_id])}}')" class="link"><i
+                    <a title="Supprimé" id="delete" style="cursor: pointer;" onclick="showConfirmMessage('{{route('front.cycle.delete', [$cycle->cycle_id])}}')" class="link"><i
                             class="material-icons col-red">delete_forever</i></a>
-                    <a title="Activé ou Désactivé" id="etat" style="cursor: pointer;" class="link" onclick="ChangeStatus('{{route('front.filiere.status', ['id' =>$filiere->filiere_id, 'etat' => $filiere->etat ? 0 : 1])}}')"><i
+                    <a title="Activé ou Désactivé" id="etat" style="cursor: pointer;" class="link" onclick="ChangeStatus('{{route('front.cycle.status', ['id' =>$cycle->cycle_id, 'etat' => $cycle->etat ? 0 : 1])}}')"><i
                             class="material-icons col-teal">repeat</i></a>
                 </td>
             </tr>
@@ -35,5 +35,5 @@
 </table>
 
 <!-- Modal add -->
-    @include("inc.filiere.add")
+    @include("inc.cycle.add")
 <!-- #END# Modal add -->

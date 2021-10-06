@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFilieresTable extends Migration
+class CreatecyclesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateFilieresTable extends Migration
      */
     public function up()
     {
-        Schema::create('filieres', function (Blueprint $table) {
-            $table->increments("filiere_id");
+        Schema::create('cycles', function (Blueprint $table) {
+            $table->increments("cycle_id");
             $table->integer("session_id")->unsigned();
             $table->foreign("session_id")->references("session_id")->on("sessions")->onDelete("cascade");
-            $table->string("intitule");
-            $table->boolean("etat")->default(0);
+            $table->string("intitule")->unique();
+            $table->boolean("etat")->default(1);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateFilieresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filieres');
+        Schema::dropIfExists('cycles');
     }
 }

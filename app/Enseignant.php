@@ -12,6 +12,15 @@ class Enseignant extends Model
     public function session(){
         return $this->belongsTo(Session::class,"session_id");
     }
+
+    public function classe(){
+        return $this->belongsTo(Classe::class, "enseignant_id");
+    }
+
+    public function matiere(){
+        return $this->belongsTo(Matiere::class, "enseignant_id");
+    }
+
     public function getFullName(){
         return $this->nom." ".$this->prenom;
     }

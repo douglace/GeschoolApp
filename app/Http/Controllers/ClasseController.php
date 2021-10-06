@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Classe;
-use App\Filiere;
+use App\cycle;
 use App\Session;
+use App\Enseignant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,10 +18,11 @@ class ClasseController extends Controller
     public function show(Request $request){
         try {
             $classes = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->classes : array(new Classe());
-            $filieres = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->filieres : array(new Filiere());
+            $cycles = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->cycles : array(new cycle());
+            $enseignants = Enseignant::where('session_id', $this->current_session_id($request))->get()->all() ?? array(new Enseignant());
 
             return ges_ajax_response(1, "", [
-                "view" => view("inc.classe.show", compact("classes", "filieres"))->render()
+                "view" => view("inc.classe.show", compact("classes", "cycles", "enseignants"))->render()
             ]);
 
         } catch (\Exception $e) {
@@ -67,7 +69,8 @@ class ClasseController extends Controller
             $classe = $request->input();
             $classe["niveau"] = (int)$classe["niveau"];
             $classe["montant"] = (int)$classe["montant"];
-            $classe["filiere_id"] = (int)$classe["filiere_id"];
+            $classe["cycle_id"] = (int)$classe["cycle_id"];
+            $classe["enseignant_id"] = (int)$classe["enseignant_id"] ?? 0;
             $classe["session_id"] = $this->current_session_id($request);
             Classe::create($classe);
             DB::commit();
@@ -81,10 +84,11 @@ class ClasseController extends Controller
     public function edit(Request $request, int $classe_id){
         try {
             $classe = classe::find((int)$classe_id);
-            $filieres = Session::find($this->current_session_id($request))->filieres;
+            $cycles = Session::find($this->current_session_id($request))->cycles;
+            $enseignants = Enseignant::where('session_id', $this->current_session_id($request))->get()->all() ?? array(new Enseignant());
 
             return ges_ajax_response(true, "", [
-                "view" => view("inc.classe.edit_form", compact("classe", "filieres"))->render()
+                "view" => view("inc.classe.edit_form", compact("classe", "cycles", "enseignants"))->render()
             ]);
         } catch (\Exception $e) {
             return ges_ajax_response(false, $e);
@@ -98,7 +102,8 @@ class ClasseController extends Controller
             $classe->intitule = $request->input("intitule");
             $classe->niveau = (int)$request->input("niveau");
             $classe->montant = (int)$request->input("montant");
-            $classe->filiere_id = (int)$request->input("filiere_id");
+            $classe->cycle_id = (int)$request->input("cycle_id");
+            $classe->enseignant_id = (int)$request->input("enseignant_id") ?? 0;
             $classe->update();
             DB::commit();
             return ges_ajax_response(true);

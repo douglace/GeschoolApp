@@ -25,6 +25,9 @@
 <!-- Wait Me Css -->
 <link href={{asset("assets/plugins/waitme/waitMe.css")}} rel="stylesheet" />
 
+<!-- Multi Select Css -->
+<link href={{asset("assets/plugins/multi-select/css/multi-select.css")}} rel="stylesheet">
+
 <!-- Bootstrap Select Css -->
 <link href={{asset("assets/plugins/bootstrap-select/css/bootstrap-select.css")}} rel="stylesheet" />
 

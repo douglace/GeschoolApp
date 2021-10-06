@@ -19,8 +19,10 @@ class CreateMatieresTable extends Migration
             $table->foreign("groupe_matiere_id")->references("groupe_matiere_id")->on("groupe_matieres")->onDelete("cascade");
             $table->integer("session_id")->unsigned();
             $table->foreign("session_id")->references("session_id")->on("sessions")->onDelete("cascade");
-            $table->string("intitule");
-            $table->boolean("etat")->default(0);
+            $table->integer("enseignant_id")->unsigned()->default(0);
+            $table->foreign("enseignant_id")->references("enseignant_id")->on("enseignants")->onDelete("cascade");
+            $table->string("intitule")->unique();
+            $table->boolean("etat")->default(1);
             $table->timestamps();
         });
     }

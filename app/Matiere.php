@@ -13,6 +13,10 @@ class Matiere extends Model
         return $this->belongsTo(GroupeMatiere::class, "groupe_matiere_id");
     }
 
+    public function responsable(){
+        return $this->belongsTo(Enseignant::class, "enseignant_id");
+    }
+
     public function session(){
         return $this->belongsTo(Session::class,"session_id");
     }

@@ -17,11 +17,13 @@
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6"
                             style="display: flex; justify-content: flex-end;">
                             <div class="btn-group btn-group-sm">
+                                @can('cours-create')
                                 <button type="button" class="btn btn-primary waves-effect" data-toggle="modal"
                                     data-target="#add-modal">
                                     <i class="material-icons">add</i>
                                     <span>AJOUTER</span>
                                 </button>
+                                @endcan
                             </div>
                         </div>
                     </div>

@@ -20,48 +20,48 @@ class MenuSeeder extends Seeder
                 "icon" => "home"
             ],
             [
-                "name" => "Gestion Academique",
-                "slug" => "none9",
+                "name" => "Academique",
+                "slug" => "academique",
                 "icon" => "archive"
             ],
             [
-                "name" => "Gestion Des Classes",
-                "slug" => "none8",
+                "name" => "Classes",
+                "slug" => "classes",
                 "icon" => "domain"
             ],
             [
-                "name" => "Gestion Des Matières",
-                "slug" => "none7",
+                "name" => "Matières",
+                "slug" => "matieres",
                 "icon" => "book"
             ],
             [
-                "name" => "Gestion Des Elèves",
-                "slug" => "none6",
+                "name" => "Elèves",
+                "slug" => "eleves",
                 "icon" => "person"
             ],
             [
-                "name" => "Gestion Des Eseignants",
-                "slug" => "none5",
+                "name" => "Eseignants",
+                "slug" => "enseignants",
                 "icon" => "person_outline"
             ],
             [
-                "name" => "Gestion Des Emploies",
-                "slug" => "none4",
+                "name" => "Emploies",
+                "slug" => "emploies",
                 "icon" => "explicit"
             ],
             [
-                "name" => "Gestion Des Absences",
-                "slug" => "none3",
+                "name" => "Absences",
+                "slug" => "absences",
                 "icon" => "assignment_turned_in"
             ],
             [
-                "name" => "Gestion Des Notes",
-                "slug" => "none2",
+                "name" => "Notes",
+                "slug" => "notes",
                 "icon" => "content_paste"
             ],
             [
-                "name" => "Gestion Des Bulletins",
-                "slug" => "none1",
+                "name" => "Bulletins",
+                "slug" => "bulletins",
                 "icon" => "school"
             ]
         ];

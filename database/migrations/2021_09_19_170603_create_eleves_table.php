@@ -19,7 +19,7 @@ class CreateElevesTable extends Migration
             $table->foreign("parent_id")->references("parent_id")->on("parents")->onDelete("cascade");
             $table->integer("session_id")->unsigned();
             $table->foreign("session_id")->references("session_id")->on("sessions")->onDelete("cascade");
-            $table->string("matricul");
+            $table->string("matricul")->unique();
             $table->string("nom");
             $table->string("prenom");
             $table->string("date");
@@ -27,8 +27,8 @@ class CreateElevesTable extends Migration
             $table->string("sexe");
             $table->string("nationalite");
             $table->string("adresse");
-            $table->string("tel");
-            $table->string("email");
+            $table->string("tel")->unique();
+            $table->string("email")->unique();
             $table->string("statut");
             $table->string("maladie");
             $table->string("handicap");

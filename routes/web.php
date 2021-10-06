@@ -10,10 +10,12 @@ use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\GroupeMatiereController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SequenceController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TrimestreController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -153,6 +155,17 @@ Route::prefix("admin")->group(function () {
     Route::post('/bulletins_sequence_view/show/bulletin_sequence', [BulletinController::class, "show_sequence"])->name("front.bulletin_sequence.show");
     Route::get('/bulletins_trimestre_view/index', [BulletinController::class, "index_trimestre"])->name("front.bulletin_trimestre.index");
     Route::post('/bulletins_trimestre_view/show/bulletin_trimestre', [BulletinController::class, "show_trimestre"])->name("front.bulletin_trimestre.show");
+
+    Route::get('/roles_view/roles', [RoleController::class, "index"])->name("front.roles.index");
+    Route::get('/roles_view/show/role/{id}', [RoleController::class, "show"])->name("front.roles.show");
+    Route::post('/roles_view/store/role', [RoleController::class, "store"])->name("front.roles.store");
+    Route::get('/roles_view/delete/role/{id}', [RoleController::class, "delete"])->name("front.roles.delete");
+    Route::get('/users_view/index', [UserController::class, "index"])->name("front.users.index");
+    Route::get('/users_view/delete/{id}', [UserController::class, "del"])->name("front.users.delete");
+    Route::get('/users_view/status/{id}/{etat}', [UserController::class, "status"])->name("front.users.status");
+    Route::post('/users_view/store', [UserController::class, 'store'])->name("front.users.store");
+    Route::get('/users_view/edit/{id}', [UserController::class, "edit"])->name("front.users.edit");
+    Route::post('/users_view/update', [UserController::class, "update"])->name("front.users.update");
 });
 
 Route::prefix("setting")->group(function (){

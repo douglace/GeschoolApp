@@ -17,12 +17,14 @@ class MatiereSeeder extends Seeder
             [
                 "intitule" => "Mathématique",
                 "groupe_matiere_id" => 1,
+                "enseignant_id" => 0,
                 "session_id" => 1
             ],
 
             [
                 "intitule" => "Français",
                 "groupe_matiere_id" => 1,
+                "enseignant_id" => 0,
                 "session_id" => 1
             ]
         ];

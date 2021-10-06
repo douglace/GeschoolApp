@@ -64,6 +64,9 @@
 <!-- Bootstrap Notify Plugin Js -->
 <script src={{asset("assets/plugins/bootstrap-notify/bootstrap-notify.js")}}></script>
 
+<!-- Multi Select Plugin Js -->
+<script src={{asset("assets/plugins/multi-select/js/jquery.multi-select.js")}}></script>
+
 <!-- Jquery DataTable Plugin Js -->
 <script src={{asset("assets/plugins/jquery-datatable/jquery.dataTables.js")}}></script>
 <script src={{asset("assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js")}}></script>

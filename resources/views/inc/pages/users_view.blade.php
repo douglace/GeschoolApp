@@ -11,13 +11,13 @@
                     <div class="row" style="display: flex; align-items: center;">
                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-6">
                             <h2>
-                                MATIERES
+                                UTILISATEUR
                             </h2>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6"
                             style="display: flex; justify-content: flex-end;">
                             <div class="btn-group btn-group-sm">
-                                @can('matiere-create')
+                                @can('user-create')
                                 <button type="button" class="btn btn-primary waves-effect" data-toggle="modal"
                                     data-target="#add-modal">
                                     <i class="material-icons">add</i>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <!-- #END# Basic Examples -->
-    @include("inc.matiere.edit")
+    @include("inc.users.edit")
     <!-- Modal edit -->
     
 @endsection
@@ -74,8 +74,9 @@
         var show = function () {
             var div_show = $("#div-show")
             $.ajax({
-                url: "{{route('front.matiere.index')}}",
+                url: "{{route('front.users.index')}}",
                 success: function (data) {
+                    console.log(data)
                     if (data.status == true) {
                         div_show.html(data.data.view)
                         initDataTable()
@@ -100,23 +101,9 @@
             })
         }
 
-        var ChangeStatus = function (url) {
-            $.ajax({
-                url: url,
-                success: function (data) {
-                    if (data.status == true) {
-                        show()
-                        showSuccessMessage()
-                    }else{
-                        showWarningMessage()
-                    }
-                }
-            })
-        }
-
         var add = function (form_data) {
             $.ajax({
-                url: "{{route("front.matiere.creat")}}",
+                url: "{{route("front.users.store")}}",
                 type: 'POST',
                 data: form_data,
                 success: function (data) {
@@ -164,7 +151,7 @@
 
         var update = function (form_data) {
             $.ajax({
-                url: "{{route("front.matiere.update")}}",
+                url: "{{route("front.users.update")}}",
                 type: 'POST',
                 data: form_data,
                 success: function (data) {

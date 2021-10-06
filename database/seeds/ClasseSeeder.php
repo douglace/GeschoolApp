@@ -17,16 +17,18 @@ class ClasseSeeder extends Seeder
             [
                 "intitule" => "TleC",
                 "niveau" => 7,
-                "filiere_id" => 1,
+                "cycle_id" => 1,
                 "session_id" => 1,
+                "enseignant_id" => 0,
                 "Montant" => 200000
             ],
 
             [
                 "intitule" => "PA",
                 "niveau" => 6,
-                "filiere_id" => 1,
+                "cycle_id" => 1,
                 "session_id" => 1,
+                "enseignant_id" => 0,
                 "Montant" => 170000
             ]
         ];

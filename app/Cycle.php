@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Filiere extends Model
+class Cycle extends Model
 {
-    protected $primaryKey = "filiere_id";
+    protected $primaryKey = "cycle_id";
     protected $fillable = ["intitule", "session_id"];
 
     public function session(){
@@ -14,6 +14,6 @@ class Filiere extends Model
     }
 
     public function classes(){
-        return $this->hasMany(Classe::class, "filiere_id");
+        return $this->hasMany(Classe::class, "cycle_id");
     }
 }

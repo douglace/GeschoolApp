@@ -15,9 +15,9 @@ class CreateAnneeScolairesTable extends Migration
     {
         Schema::create('annee_scolaires', function (Blueprint $table) {
             $table->increments('annee_id');
-            $table->integer("debut");
-            $table->integer("fin");
-            $table->boolean("etat")->default(0);
+            $table->integer("debut")->unique();
+            $table->integer("fin")->unique();
+            $table->boolean("etat")->default(1);
             $table->timestamps();
         });
     }

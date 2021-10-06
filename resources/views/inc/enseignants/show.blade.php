@@ -28,13 +28,19 @@
                 <td>{{$enseignant->date}}</td>
                 <td><span class="btn label {{$enseignant->etat ? "label-success" : "label-danger"}} font-11 padding-4">{{$enseignant->etat ? "Activé" : "Desactivé"}}</span></td>
                 <td>
+                    @can('enseignant-profil')
                     <a title="Profile" href="{{route('front.enseignant.profil', [$enseignant->enseignant_id])}}" target="_blank" class="link"><i class="material-icons">content_paste</i></a>
+                    @endcan
                     <a title="Edité" id="edit-hidden" data-toggle="modal" data-target="#modal-edit" style="display: none;"><i
                         class="material-icons">edit</i></a>
+                    @can('enseignant-edit')
                     <a title="Edité" href="{{route('front.enseignant.edit', [$enseignant->enseignant_id])}}" id="edit" style="cursor: pointer;" class="link"><i
                             class="material-icons">edit</i></a>
+                    @endcan
+                    @can('enseignant-delete')
                     <a title="Supprimé" id="delete" style="cursor: pointer;" onclick="showConfirmMessage('{{route('front.enseignant.delete', [$enseignant->enseignant_id])}}')" class="link"><i
-                            class="material-icons col-red">delete_forever</i></a>
+                        class="material-icons col-red">delete_forever</i></a>
+                    @endcan
                     <a title="Activé ou Désactivé" id="etat" style="cursor: pointer;" class="link" onclick="ChangeStatus('{{route('front.enseignant.status', ['id' =>$enseignant->enseignant_id, 'etat' => $enseignant->etat ? 0 : 1])}}')"><i
                             class="material-icons col-teal">repeat</i></a>
                 </td>

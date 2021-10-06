@@ -29,11 +29,13 @@
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6"
                             style="display: flex; justify-content: flex-end;">
                             <div class="btn-group btn-group-sm" style="display: none;">
+                                @can('note-create')
                                 <button type="button" id="btn-add" class="btn btn-primary waves-effect" data-toggle="modal"
                                     data-target="#add-modal">
                                     <i class="material-icons">save</i>
                                     <span>ENREGISTRER</span>
                                 </button>
+                                @endcan
                             </div>
                             <div class="btn-group btn-group-sm" style="display: none;">
                                 <button type="button" id="btn-edit" class="btn btn-primary waves-effect" data-toggle="modal"
