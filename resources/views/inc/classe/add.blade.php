@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-md-6">
                             <select name="enseignant_id" required>
-                                <option>Selectioner un enseignant titulaire</option>
+                                <option>Enseignant titulaire</option>
                                 @foreach ($enseignants as $enseignant)
                                     @if ($enseignant->etat)
                                     <option value="{{$enseignant->enseignant_id}}">{{$enseignant->getFullName()}}</option>

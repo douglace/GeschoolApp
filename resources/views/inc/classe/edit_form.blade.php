@@ -14,7 +14,7 @@
             </div>
             <div class="col-sm-6">
                 <select name="enseignant_id" required>
-                    <option>Selectioner un enseignant titulaire</option>
+                    <option>Enseignant titulaire</option>
                     @foreach ($enseignants as $enseignant)
                         @if ($enseignant->etat == 1)
                             @if ($enseignant->enseignant_id == ($matiere->responsable->enseignant_id ?? 0))

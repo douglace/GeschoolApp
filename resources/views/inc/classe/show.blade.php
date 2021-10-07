@@ -11,6 +11,7 @@
                 <th>INTITULE CYCLE</th>
                 <th>MONTANT(XAF)</th>
                 <th>ENSEIGNANT TITULAIRE</th>
+                <th>EFECTIF</th>
                 <th>STATUT</th>
                 <th style="width: 15%;">ACTIONS</th>
             </tr>
@@ -20,10 +21,11 @@
         @foreach ($classes as $classe)
             <tr>
                 <td>{{$i++}}</td>
-                <td>{{$classe->intitule}}</td>
-                <td>{{$classe->filiere->intitule}}</td>
+                <td><a title="Profile" href="{{route('front.classe.profil', [$classe->classe_id ?? 0])}}" target="_blank" class="link">{{$classe->intitule}}</a></td>
+                <td>{{$classe->cycle->intitule}}</td>
                 <td>{{$classe->montant}}</td>
-                <td>{{$matiere->responsable->getFullName() ?? ""}}</td>
+                <td><a title="Profile" href="{{route('front.enseignant.profil', [$classe->titulaire->enseignant_id ?? 0])}}" target="_blank" class="link">{{$classe->titulaire->getFullName() ?? ""}}</a></td>
+                <td>{{count(App\Inscription::getAllEleve($annee_id, $classe->classe_id))}}</td>
                 <td><span class="btn label {{$classe->etat ? "label-success" : "label-danger"}} font-11 padding-4">{{$classe->etat ? "Activé" : "Desactivé"}}</span></td>
                 <td>
                     <a title="Edité" id="edit-hidden" data-toggle="modal" data-target="#modal-edit" style="display: none;"><i

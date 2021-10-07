@@ -14,7 +14,7 @@
                     </div>
                     <div class="content-area">
                         <h3>{{$eleve->getFullName()}}</h3>
-                        <p class="font-bold font-16">{{$eleve->inscription($annee_id)->classe->intitule}}</p>
+                        <p class="font-bold font-16">{{$eleve->inscription($annee_id)->classe->intitule ?? "Non inscrit"}}</p>
                         <p class="font-bold font-16">{{$eleve->statut}}</p>
                         <p>{{$eleve->matricul}}</p>
                     </div>

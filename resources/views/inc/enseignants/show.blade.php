@@ -12,6 +12,7 @@
                 <th>PRENOM</th>
                 <th>SEXE</th>
                 <th>DATE DE NAISSANCE</th>
+                <th>CLASSE(S) TITULARISE</th>
                 <th>STATUT</th>
                 <th style="width: 15%;">ACTIONS</th>
             </tr>
@@ -22,10 +23,15 @@
             <tr>
                 <td>{{$i++}}</td>
                 <td>{{$enseignant->matricul}}</td>
-                <td>{{$enseignant->nom}}</td>
-                <td>{{$enseignant->prenom}}</td>
+                <td><a title="Profile" href="{{route('front.enseignant.profil', [$enseignant->enseignant_id ?? 0])}}" target="_blank" class="link">{{$enseignant->nom}}</a></td>
+                <td><a title="Profile" href="{{route('front.enseignant.profil', [$enseignant->enseignant_id ?? 0])}}" target="_blank" class="link">{{$enseignant->prenom}}</a></td>
                 <td>{{$enseignant->sexe}}</td>
                 <td>{{$enseignant->date}}</td>
+                <td style="display: block;">
+                    @foreach ($enseignant->classes as $classe)
+                    <a title="Profile" style="display: block;" href="{{route('front.classe.profil', [$classe->classe_id ?? 0])}}" target="_blank" class="link">{{$classe->intitule}}</a>
+                    @endforeach
+                </td>
                 <td><span class="btn label {{$enseignant->etat ? "label-success" : "label-danger"}} font-11 padding-4">{{$enseignant->etat ? "Activé" : "Desactivé"}}</span></td>
                 <td>
                     @can('enseignant-profil')

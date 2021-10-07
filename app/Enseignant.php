@@ -13,8 +13,8 @@ class Enseignant extends Model
         return $this->belongsTo(Session::class,"session_id");
     }
 
-    public function classe(){
-        return $this->belongsTo(Classe::class, "enseignant_id");
+    public function classes(){
+        return $this->hasMany(Classe::class, "enseignant_id");
     }
 
     public function matiere(){

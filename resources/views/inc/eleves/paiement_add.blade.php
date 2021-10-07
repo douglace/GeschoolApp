@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <form id="form-add">
                     @csrf
-                    <input type="hidden" name="paiement_id" class="form-control" value="{{$eleve->paiement($annee_id)->paiement_id}}">
+                    <input type="hidden" name="paiement_id" class="form-control" value="{{$eleve->paiement($annee_id)->paiement_id ?? ""}}">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group form-float">

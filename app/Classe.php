@@ -9,8 +9,8 @@ class Classe extends Model
     protected $primaryKey = "classe_id";
     protected $guarded = ["etat"];
 
-    public function filiere(){
-        return $this->belongsTo(Filiere::class, "filiere_id");
+    public function cycle(){
+        return $this->belongsTo(cycle::class, "cycle_id");
     }
 
     public function session(){

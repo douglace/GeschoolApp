@@ -37,6 +37,23 @@ class CoursController extends Controller
         }
     }
 
+    public function showMatiere(Request $request, int $matiere_id){
+        try {
+
+            $courss = Matiere::find($matiere_id)->courss;
+            $matieres = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->matieres : array(new Matiere());
+            $classes = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->classes : array(new Classe());
+            $enseignants = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->enseignants : array(new Enseignant());
+
+            return ges_ajax_response(1, "", [
+                "view" => view("inc.cours.show", compact("courss", "matieres", "classes", "enseignants"))->render()
+            ]);
+
+        } catch (\Exception $e) {
+            return ges_ajax_response(false, $e);
+        }
+    }
+
     public function del(int $cours_id){
 
         DB::beginTransaction();

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group form-float">
-                <h5>1. INFORMATIONS PERSONNEL</h5>
+                <h5>1. INFORMATIONS PERSONNEL<em style="color: red;">*</em></h5>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="text" name="matricule" value="{{$eleve->matricul}}" class="form-control" required>
-                    <label class="form-label">Matricule</label>
+                    <label class="form-label">Matricule<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="text" name="nom" value="{{$eleve->nom}}" class="form-control" required>
-                    <label class="form-label">Nom De Famille</label>
+                    <label class="form-label">Nom De Famille<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="text" name="prenom" value="{{$eleve->prenom}}" class="form-control" required>
-                    <label class="form-label">Prénom</label>
+                    <label class="form-label">Prénom<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="text" name="date" value="{{$eleve->date}}" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-                    <label class="form-label">Date De Naissance</label>
+                    <label class="form-label">Date De Naissance<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
@@ -48,14 +48,14 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="text" name="lieu" value="{{$eleve->lieu}}" class="form-control" required>
-                    <label class="form-label">Lieu De Naissance</label>
+                    <label class="form-label">Lieu De Naissance<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="form-group form-float">
                 <select name="sexe" class="form-control" required>
-                    <option>Sexe</option>
+                    <option>Sexe<em style="color: red;">*</em></option>
                     <option value="MASCULIN" {{$eleve->sexe == "MASCULIN" ? 'selected' : ''}}>MASCULIN</option>
                     <option value="FEMININ" {{$eleve->sexe == "FEMININ" ? 'selected' : ''}}>FEMININ</option>
                 </select>
@@ -67,7 +67,7 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="text" name="nationalite" value="{{$eleve->nationalite}}" class="form-control" required>
-                    <label class="form-label">Nationalité</label>
+                    <label class="form-label">Nationalité<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="text" name="adresse" value="{{$eleve->adresse}}" class="form-control" required>
-                    <label class="form-label">Adresse De L'Elève</label>
+                    <label class="form-label">Adresse De L'Elève<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
@@ -101,17 +101,17 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group form-float">
-                <h5>2. INFORMATIONS DE LA CLASSE</h5>
+                <h5>2. INFORMATIONS DE LA CLASSE (INSCRIPTION)<em style="color: red;">*</em></h5>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <select name="classe_id" required>
-                <option>Affecter une classe</option>
+                <option>Affecter une classe<em style="color: red;">*</em></option>
                 @foreach ($classes as $classe)
                     @if ($classe->etat == 1)
-                        @if ($classe->classe_id == $eleve->inscription($annee_id)->classe_id )
+                        @if ($classe->classe_id == ($eleve->inscription($annee_id)->classe_id ?? 0) )
                             <option value="{{$classe->classe_id}}" selected>{{$classe->intitule}}</option>
                         @else
                             <option value="{{$classe->classe_id}}">{{$classe->intitule}}</option>
@@ -123,7 +123,7 @@
         <div class="col-sm-6">
             <div class="form-group form-float">
                 <select name="statut" class="form-control" required>
-                    <option>Choisir Le Statut De L'Elève </option>
+                    <option>Statut De L'Elève<em style="color: red;">*</em></option>
                     <option value="Redoublant" {{$eleve->statut == "Redoublant" ? 'selected' : ''}}>Redoublant</option>
                     <option value="Non Redoublant" {{$eleve->statut == "Non Redoublant" ? 'selected' : ''}}>Non Redoublant</option>
                 </select>
@@ -133,7 +133,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group form-float">
-                <h5>3. INFORMATIONS MEDICAL</h5>
+                <h5>3. INFORMATIONS MEDICAL<em style="color: red;">*</em></h5>
             </div>
         </div>
     </div>
@@ -149,7 +149,7 @@
         <div class="col-sm-6">
             <div class="form-group form-float">
                 <select name="handicap" class="form-control" required>
-                    <option>Handicap</option>
+                    <option>Handicap<em style="color: red;">*</em></option>
                     <option value="Apte" {{$eleve->handicap == "Apte" ? 'selected' : ''}}>Apte</option>
                     <option value="Inapte" {{$eleve->handicap == "Inapte" ? 'selected' : ''}}>Inapte</option>
                 </select>
@@ -159,7 +159,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group form-float">
-                <h5>4. INFORMATIONS PARENTAL</h5>
+                <h5>4. INFORMATIONS PARENTAL<em style="color: red;">*</em></h5>
             </div>
         </div>
     </div>
@@ -168,7 +168,7 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="text" name="nom_parent" value="{{$eleve->parent->nom_parent}}" class="form-control" required>
-                    <label class="form-label">Nom Et Prénom Du Parent</label>
+                    <label class="form-label">Nom Et Prénom Du Parent<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
@@ -176,7 +176,7 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="text" name="profession" value="{{$eleve->parent->profession}}" class="form-control" required>
-                    <label class="form-label">Profession</label>
+                    <label class="form-label">Profession<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
@@ -186,7 +186,7 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="number" name="tel_parent" value="{{$eleve->parent->tel_parent}}" class="form-control" required>
-                    <label class="form-label">Numéro De Téléphone</label>
+                    <label class="form-label">Numéro De Téléphone<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
@@ -194,14 +194,14 @@
             <div class="form-group form-float">
                 <div class="form-line">
                     <input type="text" name="adresse_parent" value="{{$eleve->parent->adresse_parent}}" class="form-control" required>
-                    <label class="form-label">Adresse</label>
+                    <label class="form-label">Adresse<em style="color: red;">*</em></label>
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="form-group form-float">
                 <select name="statut_parent" class="form-control" required>
-                    <option>Statut Parental</option>
+                    <option>Statut Parental<em style="color: red;">*</em></option>
                     <option value="Père" {{$eleve->parent->statut_parent == "Père" ? 'selected' : ''}}>Père</option>
                     <option value="Mère" {{$eleve->parent->statut_parent == "Mère" ? 'selected' : ''}}>Mère</option>
                     <option value="Tuteur" {{$eleve->parent->statut_parent == "Tuteur" ? 'selected' : ''}}>Tuteur</option>

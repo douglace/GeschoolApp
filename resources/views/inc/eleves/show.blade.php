@@ -27,7 +27,7 @@
                 <td><a title="Profile" href="{{route('front.eleve.profil', [$eleve->eleve_id])}}" target="_blank" class="link">{{$eleve->prenom}}</a></td>
                 <td>{{$eleve->sexe}}</td>
                 <td>{{$eleve->date}}</td>
-                <td>{{$eleve->inscription($annee_id)->classe->intitule}}</td>
+                <td><a title="Profile" href="{{route('front.classe.profil', [$eleve->inscription($annee_id)->classe->classe_id ?? 0])}}" target="_blank" class="link">{{$eleve->inscription($annee_id)->classe->intitule ?? "Non Inscrit"}}</a></td>
                 <td><span class="btn label {{$eleve->etat ? "label-success" : "label-danger"}} font-11 padding-4">{{$eleve->etat ? "Activé" : "Desactivé"}}</span></td>
                 <td>
                     @can('eleve-profil')

@@ -6,7 +6,7 @@ use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\CoursController;
 use App\Http\Controllers\EleveController;
 use App\Http\Controllers\EnseignantController;
-use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\CycleController;
 use App\Http\Controllers\GroupeMatiereController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\NoteController;
@@ -81,16 +81,17 @@ Route::prefix("admin")->group(function () {
     Route::get('/sequence_view/edit/{id}', [SequenceController::class, "edit"])->name("front.sequence.edit");
     Route::post('/sequence_view/update', [SequenceController::class, "update"])->name("front.sequence.update");
 
-    //Filière
-    Route::get('/filiere_view/index', [FiliereController::class, "show"])->name("front.filiere.index");
-    Route::get('/filiere_view/delete/{id}', [FiliereController::class, "del"])->name("front.filiere.delete");
-    Route::get('/filiere_view/status/{id}/{etat}', [FiliereController::class, "status"])->name("front.filiere.status");
-    Route::post('/filiere_view/creat', [FiliereController::class, 'creat'])->name("front.filiere.creat");
-    Route::get('/filiere_view/edit/{id}', [FiliereController::class, "edit"])->name("front.filiere.edit");
-    Route::post('/filiere_view/update', [FiliereController::class, "update"])->name("front.filiere.update");
+    //Cycle
+    Route::get('/cycle_view/index', [cycleController::class, "show"])->name("front.cycle.index");
+    Route::get('/cycle_view/delete/{id}', [cycleController::class, "del"])->name("front.cycle.delete");
+    Route::get('/cycle_view/status/{id}/{etat}', [cycleController::class, "status"])->name("front.cycle.status");
+    Route::post('/cycle_view/creat', [cycleController::class, 'creat'])->name("front.cycle.creat");
+    Route::get('/cycle_view/edit/{id}', [cycleController::class, "edit"])->name("front.cycle.edit");
+    Route::post('/cycle_view/update', [cycleController::class, "update"])->name("front.cycle.update");
 
     //Classe
     Route::get('/classe_view/index', [ClasseController::class, "show"])->name("front.classe.index");
+    Route::get('/classe_view/profil/{id}', [ClasseController::class, "profil"])->name("front.classe.profil");
     Route::get('/classe_view/delete/{id}', [ClasseController::class, "del"])->name("front.classe.delete");
     Route::get('/classe_view/status/{id}/{etat}', [ClasseController::class, "status"])->name("front.classe.status");
     Route::post('/classe_view/creat', [ClasseController::class, 'creat'])->name("front.classe.creat");
@@ -107,6 +108,7 @@ Route::prefix("admin")->group(function () {
 
     //Matière
     Route::get('/matiere_view/index', [MatiereController::class, "show"])->name("front.matiere.index");
+    Route::get('/matiere_view/profil/{id}', [MatiereController::class, "profil"])->name("front.matiere.profil");
     Route::get('/matiere_view/delete/{id}', [MatiereController::class, "del"])->name("front.matiere.delete");
     Route::get('/matiere_view/status/{id}/{etat}', [MatiereController::class, "status"])->name("front.matiere.status");
     Route::post('/matiere_view/creat', [MatiereController::class, 'creat'])->name("front.matiere.creat");
@@ -115,6 +117,7 @@ Route::prefix("admin")->group(function () {
 
     //Elèves
     Route::get('/eleves_view/index', [EleveController::class, "show"])->name("front.eleves.index");
+    Route::get('/eleves_view/index/classe/{id}', [EleveController::class, "showClasse"])->name("front.eleves.classe.index");
     Route::get('/eleves_view/profil/{id}', [EleveController::class, "profil"])->name("front.eleve.profil");
     Route::get('/eleves_view/delete/{id}', [EleveController::class, "del"])->name("front.eleve.delete");
     Route::get('/eleves_view/status/{id}/{etat}', [EleveController::class, "status"])->name("front.eleve.status");
@@ -136,6 +139,7 @@ Route::prefix("admin")->group(function () {
 
     //Cours
     Route::get('/cours_view/index', [CoursController::class, "show"])->name("front.cours.index");
+    Route::get('/cours_view/index/matiere/{id}', [CoursController::class, "showMatiere"])->name("front.cours.matiere.index");
     Route::get('/cours_view/delete/{id}', [CoursController::class, "del"])->name("front.cours.delete");
     Route::get('/cours_view/status/{id}/{etat}', [CoursController::class, "status"])->name("front.cours.status");
     Route::post('/cours_view/creat', [CoursController::class, 'creat'])->name("front.cours.creat");

@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-6">
                 <select name="groupe_matiere_id" required>
-                    <option>Selectioner un groupe_matiere</option>
+                    <option>Groupe_matiere</option>
                     @foreach ($groupe_matieres as $groupe_matiere)
                         @if ($groupe_matiere->etat == 1)
                             @if ($groupe_matiere->groupe_matiere_id == $matiere->groupe_matiere->groupe_matiere_id)
@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-md-12">
                 <select name="enseignant_id" required>
-                    <option>Selectioner un enseignant responsable</option>
+                    <option>Enseignant responsable</option>
                     @foreach ($enseignants as $enseignant)
                         @if ($enseignant->etat == 1)
                             @if ($enseignant->enseignant_id == ($matiere->responsable->enseignant_id ?? 0))

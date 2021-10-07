@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-md-6">
                             <select name="groupe_matiere_id" required>
-                                <option>Selectioner un groupe de matiere</option>
+                                <option>Groupe de matiere</option>
                                 @foreach ($groupe_matieres as $groupe_matiere)
                                     @if ($groupe_matiere->etat)
                                     <option value="{{$groupe_matiere->groupe_matiere_id}}">{{$groupe_matiere->intitule}}</option>
@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <select name="enseignant_id" required>
-                                <option>Selectioner un enseignant responsable</option>
+                                <option>Enseignant responsable</option>
                                 @foreach ($enseignants as $enseignant)
                                     @if ($enseignant->etat)
                                     <option value="{{$enseignant->enseignant_id}}">{{$enseignant->getFullName()}}</option>

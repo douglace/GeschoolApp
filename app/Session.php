@@ -17,8 +17,8 @@ class Session extends Model
         return $this->hasMany(Trimestre::class, "session_id");
     }
 
-    public function filieres(){
-        return $this->hasMany(Filiere::class, "session_id");
+    public function cycles(){
+        return $this->hasMany(Cycle::class, "session_id");
     }
 
     public function classes(){
@@ -38,6 +38,6 @@ class Session extends Model
     }
 
     public function enseignants(){
-        return $this->hasMany(Enseignant    ::class, "session_id");
+        return $this->hasMany(Enseignant::class, "session_id");
     }
 }

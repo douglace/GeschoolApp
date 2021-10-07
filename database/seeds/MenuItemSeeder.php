@@ -35,8 +35,8 @@ class MenuItemSeeder extends Seeder
                 "menu_id" => 2
             ],
             [
-                "name" => "Filières",
-                "slug" => "filiere_view",
+                "name" => "Cycles",
+                "slug" => "cycle_view",
                 "menu_id" => 3
             ],
             [

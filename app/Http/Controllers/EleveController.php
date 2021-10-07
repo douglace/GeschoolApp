@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\DB;
 
 class EleveController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:eleve-profil', ['only' => ['profil']]);
+    }
+
     private function current_session_id(Request $request){
         return (int)$request->session()->get("session_id");
     }
@@ -30,6 +35,21 @@ class EleveController extends Controller
     public function show(Request $request){
         try {
             $eleves = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->eleves : array(new Eleve());
+            $classes = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->classes : array(new Classe());
+            $annee_id = $this->current_annee_id($request);
+
+            return ges_ajax_response(1, "", [
+                "view" => view("inc.eleves.show", compact("eleves", "classes", "annee_id"))->render()
+            ]);
+
+        } catch (\Exception $e) {
+            return ges_ajax_response(false, $e);
+        }
+    }
+
+    public function showClasse(Request $request, int $classe_id){
+        try {
+            $eleves = Inscription::getAllEleve($this->current_annee_id($request), $classe_id) ?? array(new Eleve());
             $classes = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->classes : array(new Classe());
             $annee_id = $this->current_annee_id($request);
 
@@ -80,7 +100,10 @@ class EleveController extends Controller
         try{
             $inscription = $request->input();
             
-            $inscription["email_parent"] == null ? " " : $inscription["email_parent"]; 
+            $inscription["email_parent"] == null ? "-" : $inscription["email_parent"]; 
+            $inscription["maladie"] == null ? "-" : $inscription["maladie"]; 
+            $inscription["tel"] == null ? "0" : $inscription["tel"]; 
+            $inscription["email"] == null ? "-" : $inscription["email"]; 
             $parent = ParentEleve::create($inscription);
 
             $inscription["annee_id"] = $this->current_annee_id($request);
@@ -164,11 +187,21 @@ class EleveController extends Controller
                 $new_inscription["classe_id"] = (int)$request->input("classe_id");
                 $new_inscription["annee_id"] = $this->current_annee_id($request);
                 $inscript = Inscription::create($new_inscription);
-                $paiement = Paiement::create($inscription);
+                $paiement = Paiement::create($new_inscription);
                 $classe = Classe::find($inscript->classe_id);
                 $paiement->montant = $classe->montant;
                 $paiement->reste = $classe->montant;
                 $paiement->update();
+
+                Bulletin::create($new_inscription);
+                foreach(Sequence::all() as $sequence){
+                    $new_inscription["sequence_id"] = $sequence->sequence_id;
+                    BulletinSequence::create($new_inscription);
+                }
+                foreach(Trimestre::all() as $trimestre){
+                    $new_inscription["trimestre_id"] = $trimestre->trimestre_id;
+                    BulletinTrimestre::create($new_inscription);
+                }
 
             }else{
 
@@ -177,8 +210,30 @@ class EleveController extends Controller
                 $paiement = Paiement::where('eleve_id', $eleve->eleve_id)->where('annee_id', $this->current_annee_id($request))->first();
                 $classe = Classe::find($inscription->classe_id);
                 $paiement->montant = $classe->montant;
-                $paiement->reste = $classe->montant - $classe->montant_paye;
+                $paiement->reste = $paiement->montant - $paiement->montant_paye;
+                $reste = $paiement->montant;
+                foreach($paiement->tranches as $tranche){
+                    $tranche->reste = $reste - $tranche->montant;
+                    $reste -= $tranche->montant;
+                    $tranche->update();
+                }
                 $paiement->update();
+
+                $bulletins = Bulletin::where("eleve_id", $eleve->eleve_id)->where("annee_id", $this->current_annee_id($request))->get()->all();
+                foreach ($bulletins as $bulletin) {
+                    $bulletin->classe_id = $classe->classe_id;
+                    $bulletin->update();
+                }
+                $bulletinsTrim = BulletinTrimestre::where("eleve_id", $eleve->eleve_id)->where("annee_id", $this->current_annee_id($request))->get()->all();
+                foreach ($bulletinsTrim as $bulletin) {
+                    $bulletin->classe_id = $classe->classe_id;
+                    $bulletin->update();
+                }
+                $bulletinsSeq = BulletinSequence::where("eleve_id", $eleve->eleve_id)->where("annee_id", $this->current_annee_id($request))->get()->all();
+                foreach ($bulletinsSeq as $bulletin) {
+                    $bulletin->classe_id = $classe->classe_id;
+                    $bulletin->update();
+                }
             }
 
             DB::commit();

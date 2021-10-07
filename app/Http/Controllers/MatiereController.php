@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classe;
 use App\GroupeMatiere;
 use App\Matiere;
 use App\Session;
@@ -106,6 +107,20 @@ class MatiereController extends Controller
             return ges_ajax_response(true);
         } catch (\Exception $e) {
             DB::rollBack();
+            return ges_ajax_response(false, $e);
+        }
+    }
+
+    public function profil(Request $request, int $matiere_id){
+        try {
+            $matieres = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->matieres : array(new Matiere());
+            $classes = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->classes : array(new Classe());
+            $enseignants = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->enseignants : array(new Enseignant());
+            $slug = "matiere_view";
+            $matiere = Matiere::find($matiere_id);
+
+            return view("inc.matiere.profil", compact("classes", "matieres", "enseignants", "matiere", "slug"));
+        } catch (\Exception $e) {
             return ges_ajax_response(false, $e);
         }
     }

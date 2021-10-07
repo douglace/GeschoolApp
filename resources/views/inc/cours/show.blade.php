@@ -20,9 +20,9 @@
         @foreach ($courss as $cours)
             <tr>
                 <td>{{$i++}}</td>
-                <td>{{$cours->matiere->intitule}}</td>
-                <td>{{$cours->enseignant->getFullName()}}</td>
-                <td>{{$cours->classe->intitule}}</td>
+                <td><a title="Profile" href="{{route('front.matiere.profil', [$cours->matiere->matiere_id ?? 0])}}" target="_blank" class="link">{{$cours->matiere->intitule}}</a></td>
+                <td><a title="Profile" href="{{route('front.enseignant.profil', [$cours->enseignant->enseignant_id ?? 0])}}" target="_blank" class="link">{{$cours->enseignant->getFullName()}}</a></td>
+                <td><a title="Profile" href="{{route('front.classe.profil', [$cours->classe->classe_id ?? 0])}}" target="_blank" class="link">{{$cours->classe->intitule}}</a></td>
                 <td>{{$cours->coeficient}}</td>
                 <td><span class="btn label {{$cours->etat ? "label-success" : "label-danger"}} font-11 padding-4">{{$cours->etat ? "Activé" : "Desactivé"}}</span></td>
                 <td>

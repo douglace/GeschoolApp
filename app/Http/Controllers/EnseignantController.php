@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class EnseignantController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:enseignant-profil', ['only' => ['profil']]);
+    }
+
     private function current_session_id(Request $request){
         return (int)$request->session()->get("session_id");
     }

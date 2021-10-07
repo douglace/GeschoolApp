@@ -20,4 +20,8 @@ class Matiere extends Model
     public function session(){
         return $this->belongsTo(Session::class,"session_id");
     }
+
+    public function courss(){
+        return $this->hasMany(Cours::class,"matiere_id");
+    }
 }

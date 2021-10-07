@@ -15,14 +15,19 @@ class ClasseController extends Controller
         return (int)$request->session()->get("session_id");
     }
 
+    private function current_annee_id(Request $request){
+        return (int)$request->session()->get("annee_id");
+    }
+
     public function show(Request $request){
         try {
             $classes = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->classes : array(new Classe());
             $cycles = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->cycles : array(new cycle());
             $enseignants = Enseignant::where('session_id', $this->current_session_id($request))->get()->all() ?? array(new Enseignant());
+            $annee_id = $this->current_annee_id($request);
 
             return ges_ajax_response(1, "", [
-                "view" => view("inc.classe.show", compact("classes", "cycles", "enseignants"))->render()
+                "view" => view("inc.classe.show", compact("classes", "cycles", "enseignants", "annee_id"))->render()
             ]);
 
         } catch (\Exception $e) {
@@ -67,10 +72,9 @@ class ClasseController extends Controller
 
         try{
             $classe = $request->input();
-            $classe["niveau"] = (int)$classe["niveau"];
             $classe["montant"] = (int)$classe["montant"];
             $classe["cycle_id"] = (int)$classe["cycle_id"];
-            $classe["enseignant_id"] = (int)$classe["enseignant_id"] ?? 0;
+            $classe["enseignant_id"] = (int)$classe["enseignant_id"];
             $classe["session_id"] = $this->current_session_id($request);
             Classe::create($classe);
             DB::commit();
@@ -100,15 +104,27 @@ class ClasseController extends Controller
         try {
             $classe = classe::find((int)$request->input("classe_id"));
             $classe->intitule = $request->input("intitule");
-            $classe->niveau = (int)$request->input("niveau");
             $classe->montant = (int)$request->input("montant");
             $classe->cycle_id = (int)$request->input("cycle_id");
-            $classe->enseignant_id = (int)$request->input("enseignant_id") ?? 0;
+            $classe->enseignant_id = (int)$request->input("enseignant_id");
             $classe->update();
             DB::commit();
             return ges_ajax_response(true);
         } catch (\Exception $e) {
             DB::rollBack();
+            return ges_ajax_response(false, $e);
+        }
+    }
+
+    public function profil(Request $request, int $classe_id){
+        try {
+            $classes = Session::find($this->current_session_id($request)) ? Session::find($this->current_session_id($request))->classes : array(new Classe());
+            $annee_id = $this->current_annee_id($request);
+            $slug = "classe_view";
+            $classe = Classe::find($classe_id);
+
+            return view("inc.classe.profil", compact("classes", "annee_id", "slug", "classe"));
+        } catch (\Exception $e) {
             return ges_ajax_response(false, $e);
         }
     }

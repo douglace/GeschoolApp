@@ -19,9 +19,9 @@
         @foreach ($matieres as $matiere)
             <tr>
                 <td>{{$i++}}</td>
-                <td>{{$matiere->intitule}}</td>
+                <td><a title="Profile" href="{{route('front.matiere.profil', [$matiere->matiere_id ?? 0])}}" target="_blank" class="link">{{$matiere->intitule}}</a></td>
                 <td>{{$matiere->groupe_matiere->intitule}}</td>
-                <td>{{$matiere->responsable->getFullName() ?? ""}}</td>
+                <td><a title="Profile" href="{{route('front.enseignant.profil', [$matiere->responsable->enseignant_id ?? 0])}}" target="_blank" class="link">{{$matiere->responsable->getFullName() ?? ""}}</a></td>
                 <td><span class="btn label {{$matiere->etat ? "label-success" : "label-danger"}} font-11 padding-4">{{$matiere->etat ? "Activé" : "Desactivé"}}</span></td>
                 <td>
                     <a title="Edité" id="edit-hidden" data-toggle="modal" data-target="#modal-edit" style="display: none;"><i
