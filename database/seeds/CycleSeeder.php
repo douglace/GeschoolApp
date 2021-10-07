@@ -1,6 +1,6 @@
 <?php
 
-use App\cycle;
+use App\Cycle;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
