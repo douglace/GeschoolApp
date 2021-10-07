@@ -13,6 +13,9 @@
         <div class="info-container">
             <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{$user->name}}</div>
             <div class="email">{{$user->email}}</div>
+            @foreach($user->roles as $role)
+                <div class="email">{{$role->name}}</div>
+            @endforeach
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="true">keyboard_arrow_down</i>
@@ -38,6 +41,7 @@
         <ul class="list">
             <li class="header">NAVIGATION PRINCIPALE</li>
             @foreach ($menus as $menu)
+                @can($menu->slug)
                 <li class="{{$menu_id_active->menu_id == $menu->menu_id ? "active" : ""}}">
                     @if ($menu->slug == "dashboard_view")
                         <a href="/admin" class="menu-toggle waves-effect waves-block">
@@ -62,6 +66,7 @@
                         @endforeach
                     </ul>
                 </li>
+                @endcan
             @endforeach
         </ul>
     </div>
@@ -69,7 +74,7 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy; 2020 - 2021 <a href="javascript:void(0);">Emmanuel Narrys - Geschool</a>.
+            &copy; 2020 - 2021 <a href="https://emmanuel-narrys.welovedevs.com">Emmanuel Narrys - Geschool</a>.
         </div>
         <div class="version">
             <b>Version: </b> 1.0.2
