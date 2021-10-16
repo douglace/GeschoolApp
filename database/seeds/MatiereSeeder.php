@@ -23,7 +23,7 @@ class MatiereSeeder extends Seeder
 
             [
                 "intitule" => "Français",
-                "groupe_matiere_id" => 1,
+                "groupe_matiere_id" => 2,
                 "enseignant_id" => 0,
                 "session_id" => 1
             ]

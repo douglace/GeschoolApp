@@ -24,6 +24,11 @@ class TrimestreSeeder extends Seeder
                 "intitule" => "Trimestre 2",
                 "numero" => 2,
                 "session_id" => 1
+            ],
+            [
+                "intitule" => "Trimestre 3",
+                "numero" => 3,
+                "session_id" => 1
             ]
         ];
 

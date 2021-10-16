@@ -94,11 +94,11 @@
                 <ul class="setting-list">
                     @can('role-list')
                         <li>
-                            <a href="{{route('front.page', ['roles_view'])}}">Roles</a>
+                            <a href="{{ route('front.page', ['roles_view']) }}">Roles</a>
                         </li>
                     @endcan
                     <li>
-                        <a href="{{route('front.page', ['users_view'])}}">Utilisateurs</a>
+                        <a href="{{ route('front.page', ['users_view']) }}">Utilisateurs</a>
                     </li>
                 </ul>
             </div>

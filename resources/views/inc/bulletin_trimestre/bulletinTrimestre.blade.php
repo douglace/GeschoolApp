@@ -17,16 +17,23 @@
 
 <body>
     <style>
-        *{
+        * {
             font-size: 14px !important;
         }
-        h1, h2, h3, h4, h5, h6{
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             margin: 0;
             padding: 0;
-            margin-bottom:5px;
+            margin-bottom: 5px;
             font-size: 14px !important;
         }
-        .table-1{
+
+        .table-1 {
             margin-top: 5px;
             width: 90%;
             height: 50px;
@@ -37,50 +44,60 @@
             font-size: 16px;
             border-collapse: collapse;
         }
-        .table-1 th{
+
+        .table-1 th {
             border: 0.5px solid rgb(160, 156, 156);
         }
-        .table-1 td{
+
+        .table-1 td {
             border: 0.5px solid rgb(160, 156, 156);
         }
-        .secondtable{
+
+        .secondtable {
             width: calc(100%/3);
             box-sizing: border-box;
-            margin:10px 10px 10px 0;
+            margin: 10px 10px 10px 0;
         }
-        .content-blog{
+
+        .content-blog {
             width: 90%;
             margin: 5px auto;
             display: flex;
             flex-direction: row;
         }
-        .div-content{
+
+        .div-content {
             width: 90%;
-            margin: 0 auto; 
+            margin: 0 auto;
             box-sizing: border-box;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
         }
-        .div-content h6{
+
+        .div-content h6 {
             font-size: 20px;
         }
-        .div-content h6 input{
+
+        .div-content h6 input {
             width: 20px;
             height: 20px
         }
-        .div-1 div{
+
+        .div-1 div {
             text-align: center;
         }
-        .fin-page{
-            page-break-after: always ;
+
+        .fin-page {
+            page-break-after: always;
         }
+
     </style>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        @foreach ($bulletins as $bulletin)
+    <!-- ============================================================== -->
+    @foreach ($bulletins as $bulletin)
         @php
             $effectif = count($bulletins);
         @endphp
@@ -96,36 +113,39 @@
                     <h6>Péres Piaristes</h6>
                     <h6>COMPLEXE ACADEMIQUE BILINQUE <br> SAINT JOSEPH CALASANZ</h6>
                     <h6><em>Pietas et Litterae</em></h6>
-                    <h6>BP  :   2450 YAOUNDE</h6>
-                    <h6>Tel :   654822081/699504154</h6>
+                    <h6>BP : 2450 YAOUNDE</h6>
+                    <h6>Tel : 654822081/699504154</h6>
                 </div>
                 <div>
                     <img src="logo.jpeg" alt="logo" width="150px" height="150px" style="margin-bottom: 10px;">
-                    <h4>    </h4>
+                    <h4> </h4>
                     <H3 style="margin-top: 50px;"><strong>BULLETIN DE NOTE / REPORT CARD</strong></H4>
-                    <h4 style="text-transform: uppercase;" >{{ $trimestre->intitule }}</h4>
+                        <h4 style="text-transform: uppercase;">{{ $trimestre->intitule }}</h4>
                 </div>
-                <div><h5><strong>REPUBLIC OF CAMEROON</strong></h5>
+                <div>
+                    <h5><strong>REPUBLIC OF CAMEROON</strong></h5>
                     <h6>Peace - Work - Fatherland</h6>
                     <h6>-----oo-----</h6>
                     <h6>Piarist Fathers</h6>
                     <h6>SAINT JOSEPH CALASANZ <br> BILINGUAL ACADEMIC COMPLEX</h6>
                     <h6><em>Pietas et Litterae</em></h6>
-                    <h6>BP  :   2450 YAOUNDE</h6>
-                    <h6>Tel :   654822081/699504154</h6></div>
+                    <h6>BP : 2450 YAOUNDE</h6>
+                    <h6>Tel : 654822081/699504154</h6>
+                </div>
             </div>
             <div class="div-2 div-content">
                 <div>
-                    <h5>Nom et Prénom :  <strong>{{ $bulletin->eleve->getFullName() }}</strong></h5>
-                    <h5>Né(e) le :   {{ $bulletin->eleve->date }}</strong>     à       <strong>{{ $bulletin->eleve->lieu }}</strong></h5>
-                    <h5>Matricule :  <strong>{{ $bulletin->eleve->matricul }}</strong></h5>
-                    <h5>Statut :     <strong>{{ $bulletin->eleve->statut }}</strong></h5>
+                    <h5>Nom et Prénom : <strong>{{ $bulletin->eleve->getFullName() }}</strong></h5>
+                    <h5>Né(e) le : {{ $bulletin->eleve->date }}</strong> à
+                        <strong>{{ $bulletin->eleve->lieu }}</strong></h5>
+                    <h5>Matricule : <strong>{{ $bulletin->eleve->matricul }}</strong></h5>
+                    <h5>Statut : <strong>{{ $bulletin->eleve->statut }}</strong></h5>
                 </div>
                 <div>
-                    <h5>Classe :     <strong style="text-transform: uppercase;">{{ $classe->intitule }}</strong></h5>
-                    <h5>Effectif :   <strong>{{ $effectif }}</strong></h5>
-                    <h5>Prof Titulaire :     <strong>{{ "" }}</strong></h5>
-                    <h5>Année scolaire :     <strong>{{ $bulletin->annee->debut."/".$bulletin->annee->fin }}</strong></h5>
+                    <h5>Classe : <strong style="text-transform: uppercase;">{{ $classe->intitule }}</strong></h5>
+                    <h5>Effectif : <strong>{{ $effectif }}</strong></h5>
+                    <h5>Prof Titulaire : <strong>{{ '' }}</strong></h5>
+                    <h5>Année scolaire : <strong>{{ $bulletin->annee->debut . '/' . $bulletin->annee->fin }}</strong></h5>
                 </div>
             </div>
             <table class="table-1">
@@ -152,10 +172,12 @@
                     @endphp
                     @foreach ($bulletin->notes as $note)
                         <tr>
-                            <th style="width: 25%; font-size:12px"><strong style="font-size:16px">{{ $note->cours->matiere->intitule }}</strong> 
-                            <br>{{ $note->cours->enseignant->getFullName() }} </th>
+                            <th style="width: 25%; font-size:12px"><strong
+                                    style="font-size:16px">{{ $note->cours->matiere->intitule }}</strong>
+                                <br>{{ $note->cours->enseignant->getFullName() }}
+                            </th>
                             @php
-                                
+
                             @endphp
 
                             @foreach ($note->trimestre->sequences as $sequence)
@@ -163,8 +185,12 @@
                                     <th style="width: 7%;"></th>
                                     <th style="width: 7%;"></th>
                                 @else
-                                    <th style="width: 7%;">{{$note->eleve->getNoteSequence($sequence->sequence_id, $note->cours_id)->note}}</th>
-                                    <th style="width: 7%;">{{$note->eleve->getNoteSequence($sequence->sequence_id, $note->cours_id)->rang}}</th>
+                                    <th style="width: 7%;">
+                                        {{ $note->eleve->getNoteSequence($sequence->sequence_id, $note->cours_id)->note }}
+                                    </th>
+                                    <th style="width: 7%;">
+                                        {{ $note->eleve->getNoteSequence($sequence->sequence_id, $note->cours_id)->rang }}
+                                    </th>
                                 @endif
                             @endforeach
 
@@ -188,27 +214,55 @@
 
                         </tr>
                     @endforeach
-                
+
                     <tr>
-                        <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;">MOYENNE TRIMESTIELLE</h4> <br></td>
+                        <td colspan="1"> <br>
+                            <h4 style="margin: 0;padding: 0;">MOYENNE TRIMESTIELLE</h4> <br>
+                        </td>
                         @foreach ($bulletin->trimestre->sequences as $sequence)
-                            <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;">{{ App\BulletinSequence::getWithEleve($bulletin->annee_id, $sequence->sequence_id, $bulletin->eleve_id)->moyenne == 0.1 ? 
-                            "" : App\BulletinSequence::getWithEleve($bulletin->annee_id, $sequence->sequence_id, $bulletin->eleve_id)->moyenne }}</h4> <br></td>
-                            <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;">{{ App\BulletinSequence::getWithEleve($bulletin->annee_id, $sequence->sequence_id, $bulletin->eleve_id)->rang == 0 ? 
-                                "" : App\BulletinSequence::getWithEleve($bulletin->annee_id, $sequence->sequence_id, $bulletin->eleve_id)->rang }}</h4> <br></td>
+                            <td colspan="1"> <br>
+                                <h4 style="margin: 0;padding: 0;">
+                                    {{ App\BulletinSequence::getWithEleve($bulletin->annee_id, $sequence->sequence_id, $bulletin->eleve_id)->moyenne == 0.1 ? '' : App\BulletinSequence::getWithEleve($bulletin->annee_id, $sequence->sequence_id, $bulletin->eleve_id)->moyenne }}
+                                </h4> <br>
+                            </td>
+                            <td colspan="1"> <br>
+                                <h4 style="margin: 0;padding: 0;">
+                                    {{ App\BulletinSequence::getWithEleve($bulletin->annee_id, $sequence->sequence_id, $bulletin->eleve_id)->rang == 0 ? '' : App\BulletinSequence::getWithEleve($bulletin->annee_id, $sequence->sequence_id, $bulletin->eleve_id)->rang }}
+                                </h4> <br>
+                            </td>
                         @endforeach
                         @if ($bulletin->moyenne == 0.1)
-                            <td colspan="1"><h4 style="margin: 0;padding: 0;"> </h4></td>
-                            <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;"> </h4><br></td>
-                            <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;"> </h4> <br></td>
-                            <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;"> <br></td>
-                            <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;"> </h4> <br></td>
+                            <td colspan="1">
+                                <h4 style="margin: 0;padding: 0;"> </h4>
+                            </td>
+                            <td colspan="1"> <br>
+                                <h4 style="margin: 0;padding: 0;"> </h4><br>
+                            </td>
+                            <td colspan="1"> <br>
+                                <h4 style="margin: 0;padding: 0;"> </h4> <br>
+                            </td>
+                            <td colspan="1"> <br>
+                                <h4 style="margin: 0;padding: 0;"> <br>
+                            </td>
+                            <td colspan="1"> <br>
+                                <h4 style="margin: 0;padding: 0;"> </h4> <br>
+                            </td>
                         @else
-                            <td colspan="1"><h4 style="margin: 0;padding: 0;">{{ $bulletin->moyenne }}</h4></td>
-                            <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;">{{ $coef_total }}</h4><br></td>
-                            <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;">{{ $note_total }}</h4> <br></td>
-                            <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;">{{ $bulletin->rang }}</h4> <br></td>
-                            <td colspan="1"> <br> <h4 style="margin: 0;padding: 0;">{{ $bulletin->mention }}</h4> <br></td>
+                            <td colspan="1">
+                                <h4 style="margin: 0;padding: 0;">{{ $bulletin->moyenne }}</h4>
+                            </td>
+                            <td colspan="1"> <br>
+                                <h4 style="margin: 0;padding: 0;">{{ $coef_total }}</h4><br>
+                            </td>
+                            <td colspan="1"> <br>
+                                <h4 style="margin: 0;padding: 0;">{{ $note_total }}</h4> <br>
+                            </td>
+                            <td colspan="1"> <br>
+                                <h4 style="margin: 0;padding: 0;">{{ $bulletin->rang }}</h4> <br>
+                            </td>
+                            <td colspan="1"> <br>
+                                <h4 style="margin: 0;padding: 0;">{{ $bulletin->mention }}</h4> <br>
+                            </td>
                         @endif
                     </tr>
                 </tbody>
@@ -225,15 +279,15 @@
                     <tbody style="border: 2px solid rgba(17, 17, 17, .8);">
                         <tr>
                             <td style="width: 75%;">MOYENNE PREMIER(E)</td>
-                            <td style="width: 25%;">{{ "" }}</td>
+                            <td style="width: 25%;">{{ '' }}</td>
                         </tr>
                         <tr>
                             <td style="width: 75%;">MOYENNE DERNIER(E)</td>
-                            <td style="width: 25%;">{{ "" }}</td>
+                            <td style="width: 25%;">{{ '' }}</td>
                         </tr>
                         <tr>
                             <td style="width: 75%;">MOYENNE GENERALE</td>
-                            <td style="width: 25%;">{{ "" }}</td>
+                            <td style="width: 25%;">{{ '' }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -282,7 +336,9 @@
                     </tbody>
                 </table>
             </div>
-            <div style="width: 80%;margin: 10px auto;" ><h3 style="text-align: center;">DECISIONS DU CONSEIL DE CLASSE</h3></div>
+            <div style="width: 80%;margin: 10px auto;">
+                <h3 style="text-align: center;">DECISIONS DU CONSEIL DE CLASSE</h3>
+            </div>
             <div class="div-content" style="justify-content: space-around;">
                 <div>
                     <h6><input type="checkbox" name="" id="" value="true"> Tableau d'honneur (TH)</h6>
@@ -296,17 +352,21 @@
             </div>
             <div style="width: 80%;margin: 10px auto;">
                 <hr width="100%" size="10px" color="black">
-                <h5 style="float: right; border-bottom:2px solid black;">Yaoundé Le {{ "" }}</h5>
+                <h5 style="float: right; border-bottom:2px solid black;">Yaoundé Le {{ '' }}</h5>
             </div>
             <div class="div-content" style="justify-content: space-between;margin: 50px auto;">
-                <div><h4>Parent</h4></div>
-                <div><h4>Principal</h4></div>
+                <div>
+                    <h4>Parent</h4>
+                </div>
+                <div>
+                    <h4>Principal</h4>
+                </div>
             </div>
 
         </div>
         <!-- ============================================================== -->
         <div style="page-break-after: always;"></div>
-        @endforeach
+    @endforeach
 
 </body>
 

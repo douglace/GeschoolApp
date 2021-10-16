@@ -22,7 +22,8 @@
                                 <option>Groupe de matiere</option>
                                 @foreach ($groupe_matieres as $groupe_matiere)
                                     @if ($groupe_matiere->etat)
-                                    <option value="{{$groupe_matiere->groupe_matiere_id}}">{{$groupe_matiere->intitule}}</option>
+                                        <option value="{{ $groupe_matiere->groupe_matiere_id }}">
+                                            {{ $groupe_matiere->intitule }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -34,7 +35,8 @@
                                 <option>Enseignant responsable</option>
                                 @foreach ($enseignants as $enseignant)
                                     @if ($enseignant->etat)
-                                    <option value="{{$enseignant->enseignant_id}}">{{$enseignant->getFullName()}}</option>
+                                        <option value="{{ $enseignant->enseignant_id }}">
+                                            {{ $enseignant->getFullName() }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -42,8 +44,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect">ENREGISTRER</button>
-                        <button type="button" class="btn btn-danger waves-effect"
-                            data-dismiss="modal">FERMER</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">FERMER</button>
                     </div>
                 </form>
             </div>

@@ -18,7 +18,7 @@ class CoursSeeder extends Seeder
             "classe_id" => 1,
             "enseignant_id" => 1,
             "session_id" => 1,
-            "annee_id" => 2
+            "annee_id" => 1
         ];
 
         DB::beginTransaction();

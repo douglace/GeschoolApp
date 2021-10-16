@@ -1,4 +1,5 @@
-<form action="{{route('front.bulletin_trimestre.show')}}" method="POST" target="__black" id="form-next" style="z-index: 100;">
+<form action="{{ route('front.bulletin_trimestre.show') }}" method="POST" target="__black" id="form-next"
+    style="z-index: 100;">
     @csrf
     @method('POST')
     <div class="row">
@@ -7,7 +8,7 @@
                 <option>Selectioner un trimestre</option>
                 @foreach ($trimestres as $trimestre)
                     @if ($trimestre->etat)
-                    <option value="{{$trimestre->trimestre_id}}">{{$trimestre->intitule}}</option>
+                        <option value="{{ $trimestre->trimestre_id }}">{{ $trimestre->intitule }}</option>
                     @endif
                 @endforeach
             </select>
@@ -17,7 +18,7 @@
                 <option>Selectioner une classe</option>
                 @foreach ($classes as $classe)
                     @if ($classe->etat)
-                    <option value="{{$classe->classe_id}}">{{$classe->intitule}}</option>
+                        <option value="{{ $classe->classe_id }}">{{ $classe->intitule }}</option>
                     @endif
                 @endforeach
             </select>

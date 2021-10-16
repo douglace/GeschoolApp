@@ -15,6 +15,7 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
+            "dashboard_view",
             //role role
             'role-list',
             'role-create',
@@ -31,51 +32,61 @@ class PermissionSeeder extends Seeder
             'annee-create',
             'annee-edit',
             'annee-delete',
+            'annee-etat',
             "change-annee-scolaire",
             //session role
             'session_view',
             'session-create',
             'session-edit',
             'session-delete',
+            'session-etat',
             "change-session",
             //trimestre role
             'trimestre_view',
             'trimestre-create',
             'trimestre-edit',
             'trimestre-delete',
+            'trimestre-etat',
             //sequence role
             'sequence_view',
             'sequence-create',
             'sequence-edit',
             'sequence-delete',
+            'sequence-etat',
             //cycle role
             'cycle_view',
             'cycle-create',
             'cycle-edit',
             'cycle-delete',
+            'cycle-etat',
             //classe role
             "classes",
             'classe_view',
             'classe-create',
             'classe-edit',
             'classe-delete',
+            'classe-etat',
             //groupe matière role
             'groupe_matiere_view',
             'groupe-matiere-create',
             'groupe-matiere-edit',
             'groupe-matiere-delete',
+            'groupe-matiere-etat',
             //matière role
             "matieres",
             'matiere_view',
             'matiere-create',
             'matiere-edit',
             'matiere-delete',
+            'matiere-etat',
             //élève role
+            "eleves",
             'eleves_view',
             'eleve-create',
             'eleve-edit',
             'eleve-delete',
             'eleve-profil',
+            'eleve-etat',
             //enseignant role
             "enseignants",
             'enseignants_view',
@@ -83,11 +94,13 @@ class PermissionSeeder extends Seeder
             'enseignant-edit',
             'enseignant-delete',
             'enseignant-profil',
+            'enseignant-etat',
             //cours role
             'cours_view',
             'cours-create',
             'cours-edit',
             'cours-delete',
+            'cours-etat',
             //note role
             "notes",
             'note_view',
@@ -103,15 +116,15 @@ class PermissionSeeder extends Seeder
             "absences",
 
             "Parametres"
-         ];
-      
-         foreach ($permissions as $permission) {
-              Permission::create(['name' => $permission]);
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::create(['name' => $permission]);
         }
 
 
-        $role = Role::create(['name' => 'Admin']);
-        $permissions = Permission::pluck('id','id')->all();
+        $role = Role::create(['name' => 'SuperAdmin']);
+        $permissions = Permission::pluck('id', 'id')->all();
         $role->syncPermissions($permissions);
         $user = User::first();
         $user->assignRole([$role->id]);

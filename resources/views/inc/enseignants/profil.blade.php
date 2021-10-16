@@ -1,6 +1,6 @@
 @extends('../../layout')
 
-@section('title', "PROFIL")
+@section('title', 'PROFIL')
 
 @section('content')
     <!-- Basic Examples -->
@@ -10,11 +10,11 @@
                 <div class="profile-header">&nbsp;</div>
                 <div class="profile-body">
                     <div class="image-area">
-                        <img src="{{asset('assets/images/user-lg.jpg')}}" alt="AdminBSB - Profile Image" />
+                        <img src="{{ asset('assets/images/user-lg.jpg') }}" alt="AdminBSB - Profile Image" />
                     </div>
                     <div class="content-area">
-                        <h3>{{$enseignant->getFullName()}}</h3>
-                        <p>{{$enseignant->matricul}}</p>
+                        <h3>{{ $enseignant->getFullName() }}</h3>
+                        <p>{{ $enseignant->matricul }}</p>
                     </div>
                 </div>
             </div>
@@ -24,12 +24,12 @@
                 <div class="body">
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#home" aria-controls="home"
-                                    role="tab" data-toggle="tab">INFORMATIONS DE L'ENSEIGNANT</a></li>
-                            <li role="presentation"><a href="#profile_settings" aria-controls="settings"
-                                    role="tab" data-toggle="tab">INFORMATIONS DU PARENT(TUTEUR)</a></li>
-                            <li role="presentation"><a href="#change_password_settings" aria-controls="settings"
-                                    role="tab" data-toggle="tab">PAIEMENTS</a></li>
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                    data-toggle="tab">INFORMATIONS DE L'ENSEIGNANT</a></li>
+                            <li role="presentation"><a href="#profile_settings" aria-controls="settings" role="tab"
+                                    data-toggle="tab">INFORMATIONS DU PARENT(TUTEUR)</a></li>
+                            <li role="presentation"><a href="#change_password_settings" aria-controls="settings" role="tab"
+                                    data-toggle="tab">PAIEMENTS</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -46,13 +46,13 @@
                                             <span class="font-bold">NOM :</span>
                                         </div>
                                         <div class="col-sm-4">
-                                            <span style="text-transform: uppercase;">{{$enseignant->nom}}</span>
+                                            <span style="text-transform: uppercase;">{{ $enseignant->nom }}</span>
                                         </div>
                                         <div class="col-sm-2">
                                             <span class="font-bold">PRENOM :</span>
                                         </div>
                                         <div class="col-sm-4">
-                                            <span style="text-transform: uppercase;">{{$enseignant->prenom}}</span>
+                                            <span style="text-transform: uppercase;">{{ $enseignant->prenom }}</span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -60,13 +60,13 @@
                                             <span class="font-bold">MATRICUL :</span>
                                         </div>
                                         <div class="col-sm-4">
-                                            <span style="text-transform: uppercase;">{{$enseignant->matricul}}</span>
+                                            <span style="text-transform: uppercase;">{{ $enseignant->matricul }}</span>
                                         </div>
                                         <div class="col-sm-2">
                                             <span class="font-bold">SEXE :</span>
                                         </div>
                                         <div class="col-sm-4">
-                                            <span style="text-transform: uppercase;">{{$enseignant->sexe}}</span>
+                                            <span style="text-transform: uppercase;">{{ $enseignant->sexe }}</span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -74,13 +74,13 @@
                                             <span class="font-bold">DATE DE NAISSANCE :</span>
                                         </div>
                                         <div class="col-sm-3">
-                                            <span style="text-transform: uppercase;">{{$enseignant->date}}</span>
+                                            <span style="text-transform: uppercase;">{{ $enseignant->date }}</span>
                                         </div>
                                         <div class="col-sm-3">
                                             <span class="font-bold">LIEU DE NAISSANCE :</span>
                                         </div>
                                         <div class="col-sm-3">
-                                            <span style="text-transform: uppercase;">{{$enseignant->lieu}}</span>
+                                            <span style="text-transform: uppercase;">{{ $enseignant->lieu }}</span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -88,13 +88,13 @@
                                             <span class="font-bold">NUMERO DE TELEPHONE :</span>
                                         </div>
                                         <div class="col-sm-3">
-                                            <span style="text-transform: uppercase;">{{$enseignant->tel}}</span>
+                                            <span style="text-transform: uppercase;">{{ $enseignant->tel }}</span>
                                         </div>
                                         <div class="col-sm-2">
                                             <span class="font-bold">ADRESSE :</span>
                                         </div>
                                         <div class="col-sm-3">
-                                            <span style="text-transform: uppercase;">{{$enseignant->adresse}}</span>
+                                            <span style="text-transform: uppercase;">{{ $enseignant->adresse }}</span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -102,13 +102,13 @@
                                             <span class="font-bold">E-MAIL :</span>
                                         </div>
                                         <div class="col-sm-4">
-                                            <span>{{$enseignant->email}}</span>
+                                            <span>{{ $enseignant->email }}</span>
                                         </div>
                                         <div class="col-sm-3">
                                             <span class="font-bold">NATIONALITE :</span>
                                         </div>
                                         <div class="col-sm-3">
-                                            <span style="text-transform: uppercase;">{{$enseignant->nationalite}}</span>
+                                            <span style="text-transform: uppercase;">{{ $enseignant->nationalite }}</span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -116,7 +116,7 @@
                                             <span class="font-bold">DERNIER DIPLOME :</span>
                                         </div>
                                         <div class="col-sm-8">
-                                            <span style="text-transform: uppercase;">{{$enseignant->diplome}}</span>
+                                            <span style="text-transform: uppercase;">{{ $enseignant->diplome }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@
                                     <div class="row clearfix">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="card" id="div-show">
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -148,19 +148,18 @@
     <!-- #END# Basic Examples -->
 
     <!-- Modal add -->
-    
+
 @endsection
 
 @section('script')
     <script type="text/javascript">
-
-        var initDataTable = function () {
+        var initDataTable = function() {
             $('.js-basic-example').DataTable({
                 responsive: true
             });
         }
 
-        var initDataTableExport = function (){
+        var initDataTableExport = function() {
             //Exportable table
             $('.js-exportable').DataTable({
                 dom: 'Bfrtip',
@@ -171,15 +170,15 @@
             });
         }
 
-        var showSuccessMessage = function () {
+        var showSuccessMessage = function() {
             swal("Good job!", "You clicked the button!", "success")
         }
 
-        var showWarningMessage = function () {
+        var showWarningMessage = function() {
             swal("Errors!", "Your imaginary file has been deleted.", "warning")
         }
 
-    
+
         /*var show = function () {
             var div_show = $("#div-show")
             $.ajax({
@@ -229,7 +228,7 @@
             })
         }*/
 
-        var showConfirmMessage = function (url) {
+        var showConfirmMessage = function(url) {
             swal({
                 title: "Are you sure?",
                 text: "You will not be able to recover this imaginary file!",
@@ -238,7 +237,7 @@
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Yes, delete it!",
                 closeOnConfirm: false
-            }, function () {
+            }, function() {
                 del(url)
             })
         }
@@ -276,7 +275,7 @@
             })
         }*/
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             /*$(document).on("submit", "#form-add", function (event) {
                 event.preventDefault()

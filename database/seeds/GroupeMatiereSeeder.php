@@ -15,12 +15,12 @@ class GroupeMatiereSeeder extends Seeder
     {
         $groupe_matieres = [
             [
-                "intitule" => "Enseignement Scientifique",
+                "intitule" => "Enseignements Scientifiques",
                 "session_id" => 1
             ],
 
             [
-                "intitule" => "Enseignement Litéraire",
+                "intitule" => "Enseignements Litéraires",
                 "session_id" => 1
             ]
         ];

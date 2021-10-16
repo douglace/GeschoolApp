@@ -1,4 +1,5 @@
-<form action="{{route('front.bulletin_sequence.show')}}" method="POST" target="__black" id="form-next" style="z-index: 100;">
+<form action="{{ route('front.bulletin_sequence.show') }}" method="POST" target="__black" id="form-next"
+    style="z-index: 100;">
     @csrf
     @method('POST')
     <div class="row">
@@ -7,7 +8,7 @@
                 <option>Selectioner une séquence</option>
                 @foreach ($sequences as $sequence)
                     @if ($sequence->etat)
-                    <option value="{{$sequence->sequence_id}}">{{$sequence->intitule}}</option>
+                        <option value="{{ $sequence->sequence_id }}">{{ $sequence->intitule }}</option>
                     @endif
                 @endforeach
             </select>
@@ -17,7 +18,7 @@
                 <option>Selectioner une classe</option>
                 @foreach ($classes as $classe)
                     @if ($classe->etat)
-                    <option value="{{$classe->classe_id}}">{{$classe->intitule}}</option>
+                        <option value="{{ $classe->classe_id }}">{{ $classe->intitule }}</option>
                     @endif
                 @endforeach
             </select>

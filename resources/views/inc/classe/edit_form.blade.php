@@ -1,13 +1,14 @@
 <form id="form-edit">
     @csrf
     @method('POST')
-    <input type="hidden" name="classe_id" value="{{$classe->classe_id}}">
+    <input type="hidden" name="classe_id" value="{{ $classe->classe_id }}">
     <div class="row">
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group form-float">
                     <div class="form-line">
-                        <input type="text" name="intitule" class="form-control" value="{{$classe->intitule}}" required>
+                        <input type="text" name="intitule" class="form-control" value="{{ $classe->intitule }}"
+                            required>
                         <label class="form-label">Intitulé</label>
                     </div>
                 </div>
@@ -18,9 +19,11 @@
                     @foreach ($enseignants as $enseignant)
                         @if ($enseignant->etat == 1)
                             @if ($enseignant->enseignant_id == ($matiere->responsable->enseignant_id ?? 0))
-                                <option value="{{$enseignant->enseignant_id}}" selected>{{$enseignant->getFullName()}}</option>
+                                <option value="{{ $enseignant->enseignant_id }}" selected>
+                                    {{ $enseignant->getFullName() }}</option>
                             @else
-                                <option value="{{$enseignant->enseignant_id}}">{{$enseignant->getFullName()}}</option>
+                                <option value="{{ $enseignant->enseignant_id }}">{{ $enseignant->getFullName() }}
+                                </option>
                             @endif
                         @endif
                     @endforeach
@@ -34,9 +37,9 @@
                     @foreach ($cycles as $cycle)
                         @if ($cycle->etat == 1)
                             @if ($cycle->cycle_id == $classe->cycle->cycle_id)
-                                <option value="{{$cycle->cycle_id}}" selected>{{$cycle->intitule}}</option>
+                                <option value="{{ $cycle->cycle_id }}" selected>{{ $cycle->intitule }}</option>
                             @else
-                                <option value="{{$cycle->cycle_id}}">{{$cycle->intitule}}</option>
+                                <option value="{{ $cycle->cycle_id }}">{{ $cycle->intitule }}</option>
                             @endif
                         @endif
                     @endforeach
@@ -45,15 +48,15 @@
             <div class="col-sm-6">
                 <div class="form-group form-float">
                     <div class="form-line">
-                        <input type="number" name="montant" class="form-control" value="{{$classe->montant}}" required min="1">
+                        <input type="number" name="montant" class="form-control" value="{{ $classe->montant }}"
+                            required min="1">
                         <label class="form-label">Montant</label>
                     </div>
                 </div>
             </div>
         </div>
-    <div class="modal-footer">
-        <button type="submit" class="btn btn-primary waves-effect">MODIFIER</button>
-        <button type="button" class="btn btn-danger waves-effect"
-            data-dismiss="modal">FERMER</button>
-    </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary waves-effect">MODIFIER</button>
+            <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">FERMER</button>
+        </div>
 </form>

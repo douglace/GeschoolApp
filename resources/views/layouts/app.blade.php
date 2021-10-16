@@ -19,7 +19,7 @@
     @include('../layout.css')
 
     @yield('css')
-    
+
 </head>
 
 <body class="login-page">

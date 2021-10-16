@@ -31,15 +31,14 @@
                             <select name="role" required>
                                 <option>Selectioner un role</option>
                                 @foreach ($roles as $role)
-                                    <option value="{{$role->id}}">{{$role->name}}</option>
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect">ENREGISTRER</button>
-                        <button type="button" class="btn btn-danger waves-effect"
-                            data-dismiss="modal">FERMER</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">FERMER</button>
                     </div>
                 </form>
             </div>

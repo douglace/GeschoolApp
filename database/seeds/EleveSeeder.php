@@ -25,7 +25,7 @@ class EleveSeeder extends Seeder
             "tel" => "6532565655",
             "email" => "john@gmail.com",
             "statut" => "Non Redoublant",
-            "maladie" => "",
+            "maladie" => "-",
             "handicap" => "Apte",
             "session_id" => 1,
             "parent_id" => 1,

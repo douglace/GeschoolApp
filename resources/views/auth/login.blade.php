@@ -31,7 +31,7 @@
                         <i class="material-icons">lock</i>
                     </span>
                     <div class="form-line">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="current-password">
                     </div>
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -43,15 +43,15 @@
                     <div class="col-xs-8 p-t-5">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-    
+
                             <label class="form-check-label" for="remember">
-                                {{ __('Remember Me') }}
+                                {{ __('Se souvenir de moi') }}
                             </label>
                         </div>
                     </div>
                     <div class="col-xs-4">
-                        <button type="submit" class="btn btn-block bg-pink waves-effect">
-                            {{ __('Login') }}
+                        <button type="submit" class="btn btn-primary waves-effect">
+                            {{ __('Se connecter') }}
                         </button>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                     <div class="col-xs-6 align-right">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
+                                {{ __('Mot de passe oublié?') }}
                             </a>
                         @endif
                     </div>

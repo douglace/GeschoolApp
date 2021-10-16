@@ -23,7 +23,7 @@
                             <select id="optgroup" name="permission" class="ms" multiple="multiple">
                                 @foreach ($permissions as $permission)
                                     <optgroup label="Liste Les Permissions">
-                                        <option value="{{$permission->id}}">{{$permission->name}}</option>
+                                        <option value="{{ $permission->id }}">{{ $permission->name }}</option>
                                     </optgroup>
                                 @endforeach
                             </select>
@@ -31,8 +31,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect">ENREGISTRER</button>
-                        <button type="button" class="btn btn-danger waves-effect"
-                            data-dismiss="modal">FERMER</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">FERMER</button>
                     </div>
                 </form>
             </div>

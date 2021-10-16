@@ -15,12 +15,12 @@ class CycleSeeder extends Seeder
     {
         $cycles = [
             [
-                "intitule" => "Série Scientifique",
+                "intitule" => "Second Cycle",
                 "session_id" => 1
             ],
 
             [
-                "intitule" => "Série Litteraire",
+                "intitule" => "Premier Cycle",
                 "session_id" => 1
             ]
         ];

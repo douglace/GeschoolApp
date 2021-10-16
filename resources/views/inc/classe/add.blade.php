@@ -22,7 +22,8 @@
                                 <option>Enseignant titulaire</option>
                                 @foreach ($enseignants as $enseignant)
                                     @if ($enseignant->etat)
-                                    <option value="{{$enseignant->enseignant_id}}">{{$enseignant->getFullName()}}</option>
+                                        <option value="{{ $enseignant->enseignant_id }}">
+                                            {{ $enseignant->getFullName() }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -34,7 +35,7 @@
                                 <option>Selectioner une cycle</option>
                                 @foreach ($cycles as $cycle)
                                     @if ($cycle->etat)
-                                    <option value="{{$cycle->cycle_id}}">{{$cycle->intitule}}</option>
+                                        <option value="{{ $cycle->cycle_id }}">{{ $cycle->intitule }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -50,8 +51,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect">ENREGISTRER</button>
-                        <button type="button" class="btn btn-danger waves-effect"
-                            data-dismiss="modal">FERMER</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">FERMER</button>
                     </div>
                 </form>
             </div>

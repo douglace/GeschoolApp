@@ -45,8 +45,10 @@
                         <div class="col-sm-4">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" name="date" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-                                    <label class="form-label">Date De Naissance<em style="color: red;">*</em></label>
+                                    <input type="text" name="date" class="form-control" onfocus="(this.type='date')"
+                                        onblur="(this.type='text')" required>
+                                    <label class="form-label">Date De Naissance<em
+                                            style="color: red;">*</em></label>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +56,8 @@
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     <input type="text" name="lieu" class="form-control" required>
-                                    <label class="form-label">Lieu De Naissance<em style="color: red;">*</em></label>
+                                    <label class="form-label">Lieu De Naissance<em
+                                            style="color: red;">*</em></label>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +84,8 @@
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     <input type="text" name="adresse" class="form-control" required>
-                                    <label class="form-label">Adresse De L'Elève<em style="color: red;">*</em></label>
+                                    <label class="form-label">Adresse De L'Elève<em
+                                            style="color: red;">*</em></label>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +121,7 @@
                                 <option>Choisir la classe<em style="color: red;">*</em></option>
                                 @foreach ($classes as $classe)
                                     @if ($classe->etat)
-                                    <option value="{{$classe->classe_id}}">{{$classe->intitule}}</option>
+                                        <option value="{{ $classe->classe_id }}">{{ $classe->intitule }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -170,7 +174,8 @@
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     <input type="text" name="nom_parent" class="form-control" required>
-                                    <label class="form-label">Nom Et Prénom Du Parent<em style="color: red;">*</em></label>
+                                    <label class="form-label">Nom Et Prénom Du Parent<em
+                                            style="color: red;">*</em></label>
                                 </div>
                             </div>
                         </div>
@@ -187,8 +192,10 @@
                         <div class="col-sm-4">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="number" name="tel_parent" class="form-control" min="600000000" required>
-                                    <label class="form-label">Numéro De Téléphone<em style="color: red;">*</em></label>
+                                    <input type="number" name="tel_parent" class="form-control" min="600000000"
+                                        required>
+                                    <label class="form-label">Numéro De Téléphone<em
+                                            style="color: red;">*</em></label>
                                 </div>
                             </div>
                         </div>
@@ -224,8 +231,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect">ENREGISTRER</button>
-                        <button type="button" class="btn btn-danger waves-effect"
-                            data-dismiss="modal">FERMER</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">FERMER</button>
                     </div>
                 </form>
             </div>

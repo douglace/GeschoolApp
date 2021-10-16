@@ -17,12 +17,12 @@ class SettingSeeder extends Seeder
     {
         $user = [
             "email" => "admin@geschool.com",
-            "name" => "Admin",
+            "name" => "Directeur",
             "password" => Hash::make("admin"),
         ];
 
         $setting = [
-            "annee_id" => 2,
+            "annee_id" => 1,
             "nom" => "GESCHOOL APP"
         ];
 

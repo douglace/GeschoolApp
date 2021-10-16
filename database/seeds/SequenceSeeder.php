@@ -26,7 +26,31 @@ class SequenceSeeder extends Seeder
                 "numero" => 2,
                 "trimestre_id" => 1,
                 "session_id" => 1
-            ]
+            ],
+            [
+                "intitule" => "Séquence 3",
+                "numero" => 3,
+                "trimestre_id" => 2,
+                "session_id" => 1
+            ],
+            [
+                "intitule" => "Séquence 4",
+                "numero" => 4,
+                "trimestre_id" => 2,
+                "session_id" => 1
+            ],
+            [
+                "intitule" => "Séquence 5",
+                "numero" => 5,
+                "trimestre_id" => 3,
+                "session_id" => 1
+            ],
+            [
+                "intitule" => "Séquence 6",
+                "numero" => 6,
+                "trimestre_id" => 3,
+                "session_id" => 1
+            ],
         ];
 
         DB::beginTransaction();

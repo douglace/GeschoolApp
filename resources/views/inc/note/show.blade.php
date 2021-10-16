@@ -1,5 +1,5 @@
 @php
-    $i = 1;
+$i = 1;
 @endphp
 <form id="form-next" style="z-index: 100;">
     @csrf
@@ -10,7 +10,7 @@
                 <option>Selectioner une séquence</option>
                 @foreach ($sequences as $sequence)
                     @if ($sequence->etat)
-                    <option value="{{$sequence->sequence_id}}">{{$sequence->intitule}}</option>
+                        <option value="{{ $sequence->sequence_id }}">{{ $sequence->intitule }}</option>
                     @endif
                 @endforeach
             </select>
@@ -20,13 +20,13 @@
                 <option>Selectioner une classe</option>
                 @foreach ($classes as $classe)
                     @if ($classe->etat)
-                    <option value="{{$classe->classe_id}}">{{$classe->intitule}}</option>
+                        <option value="{{ $classe->classe_id }}">{{ $classe->intitule }}</option>
                     @endif
                 @endforeach
             </select>
         </div>
         <div class="col-md-4 col-sm-12" id="div-select">
-            
+
         </div>
     </div>
     <div class="modal-footer" id="btn-next">

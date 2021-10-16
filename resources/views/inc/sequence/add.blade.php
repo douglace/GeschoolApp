@@ -32,7 +32,8 @@
                                 <option>Selectioner un trimestre</option>
                                 @foreach ($trimestres as $trimestre)
                                     @if ($trimestre->etat)
-                                    <option value="{{$trimestre->trimestre_id}}">{{$trimestre->intitule}}</option>
+                                        <option value="{{ $trimestre->trimestre_id }}">{{ $trimestre->intitule }}
+                                        </option>
                                     @endif
                                 @endforeach
                             </select>
@@ -40,8 +41,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect">ENREGISTRER</button>
-                        <button type="button" class="btn btn-danger waves-effect"
-                            data-dismiss="modal">FERMER</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">FERMER</button>
                     </div>
                 </form>
             </div>

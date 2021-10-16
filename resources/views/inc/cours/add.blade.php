@@ -14,7 +14,7 @@
                                 <option>Selectioner une matiere</option>
                                 @foreach ($matieres as $matiere)
                                     @if ($matiere->etat)
-                                    <option value="{{$matiere->matiere_id}}">{{$matiere->intitule}}</option>
+                                        <option value="{{ $matiere->matiere_id }}">{{ $matiere->intitule }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -24,7 +24,7 @@
                                 <option>Selectioner une classe</option>
                                 @foreach ($classes as $classe)
                                     @if ($classe->etat)
-                                    <option value="{{$classe->classe_id}}">{{$classe->intitule}}</option>
+                                        <option value="{{ $classe->classe_id }}">{{ $classe->intitule }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -36,7 +36,8 @@
                                 <option>Selectioner un(e) enseignant(e)</option>
                                 @foreach ($enseignants as $enseignant)
                                     @if ($enseignant->etat)
-                                    <option value="{{$enseignant->enseignant_id}}">{{$enseignant->getFullName()}}</option>
+                                        <option value="{{ $enseignant->enseignant_id }}">
+                                            {{ $enseignant->getFullName() }}</option>
                                     @endif
                                 @endforeach
                             </select>
@@ -52,8 +53,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect">ENREGISTRER</button>
-                        <button type="button" class="btn btn-danger waves-effect"
-                            data-dismiss="modal">FERMER</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">FERMER</button>
                     </div>
                 </form>
             </div>

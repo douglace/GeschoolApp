@@ -20,7 +20,7 @@ class MenuSeeder extends Seeder
                 "icon" => "home"
             ],
             [
-                "name" => "Academique",
+                "name" => "Academiques",
                 "slug" => "academique",
                 "icon" => "archive"
             ],
@@ -40,12 +40,12 @@ class MenuSeeder extends Seeder
                 "icon" => "person"
             ],
             [
-                "name" => "Eseignants",
+                "name" => "Enseignants",
                 "slug" => "enseignants",
                 "icon" => "person_outline"
             ],
             [
-                "name" => "Emploies",
+                "name" => "Emploies Du Temps",
                 "slug" => "emploies",
                 "icon" => "explicit"
             ],

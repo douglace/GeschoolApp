@@ -17,7 +17,7 @@ class PaiementSeeder extends Seeder
             "montant" => 200000,
             "reste" => 200000,
             "eleve_id" => 1,
-            "annee_id" => 2
+            "annee_id" => 1
         ];
 
         DB::beginTransaction();

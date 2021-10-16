@@ -16,16 +16,14 @@ class ClasseSeeder extends Seeder
         $classes = [
             [
                 "intitule" => "TleC",
-                "niveau" => 7,
-                "cycle_id" => 1,
+                "cycle_id" => 2,
                 "session_id" => 1,
                 "enseignant_id" => 0,
                 "Montant" => 200000
             ],
 
             [
-                "intitule" => "PA",
-                "niveau" => 6,
+                "intitule" => "3eme ESP",
                 "cycle_id" => 1,
                 "session_id" => 1,
                 "enseignant_id" => 0,

@@ -8,7 +8,8 @@
             <div class="modal-body">
                 <form id="form-add">
                     @csrf
-                    <input type="hidden" name="paiement_id" class="form-control" value="{{$eleve->paiement($annee_id)->paiement_id ?? ""}}">
+                    <input type="hidden" name="paiement_id" class="form-control"
+                        value="{{ $eleve->paiement($annee_id)->paiement_id ?? '' }}">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group form-float">
@@ -21,7 +22,8 @@
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" name="date" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                                    <input type="text" name="date" class="form-control" onfocus="(this.type='date')"
+                                        onblur="(this.type='text')" required>
                                     <label class="form-label">Date De Paiement</label>
                                 </div>
                             </div>
@@ -29,8 +31,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect">ENREGISTRER</button>
-                        <button type="button" class="btn btn-danger waves-effect"
-                            data-dismiss="modal">FERMER</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">FERMER</button>
                     </div>
                 </form>
             </div>

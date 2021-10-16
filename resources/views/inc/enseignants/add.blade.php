@@ -45,7 +45,8 @@
                         <div class="col-sm-4">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" name="date" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                                    <input type="text" name="date" class="form-control" onfocus="(this.type='date')"
+                                        onblur="(this.type='text')" required>
                                     <label class="form-label">Date De Naissance</label>
                                 </div>
                             </div>
@@ -116,8 +117,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary waves-effect">ENREGISTRER</button>
-                        <button type="button" class="btn btn-danger waves-effect"
-                            data-dismiss="modal">FERMER</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">FERMER</button>
                     </div>
                 </form>
             </div>

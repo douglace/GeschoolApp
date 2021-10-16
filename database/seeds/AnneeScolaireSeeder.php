@@ -20,18 +20,9 @@ class AnneeScolaireSeeder extends Seeder
 
             $annes = [
                 [
-                   "debut" => 2019,
-                   "fin" => 2020,
-                   "etat" => 1
-                ],
-                [
                    "debut" => 2020,
                    "fin" => 2021
-                ],
-                [
-                    "debut" => 2015,
-                    "fin" => 2016
-                ],
+                ]
            ];
    
            foreach($annes as $anne){
