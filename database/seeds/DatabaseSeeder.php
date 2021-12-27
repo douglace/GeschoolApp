@@ -14,8 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MenuSeeder::class);
         $this->call(MenuItemSeeder::class);
         $this->call(AnneeScolaireSeeder::class);
-        $this->call(SettingSeeder::class);
-        $this->call(PermissionSeeder::class);
         $this->call(SessionSeeder::class);
         $this->call(TrimestreSeeder::class);
         $this->call(SequenceSeeder::class);
@@ -30,5 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(InscriptionSeeder::class);
         $this->call(EnseignantSeeder::class);
         $this->call(CoursSeeder::class);
+        $this->call(SettingSeeder::class);
+        $this->call(PermissionSeeder::class);
     }
 }
