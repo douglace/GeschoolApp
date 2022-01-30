@@ -25,10 +25,8 @@ $i = 1;
             <tr>
                 <td>{{ $i++ }}</td>
                 <td>{{ $enseignant->matricul }}</td>
-                <td><a title="Profile" href="{{ route('front.enseignant.profil', [$enseignant->enseignant_id ?? 0]) }}"
-                        target="_blank" class="link">{{ $enseignant->nom }}</a></td>
-                <td><a title="Profile" href="{{ route('front.enseignant.profil', [$enseignant->enseignant_id ?? 0]) }}"
-                        target="_blank" class="link">{{ $enseignant->prenom }}</a></td>
+                <td><a title="Profile" onclick="show_teacher('{{route('front.enseignant.profil_infos', [$enseignant->enseignant_id ?? 0])}}')" class="link">{{ $enseignant->nom }}</a></td>
+                <td><a title="Profile" onclick="show_teacher('{{route('front.enseignant.profil_infos', [$enseignant->enseignant_id ?? 0])}}')" class="link">{{ $enseignant->prenom }}</a></td>
                 <td>{{ $enseignant->sexe }}</td>
                 <td>{{ $enseignant->date }}</td>
                 <td style="display: block;">

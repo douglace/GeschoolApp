@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
+Route::get('/backoffice', function () {
     return redirect()->route("front.setting.index.session");
 })->name("front");
 
@@ -49,7 +49,7 @@ Route::prefix("admin")->group(function () {
         return view("inc.pages.page", compact("slug"));
     })->name("front.page")->middleware(["auth", "hasSetting"]);
 
-    //Année scolaire
+    //Année scolaires
     Route::get('/annee_scolaire_view/index', [AnneeScolaireController::class, "show"])->name("front.annee.index");
     Route::get('/annee_scolaire_wiew/delete/{id}', [AnneeScolaireController::class, "del"])->name("front.annee.delete");
     Route::get('/annee_scolaire_wiew/status/{id}/{etat}', [AnneeScolaireController::class, "status"])->name("front.annee.status");
@@ -57,7 +57,7 @@ Route::prefix("admin")->group(function () {
     Route::get('/annee_scolaire_wiew/edit/{id}', [AnneeScolaireController::class, "edit"])->name("front.annee.edit");
     Route::post('/annee_scolaire_wiew/update', [AnneeScolaireController::class, "update"])->name("front.annee.update");
 
-    //Session
+    //Sessions
     Route::get('/session_view/index', [SessionController::class, "show"])->name("front.session.index");
     Route::get('/session_view/delete/{id}', [SessionController::class, "del"])->name("front.session.delete");
     Route::get('/session_view/status/{id}/{etat}', [SessionController::class, "status"])->name("front.session.status");
@@ -65,7 +65,7 @@ Route::prefix("admin")->group(function () {
     Route::get('/session_view/edit/{id}', [SessionController::class, "edit"])->name("front.session.edit");
     Route::post('/session_view/update', [SessionController::class, "update"])->name("front.session.update");
 
-    //Trimestre
+    //Trimestres
     Route::get('/trimestre_view/index', [TrimestreController::class, "show"])->name("front.trimestre.index");
     Route::get('/trimestre_view/delete/{id}', [TrimestreController::class, "del"])->name("front.trimestre.delete");
     Route::get('/trimestre_view/status/{id}/{etat}', [TrimestreController::class, "status"])->name("front.trimestre.status");
@@ -73,7 +73,7 @@ Route::prefix("admin")->group(function () {
     Route::get('/trimestre_view/edit/{id}', [TrimestreController::class, "edit"])->name("front.trimestre.edit");
     Route::post('/trimestre_view/update', [TrimestreController::class, "update"])->name("front.trimestre.update");
 
-    //Sequence
+    //Sequences
     Route::get('/sequence_view/index', [SequenceController::class, "show"])->name("front.sequence.index");
     Route::get('/sequence_view/delete/{id}', [SequenceController::class, "del"])->name("front.sequence.delete");
     Route::get('/sequence_view/status/{id}/{etat}', [SequenceController::class, "status"])->name("front.sequence.status");
@@ -81,7 +81,7 @@ Route::prefix("admin")->group(function () {
     Route::get('/sequence_view/edit/{id}', [SequenceController::class, "edit"])->name("front.sequence.edit");
     Route::post('/sequence_view/update', [SequenceController::class, "update"])->name("front.sequence.update");
 
-    //Cycle
+    //Cycles
     Route::get('/cycle_view/index', [cycleController::class, "show"])->name("front.cycle.index");
     Route::get('/cycle_view/delete/{id}', [cycleController::class, "del"])->name("front.cycle.delete");
     Route::get('/cycle_view/status/{id}/{etat}', [cycleController::class, "status"])->name("front.cycle.status");
@@ -89,7 +89,7 @@ Route::prefix("admin")->group(function () {
     Route::get('/cycle_view/edit/{id}', [cycleController::class, "edit"])->name("front.cycle.edit");
     Route::post('/cycle_view/update', [cycleController::class, "update"])->name("front.cycle.update");
 
-    //Classe
+    //Classes
     Route::get('/classe_view/index', [ClasseController::class, "show"])->name("front.classe.index");
     Route::get('/classe_view/profil/{id}', [ClasseController::class, "profil"])->name("front.classe.profil");
     Route::get('/classe_view/delete/{id}', [ClasseController::class, "del"])->name("front.classe.delete");
@@ -98,7 +98,7 @@ Route::prefix("admin")->group(function () {
     Route::get('/classe_view/edit/{id}', [ClasseController::class, "edit"])->name("front.classe.edit");
     Route::post('/classe_view/update', [ClasseController::class, "update"])->name("front.classe.update");
 
-    //Groupe Matière
+    //Groupes Matières
     Route::get('/groupe_matiere_view/index', [GroupeMatiereController::class, "show"])->name("front.groupe_matiere.index");
     Route::get('/groupe_matiere_view/delete/{id}', [GroupeMatiereController::class, "del"])->name("front.groupe_matiere.delete");
     Route::get('/groupe_matiere_view/status/{id}/{etat}', [GroupeMatiereController::class, "status"])->name("front.groupe_matiere.status");
@@ -106,7 +106,7 @@ Route::prefix("admin")->group(function () {
     Route::get('/groupe_matiere_view/edit/{id}', [GroupeMatiereController::class, "edit"])->name("front.groupe_matiere.edit");
     Route::post('/groupe_matiere_view/update', [GroupeMatiereController::class, "update"])->name("front.groupe_matiere.update");
 
-    //Matière
+    //Matières
     Route::get('/matiere_view/index', [MatiereController::class, "show"])->name("front.matiere.index");
     Route::get('/matiere_view/profil/{id}', [MatiereController::class, "profil"])->name("front.matiere.profil");
     Route::get('/matiere_view/delete/{id}', [MatiereController::class, "del"])->name("front.matiere.delete");
@@ -128,9 +128,10 @@ Route::prefix("admin")->group(function () {
     Route::post('/eleves_view/paiement/add', [EleveController::class, "paiementAdd"])->name("front.eleve.paiement.add");
     Route::get('/eleves_view/paiement/delete/{id}', [EleveController::class, "paiementDel"])->name("front.eleve.paiement.delete");
 
-    //Enseignant
+    //Enseignants
     Route::get('/enseignants_view/index', [EnseignantController::class, "show"])->name("front.enseignant.index");
     Route::get('/enseignants_view/profil/{id}', [EnseignantController::class, "profil"])->name("front.enseignant.profil");
+    Route::get('/enseignants_view/profil-infos/{id}', [EnseignantController::class, "profil_infos"])->name("front.enseignant.profil_infos");
     Route::get('/enseignants_view/delete/{id}', [EnseignantController::class, "del"])->name("front.enseignant.delete");
     Route::get('/enseignants_view/status/{id}/{etat}', [EnseignantController::class, "status"])->name("front.enseignant.status");
     Route::post('/enseignants_view/creat', [EnseignantController::class, 'creat'])->name("front.enseignant.creat");
@@ -154,12 +155,13 @@ Route::prefix("admin")->group(function () {
     Route::post('/note_view/edit/', [NoteController::class, "show_form_add"])->name("front.note.edit");
     Route::post('/note_view/update', [NoteController::class, "update"])->name("front.note.update");
 
-    //Bulletin
+    //Bulletins
     Route::get('/bulletins_sequence_view/index', [BulletinController::class, "index_sequence"])->name("front.bulletin_sequence.index");
     Route::post('/bulletins_sequence_view/show/bulletin_sequence', [BulletinController::class, "show_sequence"])->name("front.bulletin_sequence.show");
     Route::get('/bulletins_trimestre_view/index', [BulletinController::class, "index_trimestre"])->name("front.bulletin_trimestre.index");
     Route::post('/bulletins_trimestre_view/show/bulletin_trimestre', [BulletinController::class, "show_trimestre"])->name("front.bulletin_trimestre.show");
 
+    //Roles
     Route::get('/roles_view/roles', [RoleController::class, "index"])->name("front.roles.index");
     Route::get('/roles_view/show/role/{id}', [RoleController::class, "show"])->name("front.roles.show");
     Route::post('/roles_view/store/role', [RoleController::class, "store"])->name("front.roles.store");

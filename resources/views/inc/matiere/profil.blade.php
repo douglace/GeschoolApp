@@ -12,9 +12,7 @@
                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-6">
                             <h2 style="text-transform: uppercase;">
                                 LISTE DES COURS DE {{ $matiere->intitule }} | EFFECTIF: {{ count($matiere->courss) }} |
-                                TITULAIRE: <a title="Profile"
-                                    href="{{ route('front.enseignant.profil', [$matiere->responsable->enseignant_id ?? 0]) }}"
-                                    target="_blank"
+                                TITULAIRE: <a title="Profile" onclick="show_teacher('{{route('front.enseignant.profil_infos', [$matiere->responsable->enseignant_id ?? 0])}}')"
                                     class="link">{{ $matiere->responsable->getFullName() ?? '' }}</a>
                             </h2>
                         </div>

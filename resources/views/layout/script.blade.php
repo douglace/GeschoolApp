@@ -81,3 +81,4 @@
 <script src={{ asset('assets/js/pages/tables/jquery-datatable.js') }}></script>
 <script src={{ asset('assets/js/pages/ui/dialogs.js') }}></script>
 <script src={{ asset('assets/js/pages/examples/sign-in.js') }}></script>
+<script src={{ asset('assets/js/helpers.js') }}></script>

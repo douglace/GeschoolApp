@@ -11,3 +11,16 @@ function hexToRgba(hexCode, opacity) {
     var rgb = "rgba(" + parseInt(matches[1], 16) + "," + parseInt(matches[2], 16) + "," + parseInt(matches[3], 16) + "," + opacity + ")";
     return rgb;
 }
+
+function show_teacher (url){
+    $("#btn-show_infos-teacher").click()
+    let div = $("#show_infos-teacher-modal #body")
+    $.ajax({
+        url: url,
+        success: function(data){
+            if(data.status){
+                div.html(data.data.view)
+            }
+        }
+    })
+}

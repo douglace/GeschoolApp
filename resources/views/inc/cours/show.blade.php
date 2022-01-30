@@ -24,9 +24,8 @@ $i = 1;
                 <td>{{ $i++ }}</td>
                 <td><a title="Profile" href="{{ route('front.matiere.profil', [$cours->matiere->matiere_id ?? 0]) }}"
                         target="_blank" class="link">{{ $cours->matiere->intitule }}</a></td>
-                <td><a title="Profile"
-                        href="{{ route('front.enseignant.profil', [$cours->enseignant->enseignant_id ?? 0]) }}"
-                        target="_blank" class="link">{{ $cours->enseignant->getFullName() }}</a></td>
+                <td><a title="Profile" onclick="show_teacher('{{route('front.enseignant.profil_infos', [$cours->enseignant->enseignant_id ?? 0])}}')"
+                     class="link">{{ $cours->enseignant->getFullName() }}</a></td>
                 <td><a title="Profile" href="{{ route('front.classe.profil', [$cours->classe->classe_id ?? 0]) }}"
                         target="_blank" class="link">{{ $cours->classe->intitule }}</a></td>
                 <td>{{ $cours->coeficient }}</td>

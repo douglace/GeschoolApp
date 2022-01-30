@@ -25,8 +25,7 @@ $i = 1;
                         target="_blank" class="link">{{ $matiere->intitule }}</a></td>
                 <td>{{ $matiere->groupe_matiere->intitule }}</td>
                 <td><a title="Profile"
-                        href="{{ route('front.enseignant.profil', [$matiere->responsable->enseignant_id ?? 0]) }}"
-                        target="_blank" class="link">{{ $matiere->responsable->getFullName() ?? '' }}</a></td>
+                    onclick="show_teacher('{{route('front.enseignant.profil_infos', [$matiere->responsable->enseignant_id ?? 0])}}')" class="link">{{ $matiere->responsable->getFullName() ?? '' }}</a></td>
                 @can('matiere-etat')
                     <td><span
                             class="btn label {{ $matiere->etat ? 'label-success' : 'label-danger' }} font-11 padding-4">{{ $matiere->etat ? 'Activé' : 'Desactivé' }}</span>

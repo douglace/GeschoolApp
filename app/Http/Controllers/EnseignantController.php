@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cours;
 use App\Enseignant;
 use App\Session;
 use Illuminate\Http\Request;
@@ -73,7 +74,7 @@ class EnseignantController extends Controller
         try{
 
             $inscription = $request->input();
-            $inscription["session_id"] = $this->current_session_id($request);  
+            $inscription["session_id"] = $this->current_session_id($request);
             enseignant::create($inscription);
             DB::commit();
             return ges_ajax_response(true);
@@ -124,8 +125,21 @@ class EnseignantController extends Controller
         try {
             $enseignant = enseignant::find((int)$enseignant_id);
             $slug = "enseignants_view";
-            
+
             return view("inc.enseignants.profil", compact("enseignant", "slug"));
+        } catch (\Exception $e) {
+            return ges_ajax_response(false, $e);
+        }
+    }
+
+    public function profil_infos(Request $request, int $enseignant_id){
+        try {
+            $enseignant = enseignant::find((int)$enseignant_id);
+            $cours = Cours::where('enseignant_id', $enseignant_id)->get()->all();
+
+            return ges_ajax_response(true, "", [
+                'view' => view("inc.enseignants.show_infos_view", compact("enseignant", "cours"))->render()
+            ]);
         } catch (\Exception $e) {
             return ges_ajax_response(false, $e);
         }

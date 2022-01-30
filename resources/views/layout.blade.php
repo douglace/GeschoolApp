@@ -41,7 +41,7 @@
         <!-- #END# Right Sidebar -->
     </section>
 
-    <section class="content">
+    <section class="content" id="main_content">
         <div class="container-fluid">
             <div class="block-header">
                 <h2>TABLEAU DE BORD</h2>
@@ -50,6 +50,8 @@
             @yield('content')
 
         </div>
+        @include('inc.enseignants.show_infos')
+        <button id="btn-show_infos-teacher" style="display: none" data-toggle="modal" data-target='#show_infos-teacher-modal'></button>
     </section>
 
     @include('layout.script')

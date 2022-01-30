@@ -169,7 +169,6 @@
                 data: form_data,
                 success: function(data) {
                     if (data.status == true) {
-                        console.log(data.message)
                         show()
                         showSuccessMessage()
                     } else {

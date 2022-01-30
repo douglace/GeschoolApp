@@ -27,9 +27,8 @@ $i = 1;
                         target="_blank" class="link">{{ $classe->intitule }}</a></td>
                 <td>{{ $classe->cycle->intitule }}</td>
                 <td>{{ $classe->montant }}</td>
-                <td><a title="Profile"
-                        href="{{ route('front.enseignant.profil', [$classe->titulaire->enseignant_id ?? 0]) }}"
-                        target="_blank" class="link">{{ $classe->titulaire->getFullName() ?? '' }}</a></td>
+                <td><a title="Profile" onclick="show_teacher('{{route('front.enseignant.profil_infos', [$classe->titulaire->enseignant_id ?? 0])}}')"
+                     class="link">{{ $classe->titulaire->getFullName() ?? '' }}</a></td>
                 <td>{{ count(App\Inscription::getAllEleve($annee_id, $classe->classe_id)) }}</td>
                 @can('classe-etat')
                     <td><span
