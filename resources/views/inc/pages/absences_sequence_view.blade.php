@@ -1,6 +1,6 @@
 @extends('../../layout')
 
-@section('title', 'Geschool-Année Scolaire')
+@section('title', 'Geschool-Absences Séquencielles')
 
 @section('css')
     <style>
@@ -25,7 +25,7 @@
                     <div class="row" style="display: flex; align-items: center;">
                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-6">
                             <h2>
-                                NOTES DES EVALUATIONS
+                                ABSENCES DES ELEVES SEQUENTIELLES
                             </h2>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6" style="display: flex; justify-content: flex-end;">
@@ -57,7 +57,7 @@
         </div>
     </div>
     <!-- #END# Basic Examples -->
-    @include("inc.note.edit")
+    @include("inc.absences.edit")
     <!-- Modal edit -->
 
 @endsection
@@ -95,7 +95,7 @@
         var show = function() {
             var div_show = $("#div-show")
             $.ajax({
-                url: "{{ route('front.note.index') }}",
+                url: "{{ route('front.absences_sequence.index') }}",
                 success: function(data) {
                     if (data.status == true) {
                         div_show.html(data.data.view)
@@ -111,7 +111,7 @@
         var show_form_add = function(form_data) {
             var div_add = $("#div-add")
             $.ajax({
-                url: "{{ route('front.note.show_form_add') }}",
+                url: "{{ route('front.absences.show_form_add_sequence') }}",
                 type: 'POST',
                 data: form_data,
                 success: function(data) {
@@ -131,7 +131,7 @@
 
         var add = function(form_data) {
             $.ajax({
-                url: "{{ route('front.note.creat') }}",
+                url: "{{ route('front.absences_sequence.creat') }}",
                 type: 'POST',
                 data: form_data,
                 success: function(data) {
@@ -160,27 +160,9 @@
             })
         }
 
-        var select_cours = function(form_data) {
-            var div_select = $("#div-select")
-            $.ajax({
-                url: "{{ route('front.note.show_cours') }}",
-                type: 'POST',
-                data: form_data,
-                success: function(data) {
-                    if (data.status == true) {
-                        div_select.html(data.data.view)
-                        $.AdminBSB.input.activate()
-                        $.AdminBSB.select.activate()
-                    } else {
-                        showWarningMessage()
-                    }
-                }
-            })
-        }
-
         var update = function(form_data) {
             $.ajax({
-                url: "{{ route('front.note.creat') }}",
+                url: "{{ route('front.absences_sequence.creat') }}",
                 type: 'POST',
                 data: form_data,
                 success: function(data) {
@@ -211,17 +193,11 @@
                 add(form_data)
             })
 
-            $(document).on("click", "#form-next #div-click", function(event) {
-                event.preventDefault()
-                form_data = $("#form-next").serializeArray()
-                select_cours(form_data)
-            })
-
-            $(document).on("click", "#form-next #div-select [data-original-index]", function(event) {
+            $(document).on("click", "#form-next #div-click [data-original-index]", function(event) {
                 btn_next.show()
             })
 
-            $(document).on("click", "#form-next #div-select [data-original-index='0']", function(event) {
+            $(document).on("click", "#form-next #div-click [data-original-index='0']", function(event) {
                 btn_next.hide()
             })
 

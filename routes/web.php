@@ -163,11 +163,9 @@ Route::prefix("admin")->group(function () {
     Route::get('/absences_trimestre_view/index', [\App\Http\Controllers\AbsenceController::class, "showTrimestre"])->name("front.absences_trimestre.index");
     Route::get('/absences_enseignant_trimestre_view/index', [\App\Http\Controllers\AbsenceController::class, "showEnseignantSequence"])->name("front.absences_enseignant_sequence.index");
     Route::get('/absences_enseignant_trimestre_view/index', [\App\Http\Controllers\AbsenceController::class, "showEnseignantTrimestre"])->name("front.absence_enseignant_trimestre.index");
-    Route::post('/note_view/show/form', [NoteController::class, "show_form_add"])->name("front.note.show_form_add");
-    Route::post('/note_view/show/cours', [NoteController::class, "show_select_cours"])->name("front.note.show_cours");
-    Route::post('/note_view/creat', [NoteController::class, 'creat'])->name("front.note.creat");
-    Route::post('/note_view/edit/', [NoteController::class, "show_form_add"])->name("front.note.edit");
-    Route::post('/note_view/update', [NoteController::class, "update"])->name("front.note.update");
+    Route::post('/absences_sequence_view/show/form', [\App\Http\Controllers\AbsenceController::class, "show_form_add"])->name("front.absences.show_form_add_sequence");
+    Route::post('/absences_sequence_view/creat', [\App\Http\Controllers\AbsenceController::class, 'creat'])->name("front.absences_sequence.creat");
+    Route::post('/absences_sequence_view/edit/', [\App\Http\Controllers\AbsenceController::class, "show_form_add"])->name("front.absences_sequence.edit");
 
     //Bulletins
     Route::get('/bulletins_sequence_view/index', [BulletinController::class, "index_sequence"])->name("front.bulletin_sequence.index");

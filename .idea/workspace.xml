@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6ffe186-e72b-4626-bbd2-7d5aec54a5a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/GeschoolApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GeschoolApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/inc/absences/add.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/inc/absences/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/inc/absences/edit_form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/inc/absences/form_add.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/inc/absences/show_sequence.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Eleve.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Eleve.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Enseignant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Enseignant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BulletinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BulletinController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EleveController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EleveController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/MenuItemSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/MenuItemSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Absence.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Absence.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_02_15_083226_create_absences_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_02_15_083226_create_absences_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inc/pages/absences_sequence_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/pages/absences_sequence_view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,9 +158,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../bin/php/php-7.4.19-Win32-vc15-x64" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/inc" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\GeschoolApp\resources\views\inc" />
+      <recent name="C:\laragon\www\GeschoolApp\resources\views\inc\pages" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -180,7 +184,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644860220921</updated>
-      <workItem from="1644860230974" duration="23060000" />
+      <workItem from="1644860230974" duration="32649000" />
     </task>
     <servers />
   </component>
@@ -188,6 +192,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="413" y="115" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1645101144885">
+      <screen x="0" y="0" width="1366" height="720" />
+    </state>
+    <state x="413" y="115" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.720@0.0.1366.720" timestamp="1645101144885" />
     <state width="522" height="446" key="SwitcherDM" timestamp="1644915636063">
       <screen x="0" y="0" width="1366" height="720" />
     </state>

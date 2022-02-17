@@ -19,17 +19,15 @@ class CreateAbsencesTable extends Migration
             $table->foreign('annee_id')->references('annee_id')->on('annee_scolaires')->onDelete('cascade');
             $table->integer('session_id')->unsigned();
             $table->foreign('session_id')->references('session_id')->on('sessions')->onDelete('cascade');
-            $table->integer('cours_id')->unsigned();
-            $table->foreign('cours_id')->references('cours_id')->on('cours')->onDelete('cascade');
-            $table->integer('eleve_id')->unsigned();
+            $table->integer('eleve_id')->unsigned()->nullable();
             $table->foreign('eleve_id')->references('eleve_id')->on('eleves')->onDelete('cascade');
-            $table->integer('enseignant_id')->unsigned();
+            $table->integer('enseignant_id')->unsigned()->nullable();
             $table->foreign('enseignant_id')->references('enseignant_id')->on('enseignants')->onDelete('cascade');
             $table->integer('sequence_id')->unsigned();
             $table->foreign('sequence_id')->references('sequence_id')->on('sequences')->onDelete('cascade');
+            $table->integer('classe_id')->unsigned();
+            $table->foreign('classe_id')->references('classe_id')->on('classes')->onDelete('cascade');
             $table->integer('nb_heure')->default(0);
-            $table->boolean('absent')->default(false);
-            $table->date('absence_date');
             $table->timestamps();
         });
     }
