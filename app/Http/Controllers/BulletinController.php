@@ -9,6 +9,7 @@ use App\NoteTrimestre;
 use App\Sequence;
 use App\Trimestre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BulletinController extends Controller
 {
@@ -82,6 +83,7 @@ class BulletinController extends Controller
     }
 
     public function show_trimestre(Request $request){
+        DB::beginTransaction();
         try {
             $classe_id = (int)$request->input("classe_id");
             $trimestre_id = (int)$request->input("trimestre_id");
@@ -92,7 +94,7 @@ class BulletinController extends Controller
             $bulletins = BulletinTrimestre::where("trimestre_id", $trimestre_id)->where("classe_id", $classe_id)->where("annee_id", $this->current_annee_id($request))->get()->all();
 
             foreach ($bulletins as $bulletin) {
-                
+
                 foreach ($classe->getAllCoursWithAnnee($bulletin->annee_id) as $cours) {
                     $note_trim = 0;
                     $nbr_seq = 0;
@@ -103,7 +105,9 @@ class BulletinController extends Controller
                             $nbr_seq++;
                         }
                     }
+
                     $note_trimestre = NoteTrimestre::where("trimestre_id", $trimestre_id)->where("eleve_id", $bulletin->eleve_id)->where("cours_id", $cours->cours_id)->first();
+
                     if (is_null($note_trimestre)) {
                         $note_trimestre = new NoteTrimestre();
                         $note_trimestre->trimestre_id = $bulletin->trimestre_id;
@@ -111,7 +115,7 @@ class BulletinController extends Controller
                         $note_trimestre->eleve_id = $bulletin->eleve_id;
                         $note_trimestre->bulletin_trimestre_id = $bulletin->bulletin_trimestre_id;
                     }
-                    
+
                     if ($nbr_seq == 0) {
                         $note_trimestre->note = 0.1;
                     }else {
@@ -122,6 +126,7 @@ class BulletinController extends Controller
             }
 
             $bulletins = BulletinTrimestre::where("trimestre_id", $trimestre_id)->where("classe_id", $classe_id)->where("annee_id", $this->current_annee_id($request))->get()->all();
+
             foreach ($bulletins as $bulletin) {
                 $note_total = 0;
                 $coef_total = 0;
@@ -137,11 +142,14 @@ class BulletinController extends Controller
                 $bulletin->update();
             }
 
+            DB::commit();
+
             $bulletins = BulletinTrimestre::where("trimestre_id", $trimestre_id)->where("classe_id", $classe_id)->where("annee_id", $this->current_annee_id($request))->get()->all();
 
             return view("inc.bulletin_trimestre.bulletinTrimestre", compact("bulletins", "classe", "trimestre"));
 
         } catch (\Exception $e) {
+            DB::rollBack();
             return ges_ajax_response(false, $e);
         }
     }

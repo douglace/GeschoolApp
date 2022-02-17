@@ -21,6 +21,10 @@ class Enseignant extends Model
         return $this->belongsTo(Matiere::class, "enseignant_id");
     }
 
+    public function absences (){
+        return $this->hasMany(Absence::class, 'enseignant_id');
+    }
+
     public function getFullName(){
         return $this->nom." ".$this->prenom;
     }

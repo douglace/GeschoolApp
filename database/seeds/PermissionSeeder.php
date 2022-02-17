@@ -111,9 +111,23 @@ class PermissionSeeder extends Seeder
             'bulletins_sequence_view',
             'bulletins_trimestre_view',
             'bulletins_view',
-
+            //emploies du temps
             "emploies",
+            "emploies_view",
+            "emploies-add",
+            "emploies-delete",
+            "emploies_jour_view",
+            "emploies_heur_view",
+            //absences
             "absences",
+            "absences-add",
+            "absences-edit",
+            "absences_enseignant-add",
+            "absences_enseignant-edit",
+            "absences_sequence_view",
+            "absences_trimestre_view",
+            "absences_enseignant_sequence_view",
+            "absences_enseignant_trimestre_view",
 
             "Parametres"
         ];

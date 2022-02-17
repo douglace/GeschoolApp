@@ -99,16 +99,16 @@ class EleveController extends Controller
 
         try{
             $inscription = $request->input();
-            
-            $inscription["email_parent"] == null ? "-" : $inscription["email_parent"]; 
-            $inscription["maladie"] == null ? "-" : $inscription["maladie"]; 
-            $inscription["tel"] == null ? "0" : $inscription["tel"]; 
-            $inscription["email"] == null ? "-" : $inscription["email"]; 
+
+            $inscription["email_parent"] == null ? "-" : $inscription["email_parent"];
+            $inscription["maladie"] == null ? "-" : $inscription["maladie"];
+            $inscription["tel"] == null ? "0" : $inscription["tel"];
+            $inscription["email"] == null ? "-" : $inscription["email"];
             $parent = ParentEleve::create($inscription);
 
             $inscription["annee_id"] = $this->current_annee_id($request);
             $inscription["parent_id"] = (int)$parent->parent_id;
-            $inscription["session_id"] = $this->current_session_id($request);  
+            $inscription["session_id"] = $this->current_session_id($request);
 
             $eleve = eleve::create($inscription);
             $inscription["eleve_id"] = (int)$eleve->eleve_id;
@@ -121,6 +121,7 @@ class EleveController extends Controller
             $paiement->update();
 
             Bulletin::create($inscription);
+
             foreach(Sequence::all() as $sequence){
                 $inscription["sequence_id"] = $sequence->sequence_id;
                 BulletinSequence::create($inscription);
@@ -194,6 +195,7 @@ class EleveController extends Controller
                 $paiement->update();
 
                 Bulletin::create($new_inscription);
+
                 foreach(Sequence::all() as $sequence){
                     $new_inscription["sequence_id"] = $sequence->sequence_id;
                     BulletinSequence::create($new_inscription);
@@ -279,7 +281,7 @@ class EleveController extends Controller
             $paiement->reste = $paiement->reste - $tranche["montant"];
             $paiement->montant_paye = $paiement->montant - $paiement->reste;
             $paiement->update();
-            $tranche["reste"] = $paiement->reste;  
+            $tranche["reste"] = $paiement->reste;
 
             $tranche = Tranche::create($tranche);
             DB::commit();

@@ -16,6 +16,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TrimestreController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,8 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [WebController::class, 'home'])->name("web");
+
 Route::get('/backoffice', function () {
     return redirect()->route("front.setting.index.session");
 })->name("front");
@@ -149,6 +152,17 @@ Route::prefix("admin")->group(function () {
 
     //Notes
     Route::get('/note_view/index', [NoteController::class, "show"])->name("front.note.index");
+    Route::post('/note_view/show/form', [NoteController::class, "show_form_add"])->name("front.note.show_form_add");
+    Route::post('/note_view/show/cours', [NoteController::class, "show_select_cours"])->name("front.note.show_cours");
+    Route::post('/note_view/creat', [NoteController::class, 'creat'])->name("front.note.creat");
+    Route::post('/note_view/edit/', [NoteController::class, "show_form_add"])->name("front.note.edit");
+    Route::post('/note_view/update', [NoteController::class, "update"])->name("front.note.update");
+
+    //Absences
+    Route::get('/absences_sequence_view/index', [\App\Http\Controllers\AbsenceController::class, "showSequence"])->name("front.absences_sequence.index");
+    Route::get('/absences_trimestre_view/index', [\App\Http\Controllers\AbsenceController::class, "showTrimestre"])->name("front.absences_trimestre.index");
+    Route::get('/absences_enseignant_trimestre_view/index', [\App\Http\Controllers\AbsenceController::class, "showEnseignantSequence"])->name("front.absences_enseignant_sequence.index");
+    Route::get('/absences_enseignant_trimestre_view/index', [\App\Http\Controllers\AbsenceController::class, "showEnseignantTrimestre"])->name("front.absence_enseignant_trimestre.index");
     Route::post('/note_view/show/form', [NoteController::class, "show_form_add"])->name("front.note.show_form_add");
     Route::post('/note_view/show/cours', [NoteController::class, "show_select_cours"])->name("front.note.show_cours");
     Route::post('/note_view/creat', [NoteController::class, 'creat'])->name("front.note.creat");

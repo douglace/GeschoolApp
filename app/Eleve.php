@@ -25,6 +25,10 @@ class Eleve extends Model
         return $this->hasMany(Paiement::class,"eleve_id");
     }
 
+    public function absences(){
+        return $this->hasMany(Absence::class, 'eleve_id');
+    }
+
     public function inscription(int $annee_id){
         return Inscription::where("eleve_id", $this->eleve_id)->where("annee_id", $annee_id)->first();
     }

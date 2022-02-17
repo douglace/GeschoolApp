@@ -75,13 +75,23 @@ class MenuItemSeeder extends Seeder
                 "menu_id" => 7
             ],
             [
-                "name" => "Absence Séquentielle",
-                "slug" => "absence_sequence_view",
+                "name" => "Absences Séquentielle",
+                "slug" => "absences_sequence_view",
                 "menu_id" => 8
             ],
             [
-                "name" => "Absence Trimestrielle",
-                "slug" => "absence_trimestre_view",
+                "name" => "Absences Trimestrielle",
+                "slug" => "absences_trimestre_view",
+                "menu_id" => 8
+            ],
+            [
+                "name" => "Absences Enseignant Séquentielle",
+                "slug" => "absences_enseignant_sequence_view",
+                "menu_id" => 8
+            ],
+            [
+                "name" => "Absences Enseignant Trimestrielle",
+                "slug" => "absences_enseignant_trimestre_view",
                 "menu_id" => 8
             ],
             [
