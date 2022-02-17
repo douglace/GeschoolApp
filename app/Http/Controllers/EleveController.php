@@ -258,6 +258,20 @@ class EleveController extends Controller
         }
     }
 
+    public function profil_infos(Request $request, int $eleve_id){
+        try {
+            $eleve = eleve::find((int)$eleve_id);
+            $annee_id = $this->current_annee_id($request);
+            $slug = "eleves_view";
+
+            return ges_ajax_response(true, '', [
+                'view' => view("inc.eleves.show_infos_view", compact("eleve", "annee_id", "slug"))->render()
+            ]);
+        } catch (\Exception $e) {
+            return ges_ajax_response(false, $e);
+        }
+    }
+
     public function paiement(Request $request, int $eleve_id){
         try {
             $paiement = Paiement::where("eleve_id", (int)$eleve_id)->where("annee_id", $this->current_annee_id($request))->first();

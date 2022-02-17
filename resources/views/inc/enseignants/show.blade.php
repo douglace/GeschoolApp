@@ -5,7 +5,6 @@ $i = 1;
     style="text-align: center;">
     <thead>
         <tr>
-        <tr>
             <th>ID</th>
             <th>MATRICUL</th>
             <th>NOM</th>
@@ -17,7 +16,6 @@ $i = 1;
                 <th>STATUT</th>
             @endcan
             <th style="width: 15%;">ACTIONS</th>
-        </tr>
         </tr>
     </thead>
     <tbody>

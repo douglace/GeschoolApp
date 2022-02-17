@@ -20,7 +20,10 @@ function show_teacher (url){
         success: function(data){
             if(data.status){
                 div.html(data.data.view)
+            }else {
+                console.log(data)
             }
         }
     })
 }
+
