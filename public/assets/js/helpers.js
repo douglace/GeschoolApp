@@ -36,6 +36,7 @@ function show_student (url){
             if(data.status){
                 div.html(data.data.view)
             }else {
+                console.log("error")
                 console.log(data)
             }
         }
