@@ -52,6 +52,8 @@
         </div>
         @include('inc.enseignants.show_infos')
         <button id="btn-show_infos-teacher" style="display: none" data-toggle="modal" data-target='#show_infos-teacher-modal'></button>
+        @include('inc.eleves.show_infos')
+        <button id="btn-show_infos-student" style="display: none" data-toggle="modal" data-target='#show_infos-student-modal'></button>
     </section>
 
     @include('layout.script')

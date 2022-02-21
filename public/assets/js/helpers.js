@@ -27,3 +27,18 @@ function show_teacher (url){
     })
 }
 
+function show_student (url){
+    $("#btn-show_infos-student").click()
+    let div = $("#show_infos-student-modal #body")
+    $.ajax({
+        url: url,
+        success: function(data){
+            if(data.status){
+                div.html(data.data.view)
+            }else {
+                console.log(data)
+            }
+        }
+    })
+}
+

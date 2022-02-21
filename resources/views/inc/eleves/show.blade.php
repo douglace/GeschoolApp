@@ -5,7 +5,6 @@ $i = 1;
     style="text-align: center;">
     <thead>
         <tr>
-        <tr>
             <th>ID</th>
             <th>MATRICUL</th>
             <th>NOM</th>
@@ -18,14 +17,13 @@ $i = 1;
             @endcan
             <th style="width: 15%;">ACTIONS</th>
         </tr>
-        </tr>
     </thead>
     <tbody>
         @foreach ($eleves as $eleve)
             <tr>
                 <td>{{ $i++ }}</td>
                 <td>{{ $eleve->matricul }}</td>
-                <td><a title="Profile" href="{{ route('front.eleve.profil', [$eleve->eleve_id]) }}" target="_blank"
+                <td><a title="Profile"  onclick="show_student('{{ route('front.eleve.profil_infos', [$eleve->eleve_id]) }}')"
                         class="link">{{ $eleve->nom }}</a></td>
                 <td><a title="Profile" href="{{ route('front.eleve.profil', [$eleve->eleve_id]) }}" target="_blank"
                         class="link">{{ $eleve->prenom }}</a></td>
