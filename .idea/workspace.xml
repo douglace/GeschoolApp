@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f6ffe186-e72b-4626-bbd2-7d5aec54a5a1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/eleves/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/eleves/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
