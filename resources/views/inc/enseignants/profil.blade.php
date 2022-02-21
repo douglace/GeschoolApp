@@ -298,4 +298,4 @@
             })*/
         })
     </script>
-@endsection-
+@endsection

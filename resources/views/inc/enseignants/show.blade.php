@@ -5,7 +5,6 @@ $i = 1;
     style="text-align: center;">
     <thead>
         <tr>
-        <tr>
             <th>ID</th>
             <th>MATRICUL</th>
             <th>NOM</th>
@@ -18,13 +17,12 @@ $i = 1;
             @endcan
             <th style="width: 15%;">ACTIONS</th>
         </tr>
-        </tr>
     </thead>
     <tbody>
         @foreach ($enseignants as $enseignant)
             <tr>
                 <td>{{ $i++ }}</td>
-                <td>{{ $enseignant->matricul }}</td>
+                <td><a title="Profile" onclick="show_teacher('{{route('front.enseignant.profil_infos', [$enseignant->enseignant_id ?? 0])}}')" class="link">{{ $enseignant->matricul }}</a></td>
                 <td><a title="Profile" onclick="show_teacher('{{route('front.enseignant.profil_infos', [$enseignant->enseignant_id ?? 0])}}')" class="link">{{ $enseignant->nom }}</a></td>
                 <td><a title="Profile" onclick="show_teacher('{{route('front.enseignant.profil_infos', [$enseignant->enseignant_id ?? 0])}}')" class="link">{{ $enseignant->prenom }}</a></td>
                 <td>{{ $enseignant->sexe }}</td>

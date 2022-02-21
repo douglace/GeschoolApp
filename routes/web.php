@@ -122,6 +122,7 @@ Route::prefix("admin")->group(function () {
     Route::get('/eleves_view/index', [EleveController::class, "show"])->name("front.eleves.index");
     Route::get('/eleves_view/index/classe/{id}', [EleveController::class, "showClasse"])->name("front.eleves.classe.index");
     Route::get('/eleves_view/profil/{id}', [EleveController::class, "profil"])->name("front.eleve.profil");
+    Route::get('/eleves_view/profil-infos/{id}', [EleveController::class, "profil_infos"])->name("front.eleve.profil_infos");
     Route::get('/eleves_view/delete/{id}', [EleveController::class, "del"])->name("front.eleve.delete");
     Route::get('/eleves_view/status/{id}/{etat}', [EleveController::class, "status"])->name("front.eleve.status");
     Route::post('/eleves_view/creat', [EleveController::class, 'creat'])->name("front.eleve.creat");
