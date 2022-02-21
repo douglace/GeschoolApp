@@ -1,5 +1,5 @@
 <div class="modal fade" id="show_infos-student-modal" tabindex="-1" role="dialog" style="display: none;">
-    <div class="modal-dialog" role="document" style="width: 70%;">
+    <div class="modal-dialog" role="document" style="width: 90%;">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="defaultModalLabel">INFORMATIONS GENERALE D'UN(E) ELEVE</h4>

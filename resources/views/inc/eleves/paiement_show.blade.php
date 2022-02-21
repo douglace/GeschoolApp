@@ -45,7 +45,6 @@ $j = 1;
                         <td>{{ $tranche->montant }}</td>
                         <td>{{ $tranche->reste }}</td>
                         <td>{{ $tranche->created_at }}</td>
-                        </td>
                         <td>
                             <a title="Supprimé" id="delete" style="cursor: pointer;"
                                 onclick="showConfirmMessage('{{ route('front.eleve.paiement.delete', [$tranche->tranche_id]) }}')"

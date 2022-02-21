@@ -262,10 +262,11 @@ class EleveController extends Controller
         try {
             $eleve = eleve::find((int)$eleve_id);
             $annee_id = $this->current_annee_id($request);
+            $paiement = Paiement::where("eleve_id", (int)$eleve_id)->where("annee_id", $this->current_annee_id($request))->first();
             $slug = "eleves_view";
 
             return ges_ajax_response(true, '', [
-                'view' => view("inc.eleves.show_infos_view", compact("eleve", "annee_id", "slug"))->render()
+                'view' => view("inc.eleves.show_infos_view", compact("eleve", "annee_id", "slug", "paiement"))->render()
             ]);
         } catch (\Exception $e) {
             return ges_ajax_response(false, $e);
