@@ -13,9 +13,7 @@
                             <h2 style="text-transform: uppercase;">
                                 LISTE DES ELEVES DE LA CLASSE DE {{ $classe->intitule }} | EFFECTIF:
                                 {{ count(App\Inscription::getAllEleve($annee_id, $classe->classe_id)) }} |
-                                TITULAIRE: <a title="Profile"
-                                    href="{{ route('front.enseignant.profil', [$classe->titulaire->enseignant_id ?? 0]) }}"
-                                    target="_blank" class="link">{{ $classe->titulaire->getFullName() ?? '' }}</a>
+                                TITULAIRE: <a title="Profile" onclick="show_teacher('{{ route('front.enseignant.profil_infos', [$classe->titulaire->enseignant_id ?? 0]) }}')" class="link">{{ $classe->titulaire->getFullName() ?? '' }}</a>
                             </h2>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6" style="display: flex; justify-content: flex-end;">

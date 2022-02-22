@@ -17,7 +17,6 @@ $i = 1;
             @endcan
             <th style="width: 15%;">ACTIONS</th>
         </tr>
-        </tr>
     </thead>
     <tbody>
         @foreach ($classes as $classe)

@@ -42,5 +42,20 @@ function show_student (url){
     })
 }
 
+function show_classe (url){
+    $("#btn-show_infos-classe").click()
+    let div = $("#show_infos-classe-modal #body")
+    $.ajax({
+        url: url,
+        success: function(data){
+            if(data.status){
+                div.html(data.data.view)
+            }else {
+                console.log(data)
+            }
+        }
+    })
+}
+
 
 

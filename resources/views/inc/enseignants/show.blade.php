@@ -29,9 +29,7 @@ $i = 1;
                 <td>{{ $enseignant->date }}</td>
                 <td style="display: block;">
                     @foreach ($enseignant->classes as $classe)
-                        <a title="Profile" style="display: block;"
-                            href="{{ route('front.classe.profil', [$classe->classe_id ?? 0]) }}" target="_blank"
-                            class="link">{{ $classe->intitule }}</a>
+                        <a title="Profile" onclick="show_classe('{{ route('front.classe.profil_infos', [$classe->classe_id]) }}')" class="link">{{ $classe->intitule }}</a>
                     @endforeach
                 </td>
                 @can('enseignant-etat')

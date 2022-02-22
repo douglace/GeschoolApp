@@ -95,6 +95,7 @@ Route::prefix("admin")->group(function () {
     //Classes
     Route::get('/classe_view/index', [ClasseController::class, "show"])->name("front.classe.index");
     Route::get('/classe_view/profil/{id}', [ClasseController::class, "profil"])->name("front.classe.profil");
+    Route::get('/classe_view/profil_infos/{id}', [ClasseController::class, "profil_infos"])->name("front.classe.profil_infos");
     Route::get('/classe_view/delete/{id}', [ClasseController::class, "del"])->name("front.classe.delete");
     Route::get('/classe_view/status/{id}/{etat}', [ClasseController::class, "status"])->name("front.classe.status");
     Route::post('/classe_view/creat', [ClasseController::class, 'creat'])->name("front.classe.creat");

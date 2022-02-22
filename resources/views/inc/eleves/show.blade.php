@@ -30,10 +30,7 @@
                    class="link">{{ $eleve->prenom }}</a></td>
             <td>{{ $eleve->sexe }}</td>
             <td>{{ $eleve->date }}</td>
-            <td><a title="Profile"
-                   href="{{ route('front.classe.profil', [$eleve->inscription($annee_id)->classe->classe_id ?? 0]) }}"
-                   target="_blank"
-                   class="link">{{ $eleve->inscription($annee_id)->classe->intitule ?? 'Non Inscrit' }}</a>
+            <td><a title="Profile" onclick="show_classe('{{ route('front.classe.profil_infos', [$eleve->inscription($annee_id)->classe->classe_id ?? 0]) }}')" class="link">{{ $eleve->inscription($annee_id)->classe->intitule ?? 'Non Inscrit' }}</a>
             </td>
             @can('eleve-etat')
                 <td><span

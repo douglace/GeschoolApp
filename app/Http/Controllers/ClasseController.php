@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classe;
 use App\cycle;
+use App\Inscription;
 use App\Session;
 use App\Enseignant;
 use Illuminate\Http\Request;
@@ -124,6 +125,21 @@ class ClasseController extends Controller
             $classe = Classe::find($classe_id);
 
             return view("inc.classe.profil", compact("classes", "annee_id", "slug", "classe"));
+        } catch (\Exception $e) {
+            return ges_ajax_response(false, $e);
+        }
+    }
+
+    public function profil_infos(Request $request, int $classe_id){
+        try {
+            $annee_id = $this->current_annee_id($request);
+            $slug = "classe_view";
+            $classe = Classe::find($classe_id);
+            $eleves = Inscription::getAllEleve($annee_id, $classe_id);
+
+            return ges_ajax_response(true, '', [
+                'view' => view("inc.classe.show_infos_view", compact("annee_id", "slug", "classe", "eleves"))->render()
+            ]);
         } catch (\Exception $e) {
             return ges_ajax_response(false, $e);
         }

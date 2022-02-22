@@ -16,7 +16,6 @@ $i = 1;
             @endcan
             <th style="width: 15%;">ACTIONS</th>
         </tr>
-        </tr>
     </thead>
     <tbody>
         @foreach ($courss as $cours)
@@ -26,8 +25,7 @@ $i = 1;
                         target="_blank" class="link">{{ $cours->matiere->intitule }}</a></td>
                 <td><a title="Profile" onclick="show_teacher('{{route('front.enseignant.profil_infos', [$cours->enseignant->enseignant_id ?? 0])}}')"
                      class="link">{{ $cours->enseignant->getFullName() }}</a></td>
-                <td><a title="Profile" href="{{ route('front.classe.profil', [$cours->classe->classe_id ?? 0]) }}"
-                        target="_blank" class="link">{{ $cours->classe->intitule }}</a></td>
+                <td><a title="Profile" onclick="show_classe('{{ route('front.classe.profil_infos', [$cours->classe->classe_id ?? 0]) }}')" class="link">{{ $cours->classe->intitule }}</a></td>
                 <td>{{ $cours->coeficient }}</td>
                 @can('cours-etat')
                     <td><span
