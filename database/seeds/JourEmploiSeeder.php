@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class JourSeeder extends Seeder
+class JourEmploiSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,7 @@ class JourSeeder extends Seeder
      */
     public function run()
     {
+        //
         $jours = [
             [
                 "intitule" => "LUNDI",
