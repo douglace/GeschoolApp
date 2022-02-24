@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class JourEmploiSeeder extends Seeder
 {
@@ -64,17 +65,17 @@ class JourEmploiSeeder extends Seeder
             ],
         ];
 
-        \Illuminate\Support\Facades\DB::beginTransaction();
+        DB::beginTransaction();
         try {
 
             foreach ($jours as $jour){
                 \App\Jour::create($jour);
             }
 
-            \Illuminate\Support\Facades\DB::commit();
+            DB::commit();
 
         }catch (\Exception $e){
-            \Illuminate\Support\Facades\DB::rollBack();
+            DB::rollBack();
         }
     }
 }
