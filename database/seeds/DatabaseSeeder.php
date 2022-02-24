@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CoursSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(PermissionSeeder::class);
+        $this->call(JourSeeder::class);
     }
 }

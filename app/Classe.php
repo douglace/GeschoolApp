@@ -28,4 +28,8 @@ class Classe extends Model
     public function getAllCoursWithAnnee(int $annee_id){
         return Cours::where("annee_id", $annee_id)->where("classe_id", $this->classe_id)->get()->all();
     }
+
+    public function emplois (){
+        return $this->hasMany(Emploi::class, 'emploi_id');
+    }
 }
