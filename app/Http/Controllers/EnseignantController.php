@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cours;
 use App\Enseignant;
+use App\Jour;
 use App\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -136,9 +137,11 @@ class EnseignantController extends Controller
         try {
             $enseignant = enseignant::find((int)$enseignant_id);
             $cours = Cours::where('enseignant_id', $enseignant_id)->get()->all();
+            $jours = Jour::where('session_id', $this->current_session_id($request))->get()->all();
+            $annee_id = $this->current_annee_id($request);
 
             return ges_ajax_response(true, "", [
-                'view' => view("inc.enseignants.show_infos_view", compact("enseignant", "cours"))->render()
+                'view' => view("inc.enseignants.show_infos_view", compact("enseignant", "cours", "jours", "annee_id"))->render()
             ]);
         } catch (\Exception $e) {
             return ges_ajax_response(false, $e);

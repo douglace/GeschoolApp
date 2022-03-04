@@ -116,8 +116,7 @@ class PermissionSeeder extends Seeder
             "emploies_view",
             "emploies-add",
             "emploies-delete",
-            "emploies_jour_view",
-            "emploies_heur_view",
+            "emploies-edit",
             //absences
             "absences",
             "absences-add",

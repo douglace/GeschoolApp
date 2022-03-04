@@ -20,11 +20,11 @@ class AnneeScolaireSeeder extends Seeder
 
             $annes = [
                 [
-                   "debut" => 2020,
-                   "fin" => 2021
+                   "debut" => 2021,
+                   "fin" => 2022
                 ]
            ];
-   
+
            foreach($annes as $anne){
                AnneeScolaire::create($anne);
            }

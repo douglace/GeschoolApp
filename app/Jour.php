@@ -14,6 +14,6 @@ class Jour extends Model
     }
 
     public function emplois (){
-        return $this->hasMany(Emploi::class, 'emploi_id');
+        return $this->hasMany(Emploi::class, 'jour_id');
     }
 }

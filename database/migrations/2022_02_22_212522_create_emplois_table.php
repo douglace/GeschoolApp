@@ -25,7 +25,7 @@ class CreateEmploisTable extends Migration
             $table->foreign('classe_id')->references('classe_id')->on('classes')->onDelete('cascade');
             $table->integer('jour_id')->unsigned();
             $table->foreign('jour_id')->references('jour_id')->on('jours')->onDelete('cascade');
-            $table->integer('cours_id')->unsigned();
+            $table->integer('cours_id')->unsigned()->nullable();
             $table->foreign('cours_id')->references('cours_id')->on('cours')->onDelete('cascade');
             $table->timestamps();
         });

@@ -1,5 +1,5 @@
 <div class="modal fade" id="show_infos-classe-modal" tabindex="-1" role="dialog" style="display: none;">
-    <div class="modal-dialog" role="document" style="width: 60%;">
+    <div class="modal-dialog" role="document" style="width: 90%;">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="defaultModalLabel">INFORMATIONS GENERALE D'UNE CLASSE</h4>

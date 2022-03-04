@@ -22,8 +22,7 @@ $i = 1;
         @foreach ($classes as $classe)
             <tr>
                 <td>{{ $i++ }}</td>
-                <td><a title="Profile" href="{{ route('front.classe.profil', [$classe->classe_id ?? 0]) }}"
-                        target="_blank" class="link">{{ $classe->intitule }}</a></td>
+                <td><a title="Profile" onclick="show_classe('{{ route('front.classe.profil_infos', [$classe->classe_id ?? 0]) }}')" class="link">{{ $classe->intitule }}</a></td>
                 <td>{{ $classe->cycle->intitule }}</td>
                 <td>{{ $classe->montant }}</td>
                 <td><a title="Profile" onclick="show_teacher('{{route('front.enseignant.profil_infos', [$classe->titulaire->enseignant_id ?? 0])}}')"

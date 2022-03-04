@@ -7,6 +7,7 @@ use App\Http\Controllers\CoursController;
 use App\Http\Controllers\EleveController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\CycleController;
+use App\Http\Controllers\EmploiesController;
 use App\Http\Controllers\GroupeMatiereController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\NoteController;
@@ -168,6 +169,14 @@ Route::prefix("admin")->group(function () {
     Route::post('/absences_sequence_view/show/form', [\App\Http\Controllers\AbsenceController::class, "show_form_add"])->name("front.absences.show_form_add_sequence");
     Route::post('/absences_sequence_view/creat', [\App\Http\Controllers\AbsenceController::class, 'creat'])->name("front.absences_sequence.creat");
     Route::post('/absences_sequence_view/edit/', [\App\Http\Controllers\AbsenceController::class, "show_form_add"])->name("front.absences_sequence.edit");
+
+    //Emploies
+    Route::get('/emploies_view/index', [EmploiesController::class, "show"])->name("front.emploies.index");
+    Route::post('/emploies_view/index-second', [EmploiesController::class, "show_second"])->name("front.emploies.index.second");
+    Route::post('/emploies_view/creat', [EmploiesController::class, 'creat'])->name("front.emploies.creat");
+    Route::get('/emploies_view/edit/{id}', [EmploiesController::class, "edit"])->name("front.emploies.edit");
+    Route::post('/emploies_view/update', [EmploiesController::class, "update"])->name("front.emploies.update");
+    Route::get('/emploies_view/delete/{id}', [EmploiesController::class, "delete"])->name("front.emploies.delete");
 
     //Bulletins
     Route::get('/bulletins_sequence_view/index', [BulletinController::class, "index_sequence"])->name("front.bulletin_sequence.index");

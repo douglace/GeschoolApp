@@ -7,6 +7,7 @@ use App\cycle;
 use App\Inscription;
 use App\Session;
 use App\Enseignant;
+use App\Jour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -136,9 +137,10 @@ class ClasseController extends Controller
             $slug = "classe_view";
             $classe = Classe::find($classe_id);
             $eleves = Inscription::getAllEleve($annee_id, $classe_id);
+            $jours = Jour::where('session_id', $this->current_session_id($request))->get()->all();
 
             return ges_ajax_response(true, '', [
-                'view' => view("inc.classe.show_infos_view", compact("annee_id", "slug", "classe", "eleves"))->render()
+                'view' => view("inc.classe.show_infos_view", compact("annee_id", "slug", "classe", "eleves", "jours"))->render()
             ]);
         } catch (\Exception $e) {
             return ges_ajax_response(false, $e);
