@@ -17,7 +17,13 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
     <link rel="stylesheet" href={{asset('assets/customs/css/style.css')}}>
+    <link rel="stylesheet" href={{asset('assets/gallery/gallery.css')}}>
+
 
 </head>
 
@@ -30,6 +36,14 @@
     </main>
 
     @include("layouts.footer")
+    
+    <script src={{asset('assets/gallery/gallery.js')}}></script>
+    <script>
+        JavaScriptGallery.setGalleryTransition("slideAndZoom");
+        JavaScriptGallery.enableExtraButtons();
+        JavaScriptGallery.enableDoubleClick();
+        JavaScriptGallery.initGallery();
+    </script>
 
 </body>
 
