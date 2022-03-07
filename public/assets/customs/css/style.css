@@ -199,12 +199,24 @@ a {
     margin: 30px 0;
 }
 
+.footer .top .col.row{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    width: calc((100% * 2)/3);
+}
+
 .footer .top .col {
     width: calc(100% / 3);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.footer .top .col.row .col{
+    width: 50%;
 }
 
 .footer .top .contact,
@@ -240,7 +252,7 @@ a {
     align-items: center;
 }
 
-.top .contact .content .col {
+.top .col.row .contact .content .col {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -304,7 +316,7 @@ a {
     margin-top: 45px;
 }
 
-.top .newsletter .content .col{
+.top .col.row .newsletter .content .col{
     width: 100%;
     display: block;
 }
@@ -752,8 +764,19 @@ a {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    overflow: hidden;
+}
+
+.gallerys .Gallery img{
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.gallerys .Gallery img:hover{
+    cursor: pointer;
 }
 
 /*################ End About #################*/

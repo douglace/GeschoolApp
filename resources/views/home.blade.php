@@ -10,17 +10,17 @@
             <img class="about-card-img" src={{asset("assets/images/slide-1.jpg")}} alt="About">
         </div>
         <div class="about-card about-card-right">
-            <h3 class="about-card-title"><span class="title-about">About</span> Our University</h3>
+            <h3 class="about-card-title"><span class="title-about">À Propos De</span> Notre Ecole</h3>
             <p class="about-card-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore officiis assumenda harum nobis dignissimos totam doloremque eius, esse odit minima, quisquam, a doloribus vel id enim quis optio nostrum aspernatur!
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto magnam, quos officia ducimus laudantium eveniet eaque sequi dignissimos nesciunt blanditiis! Illo facilis assumenda in molestiae dolorem sequi quibusdam quo labore.
             </p>
-            <a href="" class="about-card-link card-link">Learn more <i class="bi bi-arrow-right"></i></a>
+            <a href="" class="about-card-link card-link">En savoir plus <i class="bi bi-arrow-right"></i></a>
         </div>
     </section>
 
     <section class="feacture">
         <div class="feacture-card feacture-card-left">
-            <h3 class="feacture-card-title">Our<span class="feacture-title"> Feactures</span></h3>
+            <h3 class="feacture-card-title">Nos<span class="feacture-title"> Spécificités</span></h3>
             <p class="feacture-card-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut officia ab corporis? Vero, officia blanditiis. Non temporibus neque saepe, nostrum cupiditate accusamus, autem at odio beatae, deleniti dolor sit.</p>
             <div class="feacture-card-row">
                 <div class="feacture-card-col">
@@ -68,7 +68,7 @@
 
     <section class="events">
         <div class="event-title">
-            <h3>Events</h3>
+            <h3>Événements</h3>
         </div>
         <div class="event-row-container">
             <article class="event-card">
@@ -140,7 +140,7 @@
                 </a>
             </article>
         </div>
-        <div class="event-row-link"><a href="" class="card-link">View events calander <i class="bi bi-arrow-right"></i></a></div>
+        <div class="event-row-link"><a href="" class="card-link">Voir le calendrier des événements <i class="bi bi-arrow-right"></i></a></div>
     </section>
 
     <section class="gallerys">
@@ -161,7 +161,7 @@
 
     <section class="news">
         <div class="news-title">
-            <h3>Last News</h3>
+            <h3>Dernières Actualités</h3>
         </div>
         <div class="news-row-container">
             <article class="news-card">
@@ -217,7 +217,7 @@
                 </a>
             </article>
         </div>
-        <div class="news-row-link"><a href="" class="card-link">View All News post <i class="bi bi-arrow-right"></i></a></div>
+        <div class="news-row-link"><a href="" class="card-link">Voir toutes les actualités <i class="bi bi-arrow-right"></i></a></div>
     </section>
 
 @endsection
