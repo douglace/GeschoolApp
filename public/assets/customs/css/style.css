@@ -35,6 +35,7 @@ a {
     display: flex;
     justify-content: start;
     align-items: center;
+    height: 100%;
 }
 
 .top-bar .top-bar-left .col,
@@ -165,6 +166,43 @@ a {
     display: block;
     opacity: 0;
     animation: hover_link 0.3s both;
+}
+
+.header .login{
+    position: relative;
+    height: 100%;
+}
+
+.header .login:hover .login-nav-ul{
+    display: block;
+}
+
+.header .login-nav-ul{
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: -20%;
+    background-color: #0d2d62;
+    padding: 5px;
+    padding-right: 10px;
+    width: 145%;
+}
+
+.header .login-nav-ul .login-nav-li{
+    margin-bottom: 5px;
+}
+
+.header .login-nav-ul .login-nav-li a,
+.header .login-nav-ul .login-nav-li a i{
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.header .login-nav-ul .login-nav-li a:hover{
+    color: #ffff;
+}
+
+.header .login-nav-ul .login-nav-li a:hover i{
+    color: #ffff;
 }
 
 @keyframes hover_link {

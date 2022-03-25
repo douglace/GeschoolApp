@@ -16,12 +16,12 @@ class RoleController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
-        $this->middleware('permission:role-create', ['only' => ['create','store']]);
-        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:role-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:role-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +39,7 @@ class RoleController extends Controller
             return ges_ajax_response(0, $e);
         }
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,9 +48,9 @@ class RoleController extends Controller
     public function create()
     {
         $permission = Permission::get();
-        return view('roles.create',compact('permission'));
+        return view('roles.create', compact('permission'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -61,13 +61,13 @@ class RoleController extends Controller
     {
         DB::beginTransaction();
 
-        try{
+        try {
             $role = Role::create(['name' => $request->input('name')]);
             $perms = explode(",", $request->input('permissions'));
             $role->syncPermissions($perms);
             DB::commit();
             return ges_ajax_response(1);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
             return ges_ajax_response(false, $e);
         }
@@ -82,18 +82,25 @@ class RoleController extends Controller
     {
         try {
             $role = Role::find($id);
-            $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
-                ->where("role_has_permissions.role_id",$id)
+            $permissions = Permission::get()->all();
+            $rolePermissions_array = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=", "permissions.id")
+                ->where("role_has_permissions.role_id", $id)
                 ->get()->all();
-                
+
+            $rolePermissions = array();
+
+            foreach ($rolePermissions_array as $permission) {
+                $rolePermissions[] = $permission->id;
+            }
+
             return ges_ajax_response(true, "", [
-                "view" => view("inc.roles.edit_form", compact("role", "rolePermissions"))->render()
+                "view" => view("inc.roles.edit_form", compact("role", "rolePermissions", "permissions"))->render()
             ]);
         } catch (\Exception $e) {
             return ges_ajax_response(0, $e);
         }
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -104,13 +111,13 @@ class RoleController extends Controller
     {
         $role = Role::find($id);
         $permission = Permission::get();
-        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
-            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
+            ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
-    
-        return view('roles.edit',compact('role','permission','rolePermissions'));
+
+        return view('roles.edit', compact('role', 'permission', 'rolePermissions'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -118,21 +125,39 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
-            'permission' => 'required',
+            'permissions' => 'required',
         ]);
-    
-        $role = Role::find($id);
-        $role->name = $request->input('name');
-        $role->save();
-    
-        $role->syncPermissions($request->input('permission'));
-    
-        return redirect()->route('roles.index')
-                        ->with('success','Role updated successfully');
+
+        DB::beginTransaction();
+        try {
+
+            $id = (int)$request->input('id_role');
+
+            $role = Role::find($id);
+            $role->name = $request->input('intitule');
+            $role->save();
+
+            $permissions = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=", "permissions.id")
+                ->where("role_has_permissions.role_id", $id)
+                ->get()->all();
+
+            foreach($permissions as $permission){
+                $permission->removeRole($role);
+            }
+
+            $perms = explode(",", $request->input('permissions'));
+            $role->syncPermissions($perms);
+
+            DB::commit();
+            return ges_ajax_response(true);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            ges_ajax_response(false, $e);
+        }
     }
     /**
      * Remove the specified resource from storage.
@@ -144,8 +169,8 @@ class RoleController extends Controller
     {
         DB::beginTransaction();
         try {
-            
-            DB::table("roles")->where('id',$id)->delete();
+
+            DB::table("roles")->where('id', $id)->delete();
             DB::commit();
 
             return ges_ajax_response(true);

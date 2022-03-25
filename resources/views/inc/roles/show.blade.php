@@ -22,7 +22,7 @@ $i = 1;
                         style="display: none;"><i class="material-icons">edit</i></a>
                     @can('role-edit')
                         <a title="Edité" href="{{ route('front.roles.show', [$role->id]) }}" id="edit"
-                            style="cursor: pointer;" class="link"><i class="material-icons">content_paste</i></a>
+                            style="cursor: pointer;" class="link"><i class="material-icons">edit</i></a>
                     @endcan
                     @can('role-delete')
                         <a title="Supprimé" id="delete" style="cursor: pointer;"

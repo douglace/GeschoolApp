@@ -187,6 +187,7 @@ Route::prefix("admin")->group(function () {
     //Roles
     Route::get('/roles_view/roles', [RoleController::class, "index"])->name("front.roles.index");
     Route::get('/roles_view/show/role/{id}', [RoleController::class, "show"])->name("front.roles.show");
+    Route::post('/roles_view/update/role', [RoleController::class, "update"])->name("front.roles.update");
     Route::post('/roles_view/store/role', [RoleController::class, "store"])->name("front.roles.store");
     Route::get('/roles_view/delete/role/{id}', [RoleController::class, "delete"])->name("front.roles.delete");
     Route::get('/users_view/index', [UserController::class, "index"])->name("front.users.index");

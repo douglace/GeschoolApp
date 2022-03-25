@@ -15,10 +15,17 @@
             </div>
         </div>
         <div class="top-bar-right">
-            <div class="col">
-                <i class="bi bi-box-arrow-in-right"></i>
-                <a href="/admin">Login</a>
-            </div>
+            <nav class="col login">
+                <a href="/"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                <ul class="login-nav-ul">
+                    <li class="login-nav-li">
+                        <a href="/admin"><i class="bi bi-person-fill"></i> Elève</a>
+                    </li>
+                    <li class="login-nav-li">
+                        <a href="/admin"><i class="bi bi-person-workspace"></i> Enseignant</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 

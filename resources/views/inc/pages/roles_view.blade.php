@@ -155,7 +155,7 @@
 
         var update = function(form_data) {
             $.ajax({
-                url: "{{ route('front.classe.update') }}",
+                url: "{{ route('front.roles.update') }}",
                 type: 'POST',
                 data: form_data,
                 success: function(data) {
