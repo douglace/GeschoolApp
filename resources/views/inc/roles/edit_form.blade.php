@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <select id="optgroup1" name="permissions" class="ms" multiple="multiple">
+            <select id="optgroup1" name="permission" class="ms" multiple="multiple">
                 @foreach ($permissions as $permission)
                     <optgroup label="Liste Les Permissions">
                         <option value="{{ $permission->id }}" {{in_array($permission->id, $rolePermissions) ? 'selected' : null}}>{{ $permission->name }}</option>

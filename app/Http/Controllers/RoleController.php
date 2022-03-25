@@ -127,11 +127,6 @@ class RoleController extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'permissions' => 'required',
-        ]);
-
         DB::beginTransaction();
         try {
 

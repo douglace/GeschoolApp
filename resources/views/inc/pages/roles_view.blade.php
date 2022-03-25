@@ -159,6 +159,7 @@
                 type: 'POST',
                 data: form_data,
                 success: function(data) {
+                    console.log(data)
                     if (data.status == true) {
                         show()
                         showSuccessMessage()
@@ -201,6 +202,16 @@
                 event.preventDefault()
                 form_data = $(this).serializeArray()
                 $("#form-edit [data-dismiss='modal']").click()
+                let perms = []
+                form_data.map(perm => {
+                    if (perm.name == "permission") {
+                        perms.push(perm.value)
+                    }
+                })
+                form_data.push({
+                    name: "permissions",
+                    value: perms
+                })
                 update(form_data)
             })
         })

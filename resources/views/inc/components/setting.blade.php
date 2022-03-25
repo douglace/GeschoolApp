@@ -97,9 +97,11 @@
                             <a href="{{ route('front.page', ['roles_view']) }}">Roles</a>
                         </li>
                     @endcan
-                    <li>
-                        <a href="{{ route('front.page', ['users_view']) }}">Utilisateurs</a>
-                    </li>
+                    @can('user-list')
+                        <li>
+                            <a href="{{ route('front.page', ['users_view']) }}">Utilisateurs</a>
+                        </li>
+                    @endcan
                 </ul>
             </div>
         </div>

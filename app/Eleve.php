@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Eleve extends Model
 {
     protected $primaryKey = "eleve_id";
-    protected $fillable = ["matricul","nom","prenom","date","lieu","sexe", "nationalite", "adresse", "tel", "email","statut","maladie","handicap","session_id","parent_id",];
+    protected $fillable = ["matricul","nom","prenom","date","lieu","sexe", "nationalite", "adresse", "tel", "email","statut","maladie","handicap","session_id","parent_id", "user_id"];
 
     public function parent(){
         return $this->belongsTo(ParentEleve::class, "parent_id");
@@ -31,6 +31,10 @@ class Eleve extends Model
 
     public function inscription(int $annee_id){
         return Inscription::where("eleve_id", $this->eleve_id)->where("annee_id", $annee_id)->first();
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function getFullName(){

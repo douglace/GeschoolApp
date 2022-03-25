@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Enseignant extends Model
 {
     protected $primaryKey = "enseignant_id";
-    protected $fillable = ["matricul","nom","prenom","date","lieu","sexe", "nationalite", "adresse", "tel", "email","diplome","session_id"];
+    protected $fillable = ["matricul","nom","prenom","date","lieu","sexe", "nationalite", "adresse", "tel", "email","diplome","session_id", "user_id"];
 
     public function session(){
         return $this->belongsTo(Session::class,"session_id");
@@ -23,6 +23,10 @@ class Enseignant extends Model
 
     public function absences (){
         return $this->hasMany(Absence::class, 'enseignant_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function getFullName(){

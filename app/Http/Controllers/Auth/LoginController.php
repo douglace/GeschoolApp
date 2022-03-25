@@ -24,6 +24,18 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showLoginForm(Request $request)
+    {
+        $admin = (int)$request->input('admin') == 1 ? true : false;
+        return $admin;
+        return view('auth.login', compact("admin"));
+    }
+
+    /**
      * Where to redirect users after login.
      *
      * @var string

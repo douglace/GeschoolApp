@@ -29,6 +29,8 @@ class CreateEnseignantsTable extends Migration
             $table->string("email")->unique();
             $table->string("diplome");
             $table->boolean("etat")->default(1);
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
