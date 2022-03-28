@@ -18,7 +18,7 @@ class SettingSeeder extends Seeder
         $user = [
             "email" => "admin@geschool.com",
             "name" => "Directeur",
-            "password" => Hash::make("admin"),
+            "password" => Hash::make("0000"),
         ];
 
         $setting = [
@@ -34,6 +34,6 @@ class SettingSeeder extends Seeder
         } catch (\Exception $e) {
            DB::rollBack();
         }
-        
+
     }
 }

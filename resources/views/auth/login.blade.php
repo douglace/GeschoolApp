@@ -17,7 +17,7 @@
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
                         </span>
-                        @if (isset($admin) || $admin == true)
+                        @if ($admin == true)
                             <div class="form-line">
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
                                     value="{{ old('email') }}" required autocomplete="email" autofocus>

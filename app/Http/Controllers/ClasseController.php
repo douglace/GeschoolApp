@@ -138,7 +138,7 @@ class ClasseController extends Controller
             $classe = Classe::find($classe_id);
             $eleves = Inscription::getAllEleve($annee_id, $classe_id);
             $jours = Jour::where('session_id', $this->current_session_id($request))->get()->all();
-
+            
             return ges_ajax_response(true, '', [
                 'view' => view("inc.classe.show_infos_view", compact("annee_id", "slug", "classe", "eleves", "jours"))->render()
             ]);

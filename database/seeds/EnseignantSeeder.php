@@ -1,8 +1,11 @@
 <?php
 
 use App\Enseignant;
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class EnseignantSeeder extends Seeder
 {
@@ -27,12 +30,26 @@ class EnseignantSeeder extends Seeder
             "diplome" => "LICENCE",
             "session_id" => 1,
         ];
-        
+
+        $users = [
+            'name' => $enseignant['nom'].' '.$enseignant['prenom'],
+            'password' => Hash::make('0000'),
+            'email' => $enseignant['matricul']
+        ];
+
         DB::beginTransaction();
         try {
 
-            Enseignant::create($enseignant);
+            $user = User::create($users);
+
+            $role = Role::create(['name' => 'Enseignant']);
+
+            $user->assignRole([$role->id]);
+
+            $enseignant["user_id"] = $user->id;
             
+            Enseignant::create($enseignant);
+
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();

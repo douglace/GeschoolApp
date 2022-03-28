@@ -19,10 +19,10 @@
                 <a href="/"><i class="bi bi-box-arrow-in-right"></i> Login</a>
                 <ul class="login-nav-ul">
                     <li class="login-nav-li">
-                        <a href="/admin"><i class="bi bi-person-fill"></i> Elève</a>
+                        <a href="/login?admin=1"><i class="bi bi-person-fill"></i> Elève</a>
                     </li>
                     <li class="login-nav-li">
-                        <a href="/admin"><i class="bi bi-person-workspace"></i> Enseignant</a>
+                        <a href="/login?admin=1"><i class="bi bi-person-workspace"></i> Enseignant</a>
                     </li>
                 </ul>
             </nav>

@@ -30,8 +30,7 @@ class LoginController extends Controller
      */
     public function showLoginForm(Request $request)
     {
-        $admin = (int)$request->input('admin') == 1 ? true : false;
-        return $admin;
+        $admin = $request->input('admin') ? false : true;
         return view('auth.login', compact("admin"));
     }
 

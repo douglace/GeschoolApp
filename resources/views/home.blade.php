@@ -37,7 +37,7 @@
                         <i class="bi bi-briefcase"></i>
                     </div>
                     <div class="col-right">
-                        <span class="number">12+</span>
+                        <span class="number">{{$nb_enseignants}}+</span>
                         <span class="slug">Enseignants</span>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         <i class="bi bi-building"></i>
                     </div>
                     <div class="col-right">
-                        <span class="number">12</span>
+                        <span class="number">{{$nb_classes}}</span>
                         <span class="slug">Filières</span>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         <i class="bi bi-people"></i>
                     </div>
                     <div class="col-right">
-                        <span class="number">12</span>
+                        <span class="number">{{$nb_eleves}}</span>
                         <span class="slug">Etudiants</span>
                     </div>
                 </div>

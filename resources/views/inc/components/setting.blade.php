@@ -103,6 +103,20 @@
                         </li>
                     @endcan
                 </ul>
+
+                <p>PARAMETRES DU SITE WEB</p>
+                <ul class="setting-list">
+                    @can('role-list')
+                        <li>
+                            <a href="{{ route('front.page', ['roles_view']) }}">Roles</a>
+                        </li>
+                    @endcan
+                    @can('user-list')
+                        <li>
+                            <a href="{{ route('front.page', ['users_view']) }}">Utilisateurs</a>
+                        </li>
+                    @endcan
+                </ul>
             </div>
         </div>
     </div>
