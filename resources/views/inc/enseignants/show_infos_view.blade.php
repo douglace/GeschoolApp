@@ -115,7 +115,7 @@
                                 ->join('enseignants', 'enseignants.enseignant_id', '=', 'cours.enseignant_id')
                                 ->where('enseignants.enseignant_id', $enseignant->enseignant_id)
                                 ->get()
-                                ->all(),
+                                ->all()
                         );
                         if ($lenght > $max_lenght) {
                             $max_lenght = $lenght;

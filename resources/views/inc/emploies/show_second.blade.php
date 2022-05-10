@@ -8,7 +8,7 @@ foreach ($jours as $jour) {
             ->where('annee_id', $annee_id)
             ->where('classe_id', $classe->classe_id)
             ->get()
-            ->all(),
+            ->all()
     );
     if ($lenght > $max_lenght) {
         $max_lenght = $lenght;

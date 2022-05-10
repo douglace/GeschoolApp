@@ -206,11 +206,11 @@
                                                 <div class="row" style="display: flex; align-items: center;">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-2">
                                                         <div class="col-sm-2">MONTANT:</div>
-                                                        <div class="col-sm-2">{{ $paiement->montant }}XAF</div>
+                                                        <div class="col-sm-2">{{ $paiement->montant ?? '' }}XAF</div>
                                                         <div class="col-sm-3">MONTANT PAYE:</div>
-                                                        <div class="col-sm-2">{{ $paiement->montant_paye }}XAF</div>
+                                                        <div class="col-sm-2">{{ $paiement->montant_paye ?? '' }}XAF</div>
                                                         <div class="col-sm-1">RESTE:</div>
-                                                        <div class="col-sm-2">{{ $paiement->reste }}XAF</div>
+                                                        <div class="col-sm-2">{{ $paiement->reste ?? '' }}XAF</div>
                                                     </div>
                                                 </div>
                                             </div>
